@@ -12,8 +12,10 @@ import ampos.restaurant.domain.dto.MenuItemDTO;
 @Mapper(componentModel = "spring")
 public interface MenuItemMapper extends EntityMapper <MenuItemDTO, MenuItem> {
 
+    //TO DO
     MenuItemDTO toDto(MenuItem menuItem);
 
+    // TO DO 
     @Mapping(target = "active", ignore = true)
     MenuItem toEntity(MenuItemDTO menuItemDTO);
 
