@@ -1,0 +1,449 @@
+03-08-2019 11:49:28.361 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 21007 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 11:49:28.377 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 11:49:28.378 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 11:49:32.760 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 11:49:33.729 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 5.622 seconds (JVM running for 6.248)
+03-08-2019 11:49:39.249 [http-nio-9080-exec-1] DEBUG MenuMgmtController.83 - Getting list menu menuItems....
+03-08-2019 11:58:21.359 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 23404 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 11:58:21.361 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 11:58:21.361 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 11:58:25.729 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 11:58:26.691 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 5.606 seconds (JVM running for 6.217)
+03-08-2019 11:58:27.304 [http-nio-9080-exec-1] DEBUG MenuMgmtController.83 - Getting list menu menuItems....
+03-08-2019 11:58:37.374 [http-nio-9080-exec-2] DEBUG MenuMgmtController.83 - Getting list menu menuItems....
+03-08-2019 11:58:44.096 [http-nio-9080-exec-3] DEBUG MenuMgmtController.83 - Getting list menu menuItems....
+03-08-2019 11:59:18.334 [http-nio-9080-exec-4] DEBUG MenuMgmtController.83 - Getting list menu menuItems....
+03-08-2019 12:03:43.851 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 24777 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 12:03:43.853 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 12:03:43.853 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 12:03:47.584 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 12:03:48.558 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 4.951 seconds (JVM running for 5.484)
+03-08-2019 12:04:02.037 [http-nio-9080-exec-1] DEBUG MenuMgmtController.83 - Getting list menu menuItems....
+03-08-2019 12:04:04.932 [http-nio-9080-exec-2] DEBUG MenuMgmtController.83 - Getting list menu menuItems....
+03-08-2019 12:05:07.931 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 25712 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 12:05:07.932 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 12:05:07.933 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 12:05:12.349 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 12:05:13.396 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 5.771 seconds (JVM running for 6.833)
+03-08-2019 12:05:13.668 [http-nio-9080-exec-1] DEBUG MenuMgmtController.83 - Getting list menu menuItems....
+03-08-2019 12:05:25.969 [http-nio-9080-exec-2] DEBUG MenuMgmtController.83 - Getting list menu menuItems....
+03-08-2019 12:07:05.347 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 26079 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 12:07:05.348 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 12:07:05.349 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 12:07:09.516 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 12:07:10.634 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 5.561 seconds (JVM running for 6.16)
+03-08-2019 12:07:13.915 [http-nio-9080-exec-1] DEBUG MenuMgmtController.83 - Getting list menu menuItems....
+03-08-2019 12:07:35.358 [http-nio-9080-exec-2] DEBUG MenuMgmtController.83 - Getting list menu menuItems....
+03-08-2019 12:08:45.833 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 26388 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 12:08:45.834 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 12:08:45.834 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 12:08:50.035 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 12:08:51.316 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 5.74 seconds (JVM running for 6.382)
+03-08-2019 12:08:51.488 [http-nio-9080-exec-1] DEBUG MenuMgmtController.83 - Getting list menu menuItems....
+03-08-2019 12:10:17.933 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 27432 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 12:10:17.934 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 12:10:17.935 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 12:10:21.907 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 12:10:22.907 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 5.203 seconds (JVM running for 5.735)
+03-08-2019 12:10:24.335 [http-nio-9080-exec-1] DEBUG MenuMgmtController.83 - Getting list menu menuItems....
+03-08-2019 12:10:32.311 [http-nio-9080-exec-2] DEBUG MenuMgmtController.83 - Getting list menu menuItems....
+03-08-2019 12:10:42.124 [http-nio-9080-exec-3] DEBUG MenuMgmtController.83 - Getting list menu menuItems....
+03-08-2019 12:14:48.062 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 27971 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 12:14:48.063 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 12:14:48.063 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 12:14:52.154 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 12:14:53.134 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 5.343 seconds (JVM running for 5.866)
+03-08-2019 12:16:07.349 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 28959 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 12:16:07.352 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 12:16:07.353 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 12:16:11.649 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 12:16:12.865 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 5.78 seconds (JVM running for 6.43)
+03-08-2019 13:34:39.961 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 13838 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 13:34:40.017 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 13:34:40.017 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 13:34:58.247 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 13:35:00.182 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 22.957 seconds (JVM running for 25.891)
+03-08-2019 13:35:06.131 [http-nio-9080-exec-1] DEBUG MenuMgmtController.83 - Getting list menu menuItems....
+03-08-2019 13:35:30.259 [http-nio-9080-exec-3] DEBUG MenuMgmtController.68 - Getting menu menuItem....
+03-08-2019 13:38:47.167 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 15161 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 13:38:47.168 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 13:38:47.168 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 13:38:50.290 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 13:38:51.032 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 4.071 seconds (JVM running for 4.529)
+03-08-2019 13:42:49.329 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 16523 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 13:42:49.330 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 13:42:49.331 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 13:42:52.327 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 13:42:53.187 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 4.053 seconds (JVM running for 4.533)
+03-08-2019 13:43:31.733 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 16789 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 13:43:31.734 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 13:43:31.734 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 13:43:34.819 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 13:43:35.584 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 4.044 seconds (JVM running for 4.502)
+03-08-2019 13:44:37.683 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 17095 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 13:44:37.683 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 13:44:37.684 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 13:44:40.738 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 13:44:41.533 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 4.045 seconds (JVM running for 4.495)
+03-08-2019 13:44:48.695 [http-nio-9080-exec-1] DEBUG MenuMgmtController.98 - Getting list menu menuItems....
+03-08-2019 13:44:56.377 [http-nio-9080-exec-2] DEBUG MenuMgmtController.98 - Getting list menu menuItems....
+03-08-2019 13:45:16.243 [http-nio-9080-exec-4] DEBUG MenuMgmtController.98 - Getting list menu menuItems....
+03-08-2019 13:45:20.688 [http-nio-9080-exec-3] DEBUG MenuMgmtController.98 - Getting list menu menuItems....
+03-08-2019 13:46:31.626 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 18123 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 13:46:31.627 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 13:46:31.627 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 13:46:34.892 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 13:46:35.785 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 4.36 seconds (JVM running for 4.805)
+03-08-2019 13:46:36.979 [http-nio-9080-exec-1] DEBUG MenuMgmtController.82 - Getting list menu menuItems....
+03-08-2019 13:46:43.128 [http-nio-9080-exec-2] DEBUG MenuMgmtController.67 - Getting menu menuItem....
+03-08-2019 13:46:45.761 [http-nio-9080-exec-3] DEBUG MenuMgmtController.67 - Getting menu menuItem....
+03-08-2019 13:47:59.151 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 18397 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 13:47:59.151 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 13:47:59.152 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 13:48:02.354 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 13:48:03.181 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 4.222 seconds (JVM running for 4.704)
+03-08-2019 13:48:03.763 [http-nio-9080-exec-1] DEBUG MenuMgmtController.67 - Getting menu menuItem....
+03-08-2019 13:48:09.895 [http-nio-9080-exec-2] DEBUG MenuMgmtController.67 - Getting menu menuItem....
+03-08-2019 13:48:34.147 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 18564 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 13:48:34.148 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 13:48:34.148 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 13:48:37.365 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 13:48:38.187 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 4.237 seconds (JVM running for 4.705)
+03-08-2019 13:50:11.617 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 19694 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 13:50:11.618 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 13:50:11.619 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 13:50:14.740 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 13:50:15.521 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 4.117 seconds (JVM running for 4.654)
+03-08-2019 13:51:32.746 [http-nio-9080-exec-1] DEBUG MenuMgmtController.67 - Getting menu menuItem....
+03-08-2019 14:00:18.721 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 22798 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 14:00:18.722 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 14:00:18.723 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 14:00:22.682 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 14:00:23.488 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 4.976 seconds (JVM running for 5.467)
+03-08-2019 14:01:29.172 [http-nio-9080-exec-1] DEBUG MenuMgmtController.67 - Getting menu menuItem....
+03-08-2019 14:04:58.125 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 23589 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 14:04:58.126 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 14:04:58.126 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 14:05:01.993 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 14:05:02.913 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 5.007 seconds (JVM running for 5.494)
+03-08-2019 14:05:05.650 [http-nio-9080-exec-1] DEBUG MenuMgmtController.67 - Getting menu menuItem....
+03-08-2019 14:08:53.524 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 25050 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 14:08:53.525 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 14:08:53.525 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 14:08:57.289 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 14:08:58.136 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 4.855 seconds (JVM running for 5.361)
+03-08-2019 14:11:50.042 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 26243 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 14:11:50.042 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 14:11:50.043 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 14:11:53.199 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 14:11:53.956 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 4.13 seconds (JVM running for 4.595)
+03-08-2019 14:13:37.969 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 26575 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 14:13:37.970 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 14:13:37.971 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 14:13:41.189 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 14:13:42.047 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 4.285 seconds (JVM running for 4.766)
+03-08-2019 14:14:08.058 [http-nio-9080-exec-2] DEBUG MenuMgmtController.82 - Getting list menu menuItems....
+03-08-2019 14:17:30.151 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 27844 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 14:17:30.153 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 14:17:30.153 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 14:17:33.501 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 14:17:34.210 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 4.267 seconds (JVM running for 5.033)
+03-08-2019 14:19:09.149 [http-nio-9080-exec-1] DEBUG MenuMgmtController.82 - Getting list menu menuItems....
+03-08-2019 14:22:03.998 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 29120 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 14:22:03.999 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 14:22:04.000 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 14:22:07.484 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 14:22:08.352 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 4.559 seconds (JVM running for 5.083)
+03-08-2019 14:22:30.044 [http-nio-9080-exec-1] DEBUG MenuMgmtController.82 - Getting list menu menuItems....
+03-08-2019 14:32:27.078 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 31963 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 14:32:27.079 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 14:32:27.079 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 14:32:30.376 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 14:32:31.248 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 4.395 seconds (JVM running for 5.071)
+03-08-2019 14:32:37.131 [http-nio-9080-exec-1] DEBUG MenuMgmtController.52 - Creating menu menuItem....
+03-08-2019 14:33:03.811 [http-nio-9080-exec-2] DEBUG MenuMgmtController.52 - Creating menu menuItem....
+03-08-2019 14:34:25.200 [http-nio-9080-exec-3] DEBUG MenuMgmtController.52 - Creating menu menuItem....
+03-08-2019 14:35:39.186 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 759 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 14:35:39.187 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 14:35:39.188 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 14:35:42.842 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 14:35:43.613 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 4.63 seconds (JVM running for 5.125)
+03-08-2019 14:36:36.353 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 1003 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 14:36:36.355 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 14:36:36.355 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 14:36:39.347 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 14:36:40.043 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 3.885 seconds (JVM running for 4.347)
+03-08-2019 14:41:37.533 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 2587 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 14:41:37.535 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 14:41:37.535 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 14:41:40.494 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 14:41:41.186 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 3.851 seconds (JVM running for 4.317)
+03-08-2019 14:41:49.879 [http-nio-9080-exec-2] DEBUG MenuMgmtController.50 - Creating menu menuItem....
+03-08-2019 14:42:05.630 [http-nio-9080-exec-3] DEBUG MenuMgmtController.50 - Creating menu menuItem....
+03-08-2019 14:42:57.755 [http-nio-9080-exec-1] DEBUG MenuMgmtController.50 - Creating menu menuItem....
+03-08-2019 14:46:18.504 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 3993 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 14:46:18.505 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 14:46:18.506 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 14:46:21.518 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 14:46:22.303 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 3.999 seconds (JVM running for 4.473)
+03-08-2019 14:48:30.653 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 4306 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 14:48:30.654 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 14:48:30.654 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 14:48:33.830 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 14:48:34.551 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 4.089 seconds (JVM running for 4.539)
+03-08-2019 14:54:30.697 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 6228 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 14:54:30.698 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 14:54:30.698 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 14:54:33.895 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 14:54:34.651 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 4.225 seconds (JVM running for 4.771)
+03-08-2019 14:54:38.649 [http-nio-9080-exec-1] DEBUG MenuMgmtController.52 - Creating menu menuItem....
+03-08-2019 14:54:54.563 [http-nio-9080-exec-2] DEBUG MenuMgmtController.52 - Creating menu menuItem....
+03-08-2019 14:55:40.232 [http-nio-9080-exec-3] DEBUG MenuMgmtController.52 - Creating menu menuItem....
+03-08-2019 14:59:28.671 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 7887 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 14:59:28.672 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 14:59:28.672 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 14:59:31.920 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 14:59:32.695 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 4.247 seconds (JVM running for 4.739)
+03-08-2019 15:00:16.190 [http-nio-9080-exec-1] DEBUG MenuMgmtController.54 - Creating menu menuItem....
+03-08-2019 15:00:48.785 [http-nio-9080-exec-2] DEBUG MenuMgmtController.91 - Getting list menu menuItems....
+03-08-2019 15:01:24.726 [http-nio-9080-exec-3] DEBUG MenuMgmtController.54 - Creating menu menuItem....
+03-08-2019 15:06:18.976 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 10253 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 15:06:18.977 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 15:06:18.977 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 15:06:21.884 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 15:06:22.660 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 3.883 seconds (JVM running for 4.354)
+03-08-2019 15:06:24.670 [http-nio-9080-exec-1] DEBUG MenuMgmtController.91 - Getting list menu menuItems....
+03-08-2019 15:08:23.719 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 10628 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 15:08:23.720 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 15:08:23.720 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 15:08:26.791 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 15:08:27.638 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 4.122 seconds (JVM running for 4.578)
+03-08-2019 15:08:28.026 [http-nio-9080-exec-1] DEBUG MenuMgmtController.91 - Getting list menu menuItems....
+03-08-2019 15:13:10.158 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 11937 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 15:13:10.158 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 15:13:10.159 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 15:13:28.002 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 12036 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 15:13:28.002 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 15:13:28.003 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 15:14:12.152 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 12184 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 15:14:12.153 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 15:14:12.153 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 15:14:49.318 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 12330 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 15:14:49.319 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 15:14:49.319 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 15:16:23.867 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 13307 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 15:16:23.867 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 15:16:23.868 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 15:18:01.881 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 13691 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 15:18:01.883 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 15:18:01.883 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 15:18:05.342 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 15:18:06.019 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 4.339 seconds (JVM running for 4.793)
+03-08-2019 15:18:47.073 [http-nio-9080-exec-1] DEBUG MenuMgmtController.54 - Creating menu menuItem....
+03-08-2019 15:23:33.931 [http-nio-9080-exec-3] DEBUG BillOrderMgmtController.41 - Create bill order by Id
+03-08-2019 15:25:10.994 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 16301 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 15:25:10.995 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 15:25:10.995 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 15:25:14.478 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 15:25:15.419 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 4.672 seconds (JVM running for 5.287)
+03-08-2019 15:26:26.385 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 16602 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 15:26:26.386 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 15:26:26.387 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 15:26:29.452 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 15:26:30.234 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 4.064 seconds (JVM running for 4.585)
+03-08-2019 15:26:57.887 [http-nio-9080-exec-1] DEBUG BillOrderMgmtController.41 - Create bill order by Id
+03-08-2019 15:29:43.496 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 17242 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 15:29:43.497 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 15:29:43.497 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 15:29:46.432 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 15:29:47.146 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 3.842 seconds (JVM running for 4.306)
+03-08-2019 15:30:03.609 [http-nio-9080-exec-2] DEBUG BillOrderMgmtController.41 - Create bill order by Id
+03-08-2019 15:35:40.933 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 19610 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 15:35:40.935 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 15:35:40.935 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 15:35:44.306 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 15:35:45.143 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 4.425 seconds (JVM running for 4.928)
+03-08-2019 15:35:51.246 [http-nio-9080-exec-1] DEBUG BillOrderMgmtController.41 - Create bill order by Id
+03-08-2019 15:37:08.807 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 20068 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 15:37:08.808 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 15:37:08.809 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 15:37:11.930 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 15:37:12.663 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 4.055 seconds (JVM running for 4.514)
+03-08-2019 15:37:30.266 [http-nio-9080-exec-1] DEBUG BillOrderMgmtController.41 - Create bill order by Id
+03-08-2019 15:41:08.592 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 21330 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 15:41:08.593 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 15:41:08.593 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 15:41:11.872 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 15:41:12.645 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 4.242 seconds (JVM running for 4.693)
+03-08-2019 15:41:22.178 [http-nio-9080-exec-1] DEBUG BillOrderMgmtController.41 - Create bill order by Id
+03-08-2019 15:50:29.716 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 23857 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 15:50:29.717 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 15:50:29.717 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 16:11:50.664 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 29496 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 16:11:50.664 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 16:11:50.665 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 16:15:10.042 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 30576 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 16:15:10.046 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 16:15:10.046 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 16:17:32.170 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 30906 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 16:17:32.171 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 16:17:32.171 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 16:17:41.246 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 30977 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 16:17:41.246 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 16:17:41.247 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 16:18:37.130 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 31156 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 16:18:37.131 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 16:18:37.131 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 16:22:42.748 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 32390 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 16:22:42.748 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 16:22:42.749 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 16:24:28.770 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 32585 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 16:24:28.771 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 16:24:28.771 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 16:25:12.383 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 964 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 16:25:12.384 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 16:25:12.384 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 16:26:10.812 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 1166 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 16:26:10.812 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 16:26:10.813 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 16:26:14.688 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 16:26:15.253 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 4.602 seconds (JVM running for 7.984)
+03-08-2019 16:50:25.029 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 8043 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 16:50:25.030 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 16:50:25.030 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 16:50:29.027 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 16:50:29.619 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 4.813 seconds (JVM running for 8.405)
+03-08-2019 16:50:56.971 [http-nio-9080-exec-1] DEBUG MenuMgmtController.91 - Getting list menu menuItems....
+03-08-2019 16:53:04.915 [http-nio-9080-exec-6] DEBUG MenuMgmtController.54 - Creating menu menuItem....
+03-08-2019 16:53:18.312 [http-nio-9080-exec-7] DEBUG MenuMgmtController.54 - Creating menu menuItem....
+03-08-2019 16:54:52.866 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 8651 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 16:54:52.867 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 16:54:52.867 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 16:54:57.795 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 16:54:58.527 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 5.874 seconds (JVM running for 6.341)
+03-08-2019 16:55:09.874 [http-nio-9080-exec-1] DEBUG MenuMgmtController.91 - Getting list menu menuItems....
+03-08-2019 16:55:31.395 [http-nio-9080-exec-2] DEBUG MenuMgmtController.54 - Creating menu menuItem....
+03-08-2019 16:56:32.951 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 9708 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 16:56:32.952 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 16:56:32.952 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 16:56:36.860 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 16:56:37.606 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 4.858 seconds (JVM running for 5.321)
+03-08-2019 16:56:38.445 [http-nio-9080-exec-1] DEBUG MenuMgmtController.54 - Creating menu menuItem....
+03-08-2019 16:57:44.309 [http-nio-9080-exec-3] DEBUG BillOrderMgmtController.41 - Create bill order by Id
+03-08-2019 16:58:54.342 [http-nio-9080-exec-4] DEBUG BillOrderMgmtController.41 - Create bill order by Id
+03-08-2019 20:58:12.567 [http-nio-9080-exec-5] DEBUG BillOrderMgmtController.41 - Create bill order by Id
+03-08-2019 21:09:13.367 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 30274 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 21:09:13.368 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 21:09:13.368 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 21:09:53.657 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 30433 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 21:09:53.657 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 21:09:53.658 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 21:09:56.752 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 21:09:57.501 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 4.052 seconds (JVM running for 4.719)
+03-08-2019 21:10:22.811 [http-nio-9080-exec-1] DEBUG BillOrderMgmtController.41 - Create bill order by Id
+03-08-2019 21:17:19.221 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 309 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 21:17:19.222 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 21:17:19.223 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 21:18:55.500 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 539 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 21:18:55.501 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 21:18:55.502 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 21:19:32.533 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 656 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 21:19:32.533 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 21:19:32.533 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 21:21:37.597 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 1726 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 21:21:37.597 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 21:21:37.597 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 21:21:41.329 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 21:21:41.951 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 4.528 seconds (JVM running for 8.452)
+03-08-2019 21:22:35.548 [http-nio-9080-exec-1] DEBUG MenuMgmtController.54 - Creating menu menuItem....
+03-08-2019 21:23:50.686 [http-nio-9080-exec-3] DEBUG BillOrderMgmtController.41 - Create bill order by Id
+03-08-2019 21:25:11.229 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 2901 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 21:25:11.230 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 21:25:11.230 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 21:25:14.931 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 21:25:15.675 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 4.664 seconds (JVM running for 5.174)
+03-08-2019 21:25:25.696 [http-nio-9080-exec-1] DEBUG BillOrderMgmtController.41 - Create bill order by Id
+03-08-2019 22:35:00.735 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 17963 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 22:35:00.736 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 22:35:00.736 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 22:35:05.237 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 22:35:06.039 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 5.509 seconds (JVM running for 5.978)
+03-08-2019 22:36:58.831 [http-nio-9080-exec-2] DEBUG MenuMgmtController.54 - Creating menu menuItem....
+03-08-2019 22:37:45.733 [http-nio-9080-exec-4] DEBUG BillOrderMgmtController.41 - Create bill order by Id
+03-08-2019 22:46:00.818 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 21367 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 22:46:00.819 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 22:46:00.819 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 22:46:03.932 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 22:46:04.711 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 4.136 seconds (JVM running for 4.634)
+03-08-2019 22:46:59.595 [http-nio-9080-exec-1] DEBUG BillOrderMgmtController.41 - Create bill order by Id
+03-08-2019 22:51:11.075 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 22883 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 22:51:11.078 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 22:51:11.080 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 22:51:14.964 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 22:51:15.860 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 5.042 seconds (JVM running for 5.572)
+03-08-2019 22:52:10.621 [http-nio-9080-exec-1] DEBUG MenuMgmtController.54 - Creating menu menuItem....
+03-08-2019 22:52:53.257 [http-nio-9080-exec-2] DEBUG BillOrderMgmtController.41 - Create bill order by Id
+03-08-2019 22:54:20.922 [http-nio-9080-exec-3] DEBUG BillOrderMgmtController.41 - Create bill order by Id
+03-08-2019 23:01:43.570 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 25550 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 23:01:43.571 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 23:01:43.572 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 23:01:46.622 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 23:01:47.366 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 4.016 seconds (JVM running for 4.644)
+03-08-2019 23:02:32.562 [http-nio-9080-exec-1] DEBUG BillOrderMgmtController.41 - Create bill order by Id
+03-08-2019 23:07:28.984 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 27013 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 23:07:28.985 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 23:07:28.985 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 23:07:31.997 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 23:07:32.696 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 3.908 seconds (JVM running for 4.382)
+03-08-2019 23:08:26.159 [http-nio-9080-exec-1] DEBUG BillOrderMgmtController.41 - Create bill order by Id
+03-08-2019 23:14:38.470 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 28577 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 23:14:38.471 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 23:14:38.471 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 23:14:42.658 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 23:14:43.467 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 5.231 seconds (JVM running for 5.767)
+03-08-2019 23:15:06.226 [http-nio-9080-exec-1] DEBUG BillOrderMgmtController.41 - Create bill order by Id
+03-08-2019 23:20:32.923 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 30708 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 23:20:32.925 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 23:20:32.925 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 23:20:37.098 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 23:20:38.130 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 5.468 seconds (JVM running for 5.954)
+03-08-2019 23:20:49.703 [http-nio-9080-exec-1] DEBUG MenuMgmtController.54 - Creating menu menuItem....
+03-08-2019 23:21:19.106 [http-nio-9080-exec-2] DEBUG BillOrderMgmtController.41 - Create bill order by Id
+03-08-2019 23:25:08.827 [http-nio-9080-exec-5] DEBUG MenuMgmtController.54 - Creating menu menuItem....
+03-08-2019 23:26:39.358 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 32220 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 23:26:39.359 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 23:26:39.359 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 23:26:42.441 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 23:26:43.154 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 4.008 seconds (JVM running for 4.504)
+03-08-2019 23:27:12.762 [http-nio-9080-exec-1] DEBUG BillOrderMgmtController.41 - Create bill order by Id
+03-08-2019 23:28:07.931 [http-nio-9080-exec-2] DEBUG BillOrderMgmtController.41 - Create bill order by Id
+03-08-2019 23:28:56.267 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 32584 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 23:28:56.275 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 23:28:56.276 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 23:28:59.466 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 23:29:00.275 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 4.236 seconds (JVM running for 4.75)
+03-08-2019 23:29:47.607 [http-nio-9080-exec-1] DEBUG BillOrderMgmtController.41 - Create bill order by Id
+03-08-2019 23:31:32.768 [http-nio-9080-exec-3] DEBUG BillOrderMgmtController.56 - Getting bill order by Id...
+03-08-2019 23:35:22.640 [http-nio-9080-exec-5] DEBUG BillOrderMgmtController.56 - Getting bill order by Id...
+03-08-2019 23:41:55.530 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 3863 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 23:41:55.531 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 23:41:55.532 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 23:41:59.105 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 23:42:00.192 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 4.961 seconds (JVM running for 5.47)
+03-08-2019 23:42:17.169 [http-nio-9080-exec-1] DEBUG BillOrderMgmtController.56 - Getting bill order by Id...
+03-08-2019 23:42:52.887 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 4097 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 23:42:52.888 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 23:42:52.888 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 23:42:56.652 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 23:42:57.703 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 5.043 seconds (JVM running for 5.543)
+03-08-2019 23:43:06.510 [http-nio-9080-exec-1] DEBUG BillOrderMgmtController.56 - Getting bill order by Id...
+03-08-2019 23:43:50.293 [http-nio-9080-exec-2] DEBUG BillOrderMgmtController.56 - Getting bill order by Id...
+03-08-2019 23:45:20.946 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 5645 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 23:45:20.947 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 23:45:20.947 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 23:47:11.372 [main] INFO  ampos.restaurant.RestaurantApplication.48 - Starting RestaurantApplication on ubuntu19 with PID 6002 (/home/ubuntu19/Desktop/AMOP/restaurant/restaurant/target/classes started by ubuntu19 in /home/ubuntu19/Desktop/AMOP/restaurant/restaurant)
+03-08-2019 23:47:11.373 [main] DEBUG ampos.restaurant.RestaurantApplication.51 - Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+03-08-2019 23:47:11.373 [main] INFO  ampos.restaurant.RestaurantApplication.593 - No active profile set, falling back to default profiles: default
+03-08-2019 23:47:14.795 [main] INFO  ampos.restaurant.domain.mapper.DefaultClassMapper.24 - Registering all class mapppers ...
+03-08-2019 23:47:15.522 [main] INFO  ampos.restaurant.RestaurantApplication.57 - Started RestaurantApplication in 4.364 seconds (JVM running for 4.826)
+03-08-2019 23:47:24.018 [http-nio-9080-exec-1] DEBUG BillOrderMgmtController.56 - Getting bill order by Id...
