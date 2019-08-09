@@ -1,37 +1,20 @@
 package ampos.restaurant.service.impl;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
 import org.springframework.transaction.annotation.Transactional;
 
 import ampos.restaurant.domain.dto.MenuItemDTO;
 import ampos.restaurant.domain.mapper.MenuItemMapper;
 import ampos.restaurant.exception.ApplicationException;
-import ampos.restaurant.domain.BillItem;
 import ampos.restaurant.domain.MenuItem;
 import ampos.restaurant.repository.MenuItemRepository;
 import ampos.restaurant.service.MenuItemService;
-import ampos.restaurant.specitifications.MenuSearchSpecifications;
-import ampos.restaurant.util.RestaurantConstants;
-import ampos.restaurant.web.rest.vm.MenuItemRequestVM;
+import ampos.restaurant.util.Constants;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 /**
  * 
@@ -56,117 +39,53 @@ public class MenuItemServiceImpl implements MenuItemService {
     /**
      * Save a menu item.
      *
-     * @param menuItemRequestVM the entity to save
+     * @param id If id is not null, entity with id "id" will be updated
+     * @param menuItemDTO the entity to update
      * @return the persisted entity
      */
     @Override
-    public MenuItemDTO create(MenuItemRequestVM menuItemRequestVM, MultipartFile file) throws ApplicationException {
-        log.debug("Request to save MenuItem : {}", menuItemRequestVM);
-        return this.saveItemAndImage( new MenuItem( menuItemRequestVM ), file );
-    }
+    public MenuItemDTO save(Long id, MenuItemDTO menuItemDTO) {
+        log.debug("Request to update MenuItem : {}", menuItemDTO);
 
-    /**
-     * Update a menu item.
-     *
-     * @param menuItemRequestVM the entity to update
-     * @return the persisted entity
-     */
-    @Override
-    public MenuItemDTO update(Long id, MenuItemRequestVM menuItemRequestVM, MultipartFile file) throws ApplicationException {
-        log.debug("Request to update MenuItem : {}", menuItemRequestVM);
-
-        MenuItem newMenuItem = new MenuItem( menuItemRequestVM );
-        // Replace existing item
-        if(menuItemRepository.findById( id ).isPresent()) {
-            newMenuItem.setId(id);
+        MenuItem menuItem = menuItemMapper.toEntity( menuItemDTO );
+        if(id != null && menuItemRepository.findById(id).isPresent()) {
+            menuItem.setId(id);
         }
-
-        return this.saveItemAndImage(newMenuItem, file);
+        else {
+            menuItem.setId(0);
+        }
+        menuItemRepository.save(menuItem);
+        return menuItemMapper.toDto(menuItem);
     }
 
     /**
-     * Save a menu item and image to DB.
+     * Delete a Menu Item
      *
-     * @param menuItem the entity to save
+     * @param id of the menu item to be deleted
      * @return the persisted entity
      */
-    private MenuItemDTO saveItemAndImage(MenuItem menuItem, MultipartFile file) throws ApplicationException {
-        if (menuItemRepository.findByName( menuItem.getName() ).isPresent())
-            throw new ApplicationException( "Menu Item with the same name already existed" );
-
-        menuItem.setImageUrl( saveImage( file ) );
-        menuItem = menuItemRepository.save(menuItem);
-        return menuItemMapper.toDto(menuItem);
-
-    }
-//
-//    @Override
-//    public void save( ItemDTO item, MultipartFile file ) throws ApplicationException {
-//        if ( item != null && menuRepository.findByTitle( item.getTitle() ) != null ) {
-//            throw new ApplicationException( RestaurantConstants.MENU_ITEM_EXISTING );
-//        }
-//        String fileName = saveImage( file );
-//        //TODO use aws , now we use local server
-//        item.setImageUrl( RestaurantConstants.SPLASH + fileName );
-//        item.setActive( true );
-//        menuRepository.save( mapper.convert( item, MenuItem.class ) );
-//    }
-
     @Override
-    public void delete( Long id ) throws ApplicationException {
-        MenuItem menuItem = menuItemRepository.findById( id ).orElseThrow( () -> new ApplicationException( RestaurantConstants.MENU_ITEM_NOT_FOUND ) );
-
-        String imageUrl = menuItem.getImageUrl();
+    public void delete( Long id ) {
+        log.debug("Request to delete Menu Item : {}", id);
         menuItemRepository.deleteById( id );
-        deleteImage( getFileNameFromURL( imageUrl ) );
     }
-
-//    @Override
-//    public void editMenuItem( MenuItemDTO menuItemDTO, MultipartFile file ) throws ApplicationException {
-//        //Check menu exists or not?
-//        MenuItem menuItem = menuRepository.findOne( itemDTO.getId() );
-//        if ( itemDTO == null || menuItem == null || !menuItem.isActive() )
-//            throw new ApplicationException( RestaurantConstants.MENU_ITEM_NOT_FOUND );
-//
-//        if ( file != null ) {
-//            String fileName = saveImage( file );
-//            itemDTO.setImageUrl( fileName );
-//            deleteImage( getFileNameFromURL( menuItem.getImageUrl() ) );
-//        }
-//
-//        menuItem.setId( menuItem.getId() );
-//        menuItem.setTitle( itemDTO.getTitle() );
-//        menuItem.setImageUrl( itemDTO.getImageUrl() );
-//        menuItem.setPrice( itemDTO.getPrice() );
-//        menuItem.setDetails( itemDTO.getDescription() );
-//        menuItem.setActive( true );
-//
-//        menuRepository.save( menuItem );
-//    }
-
-//    @Override
-//    public Page<ItemDTO> getMenuItems( Pageable pageable ) throws ApplicationException {
-//        Page<MenuItem> page = menuRepository.findAll( pageable );
-//        return new PageImpl<ItemDTO>( convertItemsToDTOs( page.getContent() ), pageable, page.getTotalElements() );
-//
-//    }
 
     /**
-     *  Get all the clients.
+     *  Get all the menu items.
      *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
     @Override
     @Transactional(readOnly = true)
-    public Page<MenuItemDTO> findAll(Pageable pageable) throws ApplicationException {
+    public Page<MenuItemDTO> findAll(Pageable pageable) {
         log.debug("Request to get all MenuItems");
         return menuItemRepository.findAll(pageable)
-                        .map(menuItemMapper::toDto);
+                                 .map(menuItemMapper::toDto);
     }
 
     /**
-     *  Get one client by id.
+     *  Get one menu item by id.
      *
      *  @param id the id of the entity
      *  @return the entity
@@ -174,85 +93,8 @@ public class MenuItemServiceImpl implements MenuItemService {
     @Override
     @Transactional(readOnly = true)
     public MenuItemDTO findById(Long id) throws ApplicationException {
-        log.debug("Request to get Client : {}", id);    // TO DO
-        MenuItem menuItem = menuItemRepository.findById(id).orElseThrow( () -> new ApplicationException( RestaurantConstants.MENU_ITEM_NOT_FOUND ) ) ;
+        log.debug("Request to get Menu Item : {}", id);
+        MenuItem menuItem = menuItemRepository.findById(id).orElseThrow( () -> new ApplicationException( Constants.MENU_ITEM_NOT_FOUND ) ) ;
         return menuItemMapper.toDto(menuItem);
-    }
-//
-//    @Override
-//    public ItemDTO getMenuItem( Long id ) throws ApplicationException {
-//        MenuItem menuItem = menuRepository.findOne( id );
-//        if ( menuItem == null || !menuItem.isActive() ) {
-//            throw new ApplicationException( RestaurantConstants.MENU_ITEM_NOT_FOUND );
-//        }
-//        return mapper.convert( menuItem, ItemDTO.class );
-//    }
-
-//    @Override
-//    public Resource loadImage( String fileName ) throws ApplicationException {
-//        try {
-//            Path filePath = Paths.get( RestaurantConstants.UPLOAD_DIR ).toAbsolutePath().normalize().resolve( fileName ).normalize();
-//            Resource resource = new org.springframework.core.io.UrlResource( filePath.toUri() );
-//            if ( resource.exists() ) {
-//                return resource;
-//            } else {
-//                throw new ApplicationException( RestaurantConstants.FILE_NOT_FOUND );
-//            }
-//        } catch ( MalformedURLException ex ) {
-//            throw new ApplicationException( RestaurantConstants.FILE_NOT_FOUND, ex );
-//        }
-//    }
-
-    /**
-     * Save image item to server
-     * 
-     * @param file
-     * @return
-     * @throws ApplicationException
-     */
-    private String saveImage( MultipartFile file ) throws ApplicationException {
-        if ( file == null )
-            return null;
-        String fileName = System.currentTimeMillis() + file.getOriginalFilename();
-        try {
-            // Copy file to the upload location (Replacing existing file with the same name)
-            Path dir = Paths.get( RestaurantConstants.UPLOAD_DIR ).toAbsolutePath().normalize().resolve( fileName );
-            Files.copy( file.getInputStream(), dir, StandardCopyOption.REPLACE_EXISTING );
-
-            return fileName;
-        } catch ( IOException e ) {
-            throw new ApplicationException( "Could not store image" + file.getOriginalFilename(), e );
-        }
-    }
-
-    /**
-     * Delete image file when item is deleted
-     * 
-     * @param fileName
-     * @throws ApplicationException
-     */
-    private void deleteImage( String fileName ) throws ApplicationException {
-        if ( fileName == null )
-            return;
-        try {
-            Path dir = Paths.get( RestaurantConstants.UPLOAD_DIR ).toAbsolutePath().normalize().resolve( fileName );
-            Files.deleteIfExists( dir );
-        } catch ( IOException e ) {
-            throw new ApplicationException( "Could not delete" + fileName, e );
-        }
-    }
-
-    /**
-     * Get file name from a url
-     * 
-     * @param url
-     * @return
-     */
-    private String getFileNameFromURL( String url ) {
-        int index = url.lastIndexOf( RestaurantConstants.SPLASH );
-        if ( index > 0 ) {
-            return url.substring( index, url.length() );
-        }
-        return url;
     }
 }

@@ -1,6 +1,7 @@
 package ampos.restaurant.domain.dto;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -9,15 +10,17 @@ import java.util.Set;
  */
 public class BillDTO implements Serializable {
 
-    private long id;
+    private Long id;
 
     private Set<BillItemDTO> billItems = new HashSet<>();
 
-    public long getId() {
+    private BigDecimal total;
+
+    public Long getId() {
         return id;
     }
 
-    public void setId( long id ) {
+    public void setId( Long id ) {
         this.id = id;
     }
 
@@ -27,5 +30,13 @@ public class BillDTO implements Serializable {
 
     public void setBillItems( Set<BillItemDTO> billItems ) {
         this.billItems = billItems;
+    }
+
+    public BigDecimal getTotal() {
+        return total;
+    }
+
+    public void setTotal( BigDecimal totalBill ) {
+        this.total = totalBill;
     }
 }

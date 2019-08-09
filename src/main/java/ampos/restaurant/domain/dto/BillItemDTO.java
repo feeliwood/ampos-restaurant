@@ -1,25 +1,31 @@
 package ampos.restaurant.domain.dto;
 
+import org.springframework.web.bind.annotation.PathVariable;
+
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.time.Instant;
 import java.time.ZonedDateTime;
 
 public class BillItemDTO implements Serializable {
 
-    private long id;
+    private Long id;
 
     private int quantity;
 
-    private String menuItemName;
+    private MenuItemDTO menuItem;
 
-    private ZonedDateTime orderedTime;
+    private Instant orderedTime;
 
-    private long billId;
+    private Long billId;
 
-    public long getId() {
+    private BigDecimal subTotal;
+
+    public Long getId() {
 	return id;
     }
 
-    public void setId( long id ) {
+    public void setId( Long id ) {
 	this.id = id;
     }
 
@@ -31,27 +37,35 @@ public class BillItemDTO implements Serializable {
 	this.quantity = quantity;
     }
 
-    public String getMenuItemName() {
-	return menuItemName;
+    public MenuItemDTO getMenuItem() {
+	return menuItem;
     }
 
-    public void setMenuItemName( String menuItemName ) {
-	this.menuItemName = menuItemName;
+    public void setMenuItem( MenuItemDTO menuItem ) {
+	this.menuItem = menuItem;
     }
 
-    public ZonedDateTime getOrderedTime() {
-	return orderedTime;
+    public Instant getOrderedTime() {
+        return orderedTime;
     }
 
-    public void setOrderedTime( ZonedDateTime orderedTime ) {
-	this.orderedTime = orderedTime;
+    public void setOrderedTime(Instant orderedTime) {
+        this.orderedTime = orderedTime;
     }
 
-    public long getBillId() {
+    public Long getBillId() {
 	return billId;
     }
 
-    public void setBillId( long billId ) {
+    public void setBillId( Long billId ) {
 	this.billId = billId;
+    }
+
+    public BigDecimal getSubTotal() {
+	return subTotal;
+    }
+
+    public void setSubTotal( BigDecimal subTotal ) {
+	this.subTotal = subTotal;
     }
 }

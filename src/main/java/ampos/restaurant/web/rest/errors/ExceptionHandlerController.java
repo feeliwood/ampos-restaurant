@@ -5,6 +5,7 @@ import java.util.concurrent.TimeoutException;
 
 import ampos.restaurant.exception.ApplicationException;
 
+import org.hibernate.validator.internal.engine.constraintvalidation.ConstraintViolationCreationContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -40,6 +41,7 @@ public class ExceptionHandlerController {
      */
     @ExceptionHandler( ApplicationException.class )
     public ResponseEntity<String> handleCodeFightException( ApplicationException e ) {
+        e.printStackTrace();
         return new ResponseEntity<>( e.getMessage(), HttpStatus.BAD_REQUEST );
     }
 
@@ -53,6 +55,7 @@ public class ExceptionHandlerController {
     @ResponseStatus( HttpStatus.BAD_REQUEST )
     @ExceptionHandler( MethodArgumentNotValidException.class )
     public ResponseEntity<String> handleBadRequestNull( MethodArgumentNotValidException e ) {
+        e.printStackTrace();
         StringBuilder errors = new StringBuilder();
         List<FieldError> fieldErrors = e.getBindingResult().getFieldErrors();
         for ( FieldError fieldError : fieldErrors ) {
@@ -70,6 +73,7 @@ public class ExceptionHandlerController {
      */
     @ExceptionHandler( TimeoutException.class )
     public ResponseEntity<String> handleTimeOutError( Exception e ) {
+        e.printStackTrace();
         return new ResponseEntity<>( "Request Timeout", HttpStatus.INTERNAL_SERVER_ERROR );
     }
 
@@ -82,6 +86,7 @@ public class ExceptionHandlerController {
     @ResponseStatus( HttpStatus.INTERNAL_SERVER_ERROR )
     @ExceptionHandler( Exception.class )
     public ResponseEntity<String> handleGeneralError( Exception e ) {
+        e.printStackTrace();
         return new ResponseEntity<>( e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR );
     }
 }

@@ -1,38 +1,23 @@
 package ampos.restaurant.service;
 
-import java.util.List;
-import java.util.Optional;
-
 import ampos.restaurant.exception.ApplicationException;
 import ampos.restaurant.domain.dto.MenuItemDTO;
-import ampos.restaurant.web.rest.vm.MenuItemRequestVM;
 
-import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.web.multipart.MultipartFile;
+
 
 /**
  * Menu Item Service
  */
 public interface MenuItemService {
     /**
-     * Create menu item
-     * 
-     * @param menuItemRequestVM
-     * @param file
-     * @throws ApplicationException
-     */
-    MenuItemDTO create( MenuItemRequestVM menuItemRequestVM, MultipartFile file ) throws ApplicationException;
-
-    /**
      *  Update menu item
      *
-     * @param menuItemRequestVM
-     * @param file
+     * @param menuItemDTO
      * @throws ApplicationException
      */
-    MenuItemDTO update( Long id,  MenuItemRequestVM menuItemRequestVM, MultipartFile file ) throws ApplicationException;
+    MenuItemDTO save( Long id,  MenuItemDTO menuItemDTO ) throws ApplicationException;
 
     /**
      * Delete menu item
@@ -40,7 +25,7 @@ public interface MenuItemService {
      * @param id
      * @throws ApplicationException
      */
-    void delete( Long id ) throws ApplicationException;
+    void delete( Long id );
 
     /**
      * Get menu item by Id
@@ -58,7 +43,7 @@ public interface MenuItemService {
      * @return
      * @throws ApplicationException
      */
-    Page<MenuItemDTO> findAll( Pageable pageable ) throws ApplicationException;;
+    Page<MenuItemDTO> findAll( Pageable pageable ) throws ApplicationException;
 
 //    /**
 //     * Search menu items by keyword
@@ -69,12 +54,5 @@ public interface MenuItemService {
 //     */
 //    List<MenuItemDTO> searchMenuItems( String keyword ) throws ApplicationException;
 //
-//    /**
-//     * Load image item
-//     *
-//     * @param fileName
-//     * @return
-//     * @throws ApplicationException
-//     */
-//    Resource loadImage( String fileName ) throws ApplicationException;
+
 }
