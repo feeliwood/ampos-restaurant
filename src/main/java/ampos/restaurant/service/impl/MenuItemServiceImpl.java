@@ -254,6 +254,6 @@ public class MenuItemServiceImpl implements MenuItemService {
 
     @Override
     public Page<MenuItemDTO> search( String keyword, Pageable pageable ) {
-        return menuItemRepository.search( keyword, pageable ).map( menuItemMapper::toDto );
+        return menuItemRepository.search( keyword.toLowerCase(), pageable ).map( menuItemMapper::toDto );
     }
 }
