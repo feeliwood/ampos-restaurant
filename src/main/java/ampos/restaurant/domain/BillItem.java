@@ -39,12 +39,12 @@ public class BillItem implements Serializable {
     @Column(name = QUANTITY_COLUMN)
     private int quantity;
 
-    @OneToOne( cascade = CascadeType.PERSIST, fetch = FetchType.LAZY )
+    @OneToOne( fetch = FetchType.LAZY )
     @JoinColumn( name = FK_MENU_ITEM_ID_COLUMN )
     private MenuItem menuItem;
 
     @Column( name = ORDERED_TIME_COLUMN, nullable = false )
-    private ZonedDateTime orderedTime;
+    private Instant orderedTime; // TO DO 
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = FK_BILL_ID_COLUMN )
