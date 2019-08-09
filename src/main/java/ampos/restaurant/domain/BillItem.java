@@ -44,7 +44,7 @@ public class BillItem implements Serializable {
     private MenuItem menuItem;
 
     @Column( name = ORDERED_TIME_COLUMN, nullable = false )
-    private Instant orderedTime; // TO DO 
+    private ZonedDateTime orderedTime;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = FK_BILL_ID_COLUMN )
