@@ -13,7 +13,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MenuItemRepository extends JpaRepository<MenuItem, Long> {
-    static final String KEY_SEARCH_PATTERN = "CONCAT('%',:keyword,'%')";
 
     Optional<MenuItem> findByName( String name );
 
