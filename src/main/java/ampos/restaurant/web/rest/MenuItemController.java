@@ -12,7 +12,7 @@ import ampos.restaurant.service.MenuItemService;
 import ampos.restaurant.web.rest.util.HeaderUtil;
 import ampos.restaurant.web.rest.util.PaginationUtil;
 import ampos.restaurant.web.rest.util.ResponseUtil;
-
+import ampos.restaurant.web.rest.vm.MenuItemRequestVM;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -60,16 +60,10 @@ public class MenuItemController {
      */
     //@PostMapping(  consumes = { "multipart/form-data", "application/json" } )
     @PostMapping(value = "/items", headers = {"content-type=multipart/form-data"})
-    public ResponseEntity<MenuItemDTO> createMenuItem( @RequestParam( value = "item" ) MenuItemDTO menuItemDTO, @RequestParam( value = "file", required = false ) MultipartFile file ) throws ApplicationException, URISyntaxException {
-        if ( logger.isDebugEnabled() ) {
-            logger.debug( "Creating menu item...." );
-        }
+    public ResponseEntity<MenuItemDTO> createMenuItem( @RequestParam( value = "item" ) MenuItemRequestVM menuItemRequestVM, @RequestParam( value = "file", required = false ) MultipartFile file ) throws ApplicationException, URISyntaxException {
+        logger.debug( "Creating menu item...." );
 
-        if(menuItemDTO.getId() != null) {
-            return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new menu item cannot already have an ID")).body(null);
-        }
-
-        MenuItemDTO result = menuItemService.save(menuItemDTO, file);
+        MenuItemDTO result = menuItemService.create(menuItemRequestVM, file);
         return ResponseEntity.created(new URI("/menu/items/" + result.getId()))
                         .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
                         .body(result);
@@ -78,14 +72,14 @@ public class MenuItemController {
     /**
      * PUT  /items : Updates an existing menu item.
      *
-     * @param menuItemDTO the clientDTO to update
+     * @param menuItemRequestVM the clientDTO to update
      * @return the ResponseEntity with status 200 (OK) and with body the updated clientDTO,
      */
     @PutMapping(value = "/items/{id}", headers = {"content-type=multipart/form-data"})
-    public ResponseEntity<MenuItemDTO> updateMenuItem(@PathVariable Long id,  @RequestParam( value = "item" ) MenuItemDTO menuItemDTO, @RequestParam( value = "file", required = false ) MultipartFile file) throws ApplicationException, URISyntaxException {
-        logger.debug("REST request to update Menu Item : {}", menuItemDTO);
+    public ResponseEntity<MenuItemDTO> updateMenuItem(@PathVariable Long id,  @RequestParam( value = "item" ) MenuItemRequestVM menuItemRequestVM, @RequestParam( value = "file", required = false ) MultipartFile file) throws ApplicationException, URISyntaxException {
+        logger.debug("REST request to update Menu Item : {}", menuItemRequestVM);
 
-        MenuItemDTO result = menuItemService.update(id, menuItemDTO, file);
+        MenuItemDTO result = menuItemService.update(id, menuItemRequestVM, file);
         return ResponseEntity.ok()
                         .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, result.getId().toString()))
                         .body(result);

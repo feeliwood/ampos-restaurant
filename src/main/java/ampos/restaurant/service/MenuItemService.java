@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import ampos.restaurant.exception.ApplicationException;
 import ampos.restaurant.domain.dto.MenuItemDTO;
+import ampos.restaurant.web.rest.vm.MenuItemRequestVM;
 
 import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;
@@ -12,26 +13,26 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
- * Service Interface for managing MenuItem.
+ * Menu Item Service
  */
 public interface MenuItemService {
     /**
      * Create menu item
      * 
-     * @param menuItemDTO
+     * @param menuItemRequestVM
      * @param file
      * @throws ApplicationException
      */
-    MenuItemDTO save( MenuItemDTO menuItemDTO, MultipartFile file ) throws ApplicationException;
+    MenuItemDTO create( MenuItemRequestVM menuItemRequestVM, MultipartFile file ) throws ApplicationException;
 
     /**
      *  Update menu item
      *
-     * @param menuItemDTO
+     * @param menuItemRequestVM
      * @param file
      * @throws ApplicationException
      */
-    MenuItemDTO update( Long id, MenuItemDTO menuItemDTO, MultipartFile file ) throws ApplicationException;
+    MenuItemDTO update( Long id,  MenuItemRequestVM menuItemRequestVM, MultipartFile file ) throws ApplicationException;
 
     /**
      * Delete menu item
@@ -40,15 +41,6 @@ public interface MenuItemService {
      * @throws ApplicationException
      */
     void delete( Long id ) throws ApplicationException;
-
-//    /**
-//     * Edit menu item
-//     *
-//     * @param menuItemDTO
-//     * @param file
-//     * @throws ApplicationException
-//     */
-//    void editMenuItem( MenuItemDTO menuItemDTO, MultipartFile file ) throws ApplicationException;
 
     /**
      * Get menu item by Id

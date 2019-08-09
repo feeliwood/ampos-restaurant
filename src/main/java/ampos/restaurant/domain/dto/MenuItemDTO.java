@@ -2,7 +2,10 @@ package ampos.restaurant.domain.dto;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.List;
+
 import javax.validation.constraints.NotNull;
+
 
 /**
  * A DTO for the MenuItem entity.
@@ -22,8 +25,7 @@ public class MenuItemDTO implements Serializable {
     @NotNull
     private BigDecimal price;
 
-    private String details;
-
+    private List<String> details;
 
     public Long getId() {
         return id;
@@ -65,12 +67,11 @@ public class MenuItemDTO implements Serializable {
         this.price = price;
     }
 
-    public String getDetails() {
+    public List<String> getDetails() {
         return details;
     }
 
-    public void setDetails( String details ) {
+    public void setDetails( List<String> details ) {
         this.details = details;
     }
-
 }

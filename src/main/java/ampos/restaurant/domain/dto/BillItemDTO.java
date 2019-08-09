@@ -9,11 +9,11 @@ public class BillItemDTO implements Serializable {
 
     private int quantity;
 
-    private MenuItemDTO menuItem;
+    private String menuItemName;
 
     private ZonedDateTime orderedTime;
 
-    private BillDTO bill;
+    private long billId;
 
     public long getId() {
 	return id;
@@ -31,12 +31,12 @@ public class BillItemDTO implements Serializable {
 	this.quantity = quantity;
     }
 
-    public MenuItemDTO getMenuItem() {
-	return menuItem;
+    public String getMenuItemName() {
+	return menuItemName;
     }
 
-    public void setMenuItem( MenuItemDTO menuItem ) {
-	this.menuItem = menuItem;
+    public void setMenuItemName( String menuItemName ) {
+	this.menuItemName = menuItemName;
     }
 
     public ZonedDateTime getOrderedTime() {
@@ -47,11 +47,11 @@ public class BillItemDTO implements Serializable {
 	this.orderedTime = orderedTime;
     }
 
-    public BillDTO getBill() {
-	return bill;
+    public long getBillId() {
+	return billId;
     }
 
-    public void setBill( BillDTO bill ) {
-	this.bill = bill;
+    public void setBillId( long billId ) {
+	this.billId = billId;
     }
 }

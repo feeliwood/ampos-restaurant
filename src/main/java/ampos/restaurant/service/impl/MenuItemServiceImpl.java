@@ -21,6 +21,7 @@ import ampos.restaurant.repository.MenuItemRepository;
 import ampos.restaurant.service.MenuItemService;
 import ampos.restaurant.specitifications.MenuSearchSpecifications;
 import ampos.restaurant.util.RestaurantConstants;
+import ampos.restaurant.web.rest.vm.MenuItemRequestVM;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -55,38 +56,48 @@ public class MenuItemServiceImpl implements MenuItemService {
     /**
      * Save a menu item.
      *
-     * @param menuItemDTO the entity to save
+     * @param menuItemRequestVM the entity to save
      * @return the persisted entity
      */
     @Override
-    public MenuItemDTO save(MenuItemDTO menuItemDTO, MultipartFile file) throws ApplicationException {
-        log.debug("Request to save MenuItem : {}", menuItemDTO);
-        if (menuItemDTO.getImageUrl() != null )
-            deleteImage( menuItemDTO.getImageUrl() );
-
-        menuItemDTO.setImageUrl( saveImage( file ) );
-        MenuItem menuItem = menuItemMapper.toEntity(menuItemDTO);
-        menuItem = menuItemRepository.save(menuItem);
-        return menuItemMapper.toDto(menuItem);
+    public MenuItemDTO create(MenuItemRequestVM menuItemRequestVM, MultipartFile file) throws ApplicationException {
+        log.debug("Request to save MenuItem : {}", menuItemRequestVM);
+        return this.saveItemAndImage( new MenuItem( menuItemRequestVM ), file );
     }
 
     /**
      * Update a menu item.
      *
-     * @param menuItemDTO the entity to update
+     * @param menuItemRequestVM the entity to update
      * @return the persisted entity
      */
     @Override
-    public MenuItemDTO update(Long id, MenuItemDTO menuItemDTO, MultipartFile file) throws ApplicationException {
-        log.debug("Request to update MenuItem : {}", menuItemDTO);
-        Optional<MenuItem> menuItem = menuItemRepository.findById( id );
+    public MenuItemDTO update(Long id, MenuItemRequestVM menuItemRequestVM, MultipartFile file) throws ApplicationException {
+        log.debug("Request to update MenuItem : {}", menuItemRequestVM);
 
+        MenuItem newMenuItem = new MenuItem( menuItemRequestVM );
         // Replace existing item
-        if(menuItem.isPresent()) {
-            menuItemDTO.setId(menuItem.get().getId());
+        if(menuItemRepository.findById( id ).isPresent()) {
+            newMenuItem.setId(id);
         }
 
-        return this.save(menuItemDTO, file);
+        return this.saveItemAndImage(newMenuItem, file);
+    }
+
+    /**
+     * Save a menu item and image to DB.
+     *
+     * @param menuItem the entity to save
+     * @return the persisted entity
+     */
+    private MenuItemDTO saveItemAndImage(MenuItem menuItem, MultipartFile file) throws ApplicationException {
+        if (menuItemRepository.findByName( menuItem.getName() ).isPresent())
+            throw new ApplicationException( "Menu Item with the same name already existed" );
+
+        menuItem.setImageUrl( saveImage( file ) );
+        menuItem = menuItemRepository.save(menuItem);
+        return menuItemMapper.toDto(menuItem);
+
     }
 //
 //    @Override

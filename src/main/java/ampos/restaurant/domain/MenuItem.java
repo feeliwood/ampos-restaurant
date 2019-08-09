@@ -16,6 +16,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import ampos.restaurant.web.rest.vm.MenuItemRequestVM;
+
 import org.hibernate.annotations.NaturalId;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -63,6 +65,16 @@ public class MenuItem implements Serializable {
     @Column( name = ACTIVE_COLUMN )
     private boolean active = true;
 
+    public MenuItem() {
+
+    }
+
+    public MenuItem(MenuItemRequestVM menuItemRequestVM ) {
+        this.setName( menuItemRequestVM.getName() );
+        this.setDescription( menuItemRequestVM.getDescription() );
+        this.setDetails( menuItemRequestVM.getDetails() );
+        this.setPrice( menuItemRequestVM.getPrice() );
+    }
 
     public long getId() {
         return id;
