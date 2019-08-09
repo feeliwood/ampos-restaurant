@@ -1,9 +1,7 @@
-package ampos.restaurant.web.rest.errors;
+package ampos.restaurant.exception;
 
 import java.util.List;
 import java.util.concurrent.TimeoutException;
-
-import ampos.restaurant.exception.ApplicationException;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +18,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  */
 @ControllerAdvice
 @ResponseBody
-public class ExceptionHandlerController {
+public class ApplicationExceptionHandler {
     /**
      * Handle bad request 400
      * 

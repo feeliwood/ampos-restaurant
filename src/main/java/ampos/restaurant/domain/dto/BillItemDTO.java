@@ -1,7 +1,6 @@
 package ampos.restaurant.domain.dto;
 
 import java.io.Serializable;
-import java.time.ZonedDateTime;
 
 public class BillItemDTO implements Serializable {
 
@@ -11,47 +10,47 @@ public class BillItemDTO implements Serializable {
 
     private String menuItemName;
 
-    private ZonedDateTime orderedTime;
+    private long orderedTime;
 
     private long billId;
 
     public long getId() {
-	return id;
+        return id;
     }
 
     public void setId( long id ) {
-	this.id = id;
+        this.id = id;
     }
 
     public int getQuantity() {
-	return quantity;
+        return quantity;
     }
 
     public void setQuantity( int quantity ) {
-	this.quantity = quantity;
+        this.quantity = quantity;
     }
 
     public String getMenuItemName() {
-	return menuItemName;
+        return menuItemName;
     }
 
     public void setMenuItemName( String menuItemName ) {
-	this.menuItemName = menuItemName;
+        this.menuItemName = menuItemName;
     }
 
-    public ZonedDateTime getOrderedTime() {
-	return orderedTime;
+    public long getOrderedTime() {
+        return orderedTime;
     }
 
-    public void setOrderedTime( ZonedDateTime orderedTime ) {
-	this.orderedTime = orderedTime;
+    public void setOrderedTime( long orderedTime ) {
+        this.orderedTime = orderedTime;
     }
 
     public long getBillId() {
-	return billId;
+        return billId;
     }
 
     public void setBillId( long billId ) {
-	this.billId = billId;
+        this.billId = billId;
     }
 }

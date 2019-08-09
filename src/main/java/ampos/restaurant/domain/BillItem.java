@@ -1,10 +1,7 @@
 package ampos.restaurant.domain;
 
 import java.io.Serializable;
-import java.time.ZonedDateTime;
-import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -36,7 +33,7 @@ public class BillItem implements Serializable {
     @Column( name = ID )
     private long id;
 
-    @Column(name = QUANTITY_COLUMN)
+    @Column( name = QUANTITY_COLUMN )
     private int quantity;
 
     @OneToOne( fetch = FetchType.LAZY )
@@ -44,10 +41,10 @@ public class BillItem implements Serializable {
     private MenuItem menuItem;
 
     @Column( name = ORDERED_TIME_COLUMN, nullable = false )
-    private ZonedDateTime orderedTime;
+    private long orderedTime;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = FK_BILL_ID_COLUMN )
+    @ManyToOne( fetch = FetchType.LAZY )
+    @JoinColumn( name = FK_BILL_ID_COLUMN )
     private Bill bill;
 
     /**
@@ -122,7 +119,7 @@ public class BillItem implements Serializable {
      *
      * @return ordered time
      */
-    public ZonedDateTime getOrderedTime() {
+    public long getOrderedTime() {
         return orderedTime;
     }
 
@@ -131,7 +128,7 @@ public class BillItem implements Serializable {
      *
      * @param orderedTime
      */
-    public void setOrderedTime( ZonedDateTime orderedTime ) {
+    public void setOrderedTime( long orderedTime ) {
         this.orderedTime = orderedTime;
     }
 

@@ -1,4 +1,4 @@
-package ampos.restaurant;
+package ampos.restaurant.web.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
