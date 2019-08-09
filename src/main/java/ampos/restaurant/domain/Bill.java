@@ -35,7 +35,7 @@ public class Bill implements Serializable {
     private long id;
 
     @OneToMany(
-                    mappedBy = "bill",
+                    mappedBy = "bill", // TODO
                     cascade = CascadeType.ALL,
                     orphanRemoval = true
     )
