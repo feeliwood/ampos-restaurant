@@ -25,19 +25,9 @@ public class ApplicationExceptionHandler {
      * @param e
      * @return
      */
+    @ExceptionHandler( ApplicationException.class )
     @ResponseStatus( HttpStatus.BAD_REQUEST )
     public ResponseEntity<String> handleBadRequest( ApplicationException e ) {
-        return new ResponseEntity<>( e.getMessage(), HttpStatus.BAD_REQUEST );
-    }
-
-    /**
-     * Handle bad request 400
-     * 
-     * @param e
-     * @return
-     */
-    @ExceptionHandler( ApplicationException.class )
-    public ResponseEntity<String> handleCodeFightException( ApplicationException e ) {
         return new ResponseEntity<>( e.getMessage(), HttpStatus.BAD_REQUEST );
     }
 

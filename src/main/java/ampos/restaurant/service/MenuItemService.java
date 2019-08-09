@@ -1,13 +1,9 @@
 package ampos.restaurant.service;
 
-import java.util.List;
-import java.util.Optional;
-
-import ampos.restaurant.exception.ApplicationException;
 import ampos.restaurant.domain.dto.MenuItemDTO;
+import ampos.restaurant.exception.ApplicationException;
 import ampos.restaurant.web.rest.vm.MenuItemRequestVM;
 
-import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.multipart.MultipartFile;
@@ -26,13 +22,13 @@ public interface MenuItemService {
     MenuItemDTO create( MenuItemRequestVM menuItemRequestVM, MultipartFile file ) throws ApplicationException;
 
     /**
-     *  Update menu item
+     * Update menu item
      *
      * @param menuItemRequestVM
      * @param file
      * @throws ApplicationException
      */
-    MenuItemDTO update( Long id,  MenuItemRequestVM menuItemRequestVM, MultipartFile file ) throws ApplicationException;
+    MenuItemDTO update( Long id, MenuItemRequestVM menuItemRequestVM, MultipartFile file ) throws ApplicationException;
 
     /**
      * Delete menu item
@@ -58,23 +54,15 @@ public interface MenuItemService {
      * @return
      * @throws ApplicationException
      */
-    Page<MenuItemDTO> findAll( Pageable pageable ) throws ApplicationException;;
+    Page<MenuItemDTO> findAll( Pageable pageable ) throws ApplicationException;
 
-//    /**
-//     * Search menu items by keyword
-//     *
-//     * @param keyword
-//     * @return
-//     * @throws ApplicationException
-//     */
-//    List<MenuItemDTO> searchMenuItems( String keyword ) throws ApplicationException;
-//
-//    /**
-//     * Load image item
-//     *
-//     * @param fileName
-//     * @return
-//     * @throws ApplicationException
-//     */
-//    Resource loadImage( String fileName ) throws ApplicationException;
+    /**
+     * Search menu items
+     * 
+     * @param keyword
+     * @param pageable
+     * @return
+     */
+    Page<MenuItemDTO> search( String keyword, Pageable pageable );
+
 }
