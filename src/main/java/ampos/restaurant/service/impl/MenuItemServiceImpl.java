@@ -34,7 +34,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 /**
  * 
- * Menu mgmt service impl which is used by controller to retrieve data layer
+ * Menu item service implementation
  *
  */
 @Service
@@ -85,7 +85,7 @@ public class MenuItemServiceImpl implements MenuItemService {
         if(menuItem.isPresent()) {
             menuItemDTO.setId(menuItem.get().getId());
         }
-;
+
         return this.save(menuItemDTO, file);
     }
 //
@@ -163,7 +163,7 @@ public class MenuItemServiceImpl implements MenuItemService {
     @Override
     @Transactional(readOnly = true)
     public MenuItemDTO findById(Long id) throws ApplicationException {
-        log.debug("Request to get Client : {}", id);
+        log.debug("Request to get Client : {}", id);    // TO DO
         MenuItem menuItem = menuItemRepository.findById(id).orElseThrow( () -> new ApplicationException( RestaurantConstants.MENU_ITEM_NOT_FOUND ) ) ;
         return menuItemMapper.toDto(menuItem);
     }
