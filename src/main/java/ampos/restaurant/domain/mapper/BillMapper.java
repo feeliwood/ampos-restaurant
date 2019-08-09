@@ -1,6 +1,8 @@
 package ampos.restaurant.domain.mapper;
 
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+
 import ampos.restaurant.domain.Bill;
 import ampos.restaurant.domain.dto.BillDTO;
 
@@ -10,6 +12,7 @@ import ampos.restaurant.domain.dto.BillDTO;
 @Mapper(componentModel = "spring", uses = { BillItemMapper.class } )
 public interface BillMapper extends EntityMapper <BillDTO, Bill> {
 
+    @Mapping( expression = "java(bill.getTotal())", target = "total" )
     BillDTO toDto(Bill bill);
 
     Bill toEntity(BillDTO billDTO);

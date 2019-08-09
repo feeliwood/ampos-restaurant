@@ -1,7 +1,10 @@
 package ampos.restaurant.domain;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.time.Instant;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -33,18 +36,18 @@ public class BillItem implements Serializable {
     @Column( name = ID )
     private long id;
 
-    @Column( name = QUANTITY_COLUMN )
+    @Column(name = QUANTITY_COLUMN)
     private int quantity;
 
-    @OneToOne( fetch = FetchType.LAZY )
+    @OneToOne( fetch = FetchType.EAGER )
     @JoinColumn( name = FK_MENU_ITEM_ID_COLUMN )
     private MenuItem menuItem;
 
     @Column( name = ORDERED_TIME_COLUMN, nullable = false )
-    private long orderedTime;
+    private Instant orderedTime;
 
-    @ManyToOne( fetch = FetchType.LAZY )
-    @JoinColumn( name = FK_BILL_ID_COLUMN )
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = FK_BILL_ID_COLUMN )
     private Bill bill;
 
     /**
@@ -119,7 +122,7 @@ public class BillItem implements Serializable {
      *
      * @return ordered time
      */
-    public long getOrderedTime() {
+    public Instant getOrderedTime() {
         return orderedTime;
     }
 
@@ -128,8 +131,16 @@ public class BillItem implements Serializable {
      *
      * @param orderedTime
      */
-    public void setOrderedTime( long orderedTime ) {
+    public void setOrderedTime( Instant orderedTime ) {
         this.orderedTime = orderedTime;
+    }
+
+    /**
+     *
+     * @return sub total of a bill item which is equal menu item price multiply quantity
+     */
+    public BigDecimal getSubTotal() {
+        return BigDecimal.valueOf( quantity ).multiply( menuItem.getPrice());
     }
 
 }

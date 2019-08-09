@@ -3,6 +3,8 @@ package ampos.restaurant.exception;
 import java.util.List;
 import java.util.concurrent.TimeoutException;
 
+import ampos.restaurant.exception.ApplicationException;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -30,6 +32,7 @@ public class ApplicationExceptionHandler {
     public ResponseEntity<String> handleBadRequest( ApplicationException e ) {
         return new ResponseEntity<>( e.getMessage(), HttpStatus.BAD_REQUEST );
     }
+
 
     /**
      * Handle bad request MethodArgumentNotValidException
