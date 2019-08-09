@@ -12,7 +12,7 @@ import ampos.restaurant.domain.mapper.MenuItemMapper;
 import ampos.restaurant.exception.ApplicationException;
 import ampos.restaurant.repository.MenuItemRepository;
 import ampos.restaurant.service.MenuItemService;
-import ampos.restaurant.util.RestaurantConstants;
+import ampos.restaurant.util.ApplicationConstants;
 import ampos.restaurant.web.rest.vm.MenuItemRequestVM;
 
 import org.slf4j.Logger;
@@ -108,7 +108,7 @@ public class MenuItemServiceImpl implements MenuItemService {
 
     @Override
     public void delete( Long id ) throws ApplicationException {
-        MenuItem menuItem = menuItemRepository.findById( id ).orElseThrow( ( ) -> new ApplicationException( RestaurantConstants.MENU_ITEM_NOT_FOUND ) );
+        MenuItem menuItem = menuItemRepository.findById( id ).orElseThrow( ( ) -> new ApplicationException( ApplicationConstants.MENU_ITEM_NOT_FOUND ) );
 
         String imageUrl = menuItem.getImageUrl();
         menuItemRepository.deleteById( id );
@@ -170,7 +170,7 @@ public class MenuItemServiceImpl implements MenuItemService {
     @Transactional( readOnly = true )
     public MenuItemDTO findById( Long id ) throws ApplicationException {
         log.debug( "Request to get Client : {}", id ); // TO DO
-        MenuItem menuItem = menuItemRepository.findById( id ).orElseThrow( ( ) -> new ApplicationException( RestaurantConstants.MENU_ITEM_NOT_FOUND ) );
+        MenuItem menuItem = menuItemRepository.findById( id ).orElseThrow( ( ) -> new ApplicationException( ApplicationConstants.MENU_ITEM_NOT_FOUND ) );
         return menuItemMapper.toDto( menuItem );
     }
 
@@ -212,7 +212,7 @@ public class MenuItemServiceImpl implements MenuItemService {
         String fileName = System.currentTimeMillis() + file.getOriginalFilename();
         try {
             // Copy file to the upload location (Replacing existing file with the same name)
-            Path dir = Paths.get( RestaurantConstants.UPLOAD_DIR ).toAbsolutePath().normalize().resolve( fileName );
+            Path dir = Paths.get( ApplicationConstants.UPLOAD_DIR ).toAbsolutePath().normalize().resolve( fileName );
             Files.copy( file.getInputStream(), dir, StandardCopyOption.REPLACE_EXISTING );
 
             return fileName;
@@ -231,7 +231,7 @@ public class MenuItemServiceImpl implements MenuItemService {
         if ( fileName == null )
             return;
         try {
-            Path dir = Paths.get( RestaurantConstants.UPLOAD_DIR ).toAbsolutePath().normalize().resolve( fileName );
+            Path dir = Paths.get( ApplicationConstants.UPLOAD_DIR ).toAbsolutePath().normalize().resolve( fileName );
             Files.deleteIfExists( dir );
         } catch ( IOException e ) {
             throw new ApplicationException( "Could not delete" + fileName, e );
@@ -245,7 +245,7 @@ public class MenuItemServiceImpl implements MenuItemService {
      * @return
      */
     private String getFileNameFromURL( String url ) {
-        int index = url.lastIndexOf( RestaurantConstants.SPLASH );
+        int index = url.lastIndexOf( ApplicationConstants.SPLASH );
         if ( index > 0 ) {
             return url.substring( index, url.length() );
         }

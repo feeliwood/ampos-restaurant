@@ -3,7 +3,7 @@ package ampos.restaurant.util;
 /**
  * This represents the constant variables.
  */
-public interface RestaurantConstants {
+public interface ApplicationConstants {
     public static final String INVALID_INPUT = "Invalid item input";
     public static final String BILL_ORDER_ITEM_NOT_FOUND = "Bill order item is not found.";
     public static final String MENU_ITEM_NOT_FOUND = "Memu item is not found.";
