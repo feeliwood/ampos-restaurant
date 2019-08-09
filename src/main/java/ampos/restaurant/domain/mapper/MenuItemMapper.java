@@ -21,8 +21,8 @@ public interface MenuItemMapper extends EntityMapper <MenuItemDTO, MenuItem> {
         if (id == null) {
             return null;
         }
-        MenuItem MenuItem = new MenuItem();
-        MenuItem.setId(id);
-        return MenuItem;
+        MenuItem menuItem = new MenuItem();
+        menuItem.setId(id);
+        return menuItem;
     }
 }
