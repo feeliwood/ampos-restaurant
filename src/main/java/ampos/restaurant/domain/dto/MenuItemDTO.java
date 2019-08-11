@@ -26,8 +26,24 @@ public class MenuItemDTO implements Serializable {
     private BigDecimal price;
 
     private List<String> details;
+    
 
-    public Long getId() {
+    public MenuItemDTO() {
+		super();
+	}
+
+	public MenuItemDTO(Long id, @NotNull String name, @NotNull String description, String imageUrl,
+			@NotNull BigDecimal price, List<String> details) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.imageUrl = imageUrl;
+		this.price = price;
+		this.details = details;
+	}
+
+	public Long getId() {
         return id;
     }
 

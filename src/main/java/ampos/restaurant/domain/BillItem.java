@@ -49,9 +49,21 @@ public class BillItem implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = FK_BILL_ID_COLUMN )
     private Bill bill;
+    
 
+    public BillItem() {
+		super();
+	}
 
-    /**
+	public BillItem(long id, int quantity, MenuItem menuItem, Instant orderedTime) {
+		super();
+		this.id = id;
+		this.quantity = quantity;
+		this.menuItem = menuItem;
+		this.orderedTime = orderedTime;
+	}
+
+	/**
      * 
      * @return id
      */
