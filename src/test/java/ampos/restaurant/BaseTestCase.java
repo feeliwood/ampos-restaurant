@@ -1,5 +1,7 @@
 package ampos.restaurant;
 
+import java.io.IOException;
+
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -9,6 +11,9 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RunWith(SpringRunner.class)
@@ -17,20 +22,16 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @TestPropertySource(locations = "classpath:application-test.properties")
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 public abstract class BaseTestCase {
-
     @Autowired
     protected MockMvc mockMvc;
 
     /**
      * Convert object to json
+     * 
+     * @throws JsonProcessingException
      */
-    public String asJsonString(final Object obj) {
-	try {
-
-	    return new ObjectMapper().writeValueAsString(obj);
-	} catch (Exception e) {
-	    throw new RuntimeException(e);
-	}
+    public String asJsonString(final Object obj) throws JsonProcessingException {
+	return new ObjectMapper().writeValueAsString(obj);
     }
 
     /**
@@ -39,14 +40,14 @@ public abstract class BaseTestCase {
      * @param jsonContent
      * @param valueType
      * @return
+     * @throws IOException
+     * @throws JsonMappingException
+     * @throws JsonParseException
      */
-    public <T> T jsonToObject(String jsonContent, Class<T> valueType) {
-	try {
-	    ObjectMapper mapper = new ObjectMapper();
-	    return mapper.readValue(jsonContent, valueType);
-	} catch (Exception e) {
-	    throw new RuntimeException(e);
-	}
+    public <T> T jsonToObject(String jsonContent, Class<T> valueType)
+	    throws JsonParseException, JsonMappingException, IOException {
+	ObjectMapper mapper = new ObjectMapper();
+	return mapper.readValue(jsonContent, valueType);
     }
 
 }

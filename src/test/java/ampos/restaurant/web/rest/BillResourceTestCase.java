@@ -55,7 +55,6 @@ public class BillResourceTestCase extends BaseTestCase {
 	// check database
 	BillDTO bill = jsonToObject(result.getResponse().getContentAsString(), BillDTO.class);
 	assertTrue(billRepos.existsById(bill.getId()));
-
     }
 
     /**
@@ -72,7 +71,6 @@ public class BillResourceTestCase extends BaseTestCase {
 	assertEquals("", result.getResponse().getContentAsString());
 	// check database
 	assertFalse(billRepos.existsById((long) 1));
-
     }
 
     /**
@@ -164,7 +162,5 @@ public class BillResourceTestCase extends BaseTestCase {
 	assertEquals("", result.getResponse().getContentAsString());
 	// check database
 	assertFalse(billItemRepos.existsById((long) 1));
-
     }
-
 }

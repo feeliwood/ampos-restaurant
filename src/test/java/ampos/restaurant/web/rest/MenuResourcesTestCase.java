@@ -57,7 +57,6 @@ public class MenuResourcesTestCase extends BaseTestCase {
 	assertEquals(input.getImageUrl(), resultData.getImageUrl());
 	assertEquals(input.getPrice(), resultData.getPrice());
 	assertEquals(input.getDetails(), resultData.getDetails());
-
     }
 
     /**
@@ -78,7 +77,6 @@ public class MenuResourcesTestCase extends BaseTestCase {
 	// compare
 	MvcResult result = mockMvc.perform(get("/menu-items/1")).andExpect(status().is(200)).andReturn();
 	assertEquals(asJsonString(expectedResult), result.getResponse().getContentAsString());
-
     }
 
     /**
@@ -122,7 +120,5 @@ public class MenuResourcesTestCase extends BaseTestCase {
 	assertEquals("", result.getResponse().getContentAsString());
 	// check database
 	assertFalse(menuRepos.existsById((long) 2));
-
     }
-
 }
