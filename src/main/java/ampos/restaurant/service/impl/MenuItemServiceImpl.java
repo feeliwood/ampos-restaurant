@@ -36,7 +36,7 @@ public class MenuItemServiceImpl implements MenuItemService {
     }
 
     /**
-     * Save a menu item.
+     * create or update a menu item.
      *
      * @param id
      *            If id is not null, entity with id "id" will be updated
@@ -52,7 +52,7 @@ public class MenuItemServiceImpl implements MenuItemService {
         if ( id != null && menuItemRepository.findById( id ).isPresent() ) {
             menuItem.setId( id );
         } else {
-            menuItem.setId( 0 );
+            menuItem.setId( 0 );  // Set 0 here because we use DTO as creation request also. It is better to create requestVM type or use Json ignore here.
         }
         menuItemRepository.save( menuItem );
         return menuItemMapper.toDto( menuItem );

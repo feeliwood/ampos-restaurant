@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
@@ -24,7 +23,6 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.util.MimeTypeUtils;
 
 import ampos.restaurant.BaseTestCase;
-import ampos.restaurant.domain.MenuItem;
 import ampos.restaurant.domain.dto.MenuItemDTO;
 import ampos.restaurant.models.MenuRequest;
 import ampos.restaurant.repository.MenuItemRepository;

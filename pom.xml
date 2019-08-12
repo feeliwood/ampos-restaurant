@@ -22,7 +22,7 @@
 		<spring.version>4.3.9.RELEASE</spring.version>
 		<maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
 		<spring.boot.maven.plugin.version>2.1.6.RELEASE</spring.boot.maven.plugin.version>
-		<mysql.version>5.1.8</mysql.version>
+		<mysql.version>5.1.38</mysql.version>
 		<cobertura.version>2.7</cobertura.version>
 		<package.name>restaurant-management</package.name>
 		<buildProductVersion>1.0</buildProductVersion>

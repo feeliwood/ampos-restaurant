@@ -14,8 +14,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MenuItemRepository extends JpaRepository<MenuItem, Long> {
 
-    Optional<MenuItem> findByName( String name );
-
     // @formatter:off
     @Query( "SELECT distinct menuItem FROM MenuItem AS menuItem WHERE (:keyword is NULL) "
     + " OR (LOWER(menuItem.name) LIKE CONCAT('%',:keyword,'%'))"
