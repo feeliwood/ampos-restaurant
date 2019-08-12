@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 /**
- * Entity implementation class for Entity: Menu.
+ * MenuItem entity
  */
 @Entity
 @Table( name = MenuItem.TABLE_NAME )
@@ -25,8 +25,6 @@ public class MenuItem implements Serializable {
     private static final String PRICE_COLUMN = "price";
     private static final String DETAILS_COLUMN = "details";
     private static final String ACTIVE_COLUMN = "active";
-
-    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY )
@@ -53,77 +51,145 @@ public class MenuItem implements Serializable {
 
     @Column( name = ACTIVE_COLUMN )
     private boolean active = true;
-    
-    
 
+    /**
+     *
+     * Default constructor
+     */
     public MenuItem() {
-		super();
-	}
+        super();
+    }
 
-	public MenuItem(long id, @NotNull String name, @NotNull String description, String imageUrl,
-			@NotNull BigDecimal price, String details, boolean active) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.description = description;
-		this.imageUrl = imageUrl;
-		this.price = price;
-		this.details = details;
-		this.active = active;
-	}
+    /**
+     *
+     * @param id
+     * @param name
+     * @param description
+     * @param imageUrl
+     * @param price
+     * @param details
+     * @param active
+     */
+    public MenuItem(long id, @NotNull String name, @NotNull String description, String imageUrl,
+                    @NotNull BigDecimal price, String details, boolean active) {
+        super();
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.imageUrl = imageUrl;
+        this.price = price;
+        this.details = details;
+        this.active = active;
+    }
 
-	public long getId() {
+    /**
+     *
+     * @return id
+     */
+    public long getId() {
         return id;
     }
 
+    /**
+     *
+     * @param id to be set
+     */
     public void setId( long id ) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return MenuItem name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     * @param name set MenuItem name
+     */
     public void setName( String name ) {
         this.name = name;
     }
 
+    /**
+     *
+     * @return MenuItem description
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     *
+     * @param description set MenuItem description
+     */
     public void setDescription( String description ) {
         this.description = description;
     }
 
+    /**
+     *
+     * @return url to MenuItem image
+     */
     public String getImageUrl() {
         return imageUrl;
     }
 
+    /**
+     *
+     * @param imageUrl set url to MenuItem image
+     */
     public void setImageUrl( String imageUrl ) {
         this.imageUrl = imageUrl;
     }
 
+    /**
+     *
+     * @return MenuItem price
+     */
     public BigDecimal getPrice() {
         return price;
     }
 
+    /**
+     *
+     * @param price set MenuItem price
+     */
     public void setPrice( BigDecimal price ) {
         this.price = price;
     }
 
+    /**
+     *
+     * @return MenuItem details
+     */
     public String getDetails() {
         return details;
     }
 
+    /**
+     *
+     * @param details set MenuItem details
+     */
     public void setDetails( String details ) {
         this.details = details;
     }
 
+    /**
+     *
+     * @return active status
+     */
     public boolean isActive() {
         return active;
     }
 
+    /**
+     *
+     * @param active set active status
+     */
     public void setActive( boolean active ) {
         this.active = active;
     }

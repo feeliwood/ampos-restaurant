@@ -110,7 +110,7 @@ public class BillServiceImpl implements BillService {
         billItemDTO.setBillId(billId);
 
         BillItem newBillItem = billItemMapper.toEntity(billItemDTO);
-        newBillItem.setId(0);
+        newBillItem.setId(0);   // Set 0 here because we use DTO as creation request also. It is better to create requestVM type or use Json ignore here.
         newBillItem.setOrderedTime(Instant.now());
         return billItemMapper.toDto( billItemRepository.save(newBillItem));
     }

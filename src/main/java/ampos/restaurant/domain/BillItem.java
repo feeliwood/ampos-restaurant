@@ -16,7 +16,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
- * Entity implementation class for Entity: BillItem.
+ * BillItem entity
  */
 @Entity
 @Table( name = BillItem.TABLE_NAME )
@@ -27,8 +27,6 @@ public class BillItem implements Serializable {
     private static final String ORDERED_TIME_COLUMN = "ordered_time";
     private static final String FK_MENU_ITEM_ID_COLUMN = "fk_menu_item_id";
     private static final String FK_BILL_ID_COLUMN = "fk_bill_id";
-
-    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY )
@@ -45,24 +43,23 @@ public class BillItem implements Serializable {
     @Column( name = ORDERED_TIME_COLUMN, nullable = false )
     private Instant orderedTime;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = FK_BILL_ID_COLUMN )
     private Bill bill;
     
 
     public BillItem() {
-		super();
-	}
+        super(); }
 
-	public BillItem(long id, int quantity, MenuItem menuItem, Instant orderedTime) {
-		super();
-		this.id = id;
-		this.quantity = quantity;
-		this.menuItem = menuItem;
-		this.orderedTime = orderedTime;
-	}
+    public BillItem(long id, int quantity, MenuItem menuItem, Instant orderedTime) {
+        super();
+        this.id = id;
+        this.quantity = quantity;
+        this.menuItem = menuItem;
+        this.orderedTime = orderedTime;
+    }
 
-	/**
+    /**
      * 
      * @return id
      */

@@ -8,20 +8,13 @@ import java.util.Set;
 import javax.persistence.*;
 
 /**
- * Entity implementation class for Entity: Bill. <br>
- * TODO in the future, we can expand this table by adding more information <br>
- * as customer name/id ... <br>
- * Now we only store a simple table with ID.
+ * Bill entity
  */
 @Entity
 @Table( name = Bill.TABLE_NAME )
 public class Bill implements Serializable {
     protected static final String TABLE_NAME = "bill";
     private static final String ID = "id";
-    /**
-     * 
-     */
-    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY )
@@ -32,22 +25,23 @@ public class Bill implements Serializable {
                     mappedBy = "bill", // TODO
                     cascade = CascadeType.ALL,
                     orphanRemoval = true,
-                    fetch = FetchType.LAZY
+                    fetch = FetchType.EAGER
     )
     private Set<BillItem> billItems = new HashSet<>();
 
 
     public Bill() {
-		super();
-	}
+        super();
+    }
 
-	public Bill(long id, Set<BillItem> billItems) {
-		super();
-		this.id = id;
-		this.billItems = billItems;
-	}
+    public Bill(long id, Set<BillItem> billItems) {
+        super();
+        this.id = id;
+        this.billItems = billItems;
+    }
 
-	/**
+
+    /**
      * 
      * @return id
      */
