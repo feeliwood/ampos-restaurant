@@ -22,8 +22,6 @@ import com.mysql.jdbc.MysqlErrorNumbers;
 @ResponseBody
 public class ApplicationExceptionHandler {
     private static final Logger logger = LoggerFactory.getLogger( ApplicationExceptionHandler.class );
-    private static final String MESSAGE_FK_CONSTRAINT_KEY = "Cannot delete or update due to forgein key constraint";
-    private static final String MESSAGE_DUP_ENTRY = "Duplicate entry name";
 
     /**
      * Handle bad request
@@ -85,13 +83,28 @@ public class ApplicationExceptionHandler {
             int sqlErrorCode = cve.getSQLException().getErrorCode();
 
             if ( sqlErrorCode == MysqlErrorNumbers.ER_ROW_IS_REFERENCED_2 ) {
-                return new RestResourceErrorInfo( httpStatus.value(), MESSAGE_FK_CONSTRAINT_KEY, httpServletRequest.getRequestURI() );
+                return new RestResourceErrorInfo( httpStatus.value(), ErrorMessage.MESSAGE_FK_CONSTRAINT_KEY.getMessage(), httpServletRequest.getRequestURI() );
             }
 
             if ( sqlErrorCode == MysqlErrorNumbers.ER_DUP_ENTRY ) {
-                return new RestResourceErrorInfo( httpStatus.value(), MESSAGE_DUP_ENTRY, httpServletRequest.getRequestURI() );
+                return new RestResourceErrorInfo( httpStatus.value(), ErrorMessage.MESSAGE_DUP_ENTRY.getMessage(), httpServletRequest.getRequestURI() );
             }
         }
         return new RestResourceErrorInfo( httpStatus.value(), e.getMessage(), httpServletRequest.getRequestURI() );
+    }
+
+    enum ErrorMessage {
+        MESSAGE_FK_CONSTRAINT_KEY( "Cannot delete or update due to forgein key constraint" ),
+        MESSAGE_DUP_ENTRY( "Duplicate entry name" );
+        private String message;
+
+        private ErrorMessage( String message ) {
+            this.message = message;
+        }
+
+        public String getMessage() {
+            return message;
+        }
+
     }
 }
