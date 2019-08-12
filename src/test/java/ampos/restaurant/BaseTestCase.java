@@ -18,34 +18,35 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 public abstract class BaseTestCase {
 
-	@Autowired
-	protected MockMvc mockMvc;
+    @Autowired
+    protected MockMvc mockMvc;
 
-	/**
-	 * Convert object to json
-	 */
-	public String asJsonString(final Object obj) {
-		try {
+    /**
+     * Convert object to json
+     */
+    public String asJsonString(final Object obj) {
+	try {
 
-			return new ObjectMapper().writeValueAsString(obj);
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}
+	    return new ObjectMapper().writeValueAsString(obj);
+	} catch (Exception e) {
+	    throw new RuntimeException(e);
 	}
-	 /**
+    }
+
+    /**
      * Convert JSON String to object
      *
      * @param jsonContent
      * @param valueType
      * @return
      */
-    public <T> T jsonToObject( String jsonContent, Class<T> valueType ) {
-        try {
-            ObjectMapper mapper = new ObjectMapper();
-            return mapper.readValue( jsonContent, valueType );
-        } catch ( Exception e ) {
-            throw new RuntimeException( e );
-        }
+    public <T> T jsonToObject(String jsonContent, Class<T> valueType) {
+	try {
+	    ObjectMapper mapper = new ObjectMapper();
+	    return mapper.readValue(jsonContent, valueType);
+	} catch (Exception e) {
+	    throw new RuntimeException(e);
+	}
     }
 
 }
