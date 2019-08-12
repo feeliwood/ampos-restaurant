@@ -49,9 +49,6 @@ public class MenuItem implements Serializable {
     @Column( name = DETAILS_COLUMN )
     private String details;
 
-    @Column( name = ACTIVE_COLUMN )
-    private boolean active = true;
-
     /**
      *
      * Default constructor
@@ -71,7 +68,7 @@ public class MenuItem implements Serializable {
      * @param active
      */
     public MenuItem(long id, @NotNull String name, @NotNull String description, String imageUrl,
-                    @NotNull BigDecimal price, String details, boolean active) {
+                    @NotNull BigDecimal price, String details) {
         super();
         this.id = id;
         this.name = name;
@@ -79,7 +76,6 @@ public class MenuItem implements Serializable {
         this.imageUrl = imageUrl;
         this.price = price;
         this.details = details;
-        this.active = active;
     }
 
     /**
@@ -177,21 +173,4 @@ public class MenuItem implements Serializable {
     public void setDetails( String details ) {
         this.details = details;
     }
-
-    /**
-     *
-     * @return active status
-     */
-    public boolean isActive() {
-        return active;
-    }
-
-    /**
-     *
-     * @param active set active status
-     */
-    public void setActive( boolean active ) {
-        this.active = active;
-    }
-
 }
