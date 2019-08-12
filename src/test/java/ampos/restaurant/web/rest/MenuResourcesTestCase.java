@@ -35,15 +35,6 @@ public class MenuResourcesTestCase extends BaseTestCase {
 	@Autowired
 	private MenuItemRepository menuRepos;
 
-	@Before()
-	public void setUp() throws Exception {
-
-		menuRepos.save(new MenuItem((long) 1, "Chicken Tom Yum Pizza",
-				"All-time favourite toppings, Hawaiian pizza in Tropical Hawaii style",
-				"https://s3-ap-southeast-1.amazonaws.com/interview.ampostech.com/backend/restaurant/menu1.jpg",
-				new BigDecimal(300), "Italian,Thai", true));
-
-	}
 
 	/**
 	 * test case for create menu 
@@ -85,7 +76,7 @@ public class MenuResourcesTestCase extends BaseTestCase {
 		String[] str = { "Italian", "Thai" };
 		ArrayList<String> additionalData = Stream.of(str).collect(Collectors.toCollection(ArrayList::new));
 		MenuItemDTO expectedResult = new MenuItemDTO((long) 1, "Chicken Tom Yum Pizza",
-				"All-time favourite toppings, Hawaiian pizza in Tropical Hawaii style",
+				"All-time favourite toppings, Hawaiian pizza in Tropical Hawaii style.",
 				"https://s3-ap-southeast-1.amazonaws.com/interview.ampostech.com/backend/restaurant/menu1.jpg",
 				new BigDecimal(300.00).setScale(2), additionalData);
 		//compare
@@ -130,12 +121,12 @@ public class MenuResourcesTestCase extends BaseTestCase {
 	 */
 	@Test
 	public void deleteMenuTestCase() throws IOException, Exception {
-		assertTrue(menuRepos.existsById((long) 1));
-		MvcResult result = mockMvc.perform(delete("/menu-items/1").contentType(MimeTypeUtils.APPLICATION_JSON_VALUE))
+		assertTrue(menuRepos.existsById((long) 2));
+		MvcResult result = mockMvc.perform(delete("/menu-items/2").contentType(MimeTypeUtils.APPLICATION_JSON_VALUE))
 				.andExpect(status().is(200)).andReturn();
 		assertEquals("", result.getResponse().getContentAsString());
 		// check database
-		assertFalse(menuRepos.existsById((long) 1));
+		assertFalse(menuRepos.existsById((long) 2));
 
 	}
 
