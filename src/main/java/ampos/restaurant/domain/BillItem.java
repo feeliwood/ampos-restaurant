@@ -43,7 +43,7 @@ public class BillItem implements Serializable {
     @Column( name = ORDERED_TIME_COLUMN, nullable = false )
     private Instant orderedTime;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = FK_BILL_ID_COLUMN )
     private Bill bill;
     

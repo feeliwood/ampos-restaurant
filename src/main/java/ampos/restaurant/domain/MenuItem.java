@@ -24,7 +24,6 @@ public class MenuItem implements Serializable {
     private static final String IMAGE_COLUMN = "image_url";
     private static final String PRICE_COLUMN = "price";
     private static final String DETAILS_COLUMN = "details";
-    private static final String ACTIVE_COLUMN = "active";
 
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY )
@@ -65,7 +64,6 @@ public class MenuItem implements Serializable {
      * @param imageUrl
      * @param price
      * @param details
-     * @param active
      */
     public MenuItem(long id, @NotNull String name, @NotNull String description, String imageUrl,
                     @NotNull BigDecimal price, String details) {
