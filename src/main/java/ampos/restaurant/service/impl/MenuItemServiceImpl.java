@@ -52,7 +52,7 @@ public class MenuItemServiceImpl implements MenuItemService {
         if ( id != null && menuItemRepository.findById( id ).isPresent() ) {
             menuItem.setId( id );
         } else {
-            menuItem.setId( 0 );  // Set 0 here because we use DTO as creation request also. It is better to create requestVM type or use Json ignore here.
+            menuItem.setId( 0 ); // Set 0 here because we use DTO as creation request also. It is better to create requestVM type or use Json ignore here.
         }
         menuItemRepository.save( menuItem );
         return menuItemMapper.toDto( menuItem );
@@ -109,6 +109,7 @@ public class MenuItemServiceImpl implements MenuItemService {
      * @throws ApplicationException
      */
     @Override
+    @Transactional( readOnly = true )
     public Page<MenuItemDTO> searchMenuItems( String keyword, Pageable pageable ) throws ApplicationException {
         return menuItemRepository.search( keyword, pageable ).map( menuItemMapper::toDto );
     }

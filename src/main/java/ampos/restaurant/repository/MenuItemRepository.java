@@ -1,7 +1,5 @@
 package ampos.restaurant.repository;
 
-import java.util.Optional;
-
 import ampos.restaurant.domain.MenuItem;
 
 import org.springframework.data.domain.Page;

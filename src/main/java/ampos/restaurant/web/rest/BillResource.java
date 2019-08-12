@@ -2,7 +2,6 @@ package ampos.restaurant.web.rest;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.List;
 import java.util.Optional;
 
 import javax.validation.constraints.NotNull;
@@ -24,7 +23,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ampos.restaurant.domain.dto.BillDTO;
 import ampos.restaurant.domain.dto.BillItemDTO;
-import ampos.restaurant.domain.dto.BillItemReportDTO;
 import ampos.restaurant.domain.dto.TotalBillReportDTO;
 import ampos.restaurant.exception.ApplicationException;
 import ampos.restaurant.service.BillService;
