@@ -14,6 +14,7 @@ import javax.persistence.*;
 @Table( name = Bill.TABLE_NAME )
 public class Bill implements Serializable {
     protected static final String TABLE_NAME = "bill";
+    protected static final String MAPPED_MANY_TO_ONE_FIELD_NAME = "bill";
     private static final String ID = "id";
 
     @Id
@@ -22,7 +23,7 @@ public class Bill implements Serializable {
     private long id;
 
     @OneToMany(
-                    mappedBy = "bill", // TODO
+                    mappedBy = MAPPED_MANY_TO_ONE_FIELD_NAME,
                     cascade = CascadeType.ALL,
                     orphanRemoval = true,
                     fetch = FetchType.EAGER
