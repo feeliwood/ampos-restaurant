@@ -9,7 +9,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `bill_order_item` WRITE;
 /*!40000 ALTER TABLE `bill_order_item` DISABLE KEYS */;
-INSERT IGNORE INTO `bill_order_item` VALUES (1,1565332212,2,1,NULL);
+INSERT IGNORE INTO `bill_order_item` VALUES (1,now(),2,1,1);
 /*!40000 ALTER TABLE `bill_order_item` ENABLE KEYS */;
 UNLOCK TABLES;
 
