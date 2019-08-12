@@ -46,19 +46,20 @@ public class MenuResourcesTestCase extends BaseTestCase {
 	}
 
 	/**
-	 * test case for create menu successfully
+	 * test case for create menu 
 	 * 
 	 * @throws IOException
 	 * @throws Exception
 	 */
 	@Test
-	public void addMenuSuccessfully() throws IOException, Exception {
+	public void createMenuTestCase() throws IOException, Exception {
 		String[] str = { "Italian", "Thai" };
 		ArrayList<String> additionalData = Stream.of(str).collect(Collectors.toCollection(ArrayList::new));
 		MenuRequest input = new MenuRequest((long) 2, "Oolong tea 2",
 				"All-time favourite toppings, Hawaiian pizza in Tropical Hawaii style",
 				"https://s3-ap-southeast-1.amazonaws.com/interview.ampostech.com/backend/restaurant/menu1.jpg",
 				new BigDecimal(300), additionalData);
+		//compare
 		MvcResult result = mockMvc.perform(
 				post("/menu-items").contentType(MimeTypeUtils.APPLICATION_JSON_VALUE).content(asJsonString(input)))
 				.andExpect(status().is(201)).andReturn();
@@ -79,7 +80,7 @@ public class MenuResourcesTestCase extends BaseTestCase {
 	 * @throws Exception
 	 */
 	@Test
-	public void getMenuPageSuccessfully() throws IOException, Exception {
+	public void getMenuTestCase() throws IOException, Exception {
 		// expected data
 		String[] str = { "Italian", "Thai" };
 		ArrayList<String> additionalData = Stream.of(str).collect(Collectors.toCollection(ArrayList::new));
@@ -87,7 +88,7 @@ public class MenuResourcesTestCase extends BaseTestCase {
 				"All-time favourite toppings, Hawaiian pizza in Tropical Hawaii style",
 				"https://s3-ap-southeast-1.amazonaws.com/interview.ampostech.com/backend/restaurant/menu1.jpg",
 				new BigDecimal(300.00).setScale(2), additionalData);
-
+		//compare
 		MvcResult result = mockMvc.perform(get("/menu-items/1")).andExpect(status().is(200)).andReturn();
 		assertEquals(asJsonString(expectedResult), result.getResponse().getContentAsString());
 
@@ -95,13 +96,13 @@ public class MenuResourcesTestCase extends BaseTestCase {
 
 
 	/**
-	 * test case for create menu successfully
+	 * test case for update menu
 	 * 
 	 * @throws IOException
 	 * @throws Exception
 	 */
 	@Test
-	public void updateMenuSuccessfully() throws IOException, Exception {
+	public void updateMenuTestCase() throws IOException, Exception {
 		// expected data
 		String[] str = { "Italian", "Thai" };
 		ArrayList<String> additionalData = Stream.of(str).collect(Collectors.toCollection(ArrayList::new));
@@ -109,6 +110,7 @@ public class MenuResourcesTestCase extends BaseTestCase {
 				"All-time favourite toppings, Hawaiian pizza in Tropical Hawaii style",
 				"https://s3-ap-southeast-1.amazonaws.com/interview.ampostech.com/backend/restaurant/menu1.jpg",
 				new BigDecimal(300), additionalData);
+		//compare
 		MvcResult result = mockMvc.perform(
 				put("/menu-items/1").contentType(MimeTypeUtils.APPLICATION_JSON_VALUE).content(asJsonString(input)))
 				.andExpect(status().is(200)).andReturn();
@@ -121,13 +123,13 @@ public class MenuResourcesTestCase extends BaseTestCase {
 	}
 
 	/**
-	 * Test case for delete menu in passed
+	 * Test case for delete menu
 	 * 
 	 * @throws IOException
 	 * @throws Exception
 	 */
 	@Test
-	public void deleteSuccessfully() throws IOException, Exception {
+	public void deleteMenuTestCase() throws IOException, Exception {
 		assertTrue(menuRepos.existsById((long) 1));
 		MvcResult result = mockMvc.perform(delete("/menu-items/1").contentType(MimeTypeUtils.APPLICATION_JSON_VALUE))
 				.andExpect(status().is(200)).andReturn();
