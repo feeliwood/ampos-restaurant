@@ -3,10 +3,6 @@ package ampos.restaurant.domain;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.Instant;
-<<<<<<< HEAD
-=======
-import java.time.ZonedDateTime;
->>>>>>> UT
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

@@ -139,14 +139,12 @@ public class BillResource {
      * @param billItemId the id of the BillItemDTO to delete
      * @return the ResponseEntity with status 200 (OK)
      */
-    @DeleteMapping(BILL_ITEM_MAPPING + "{billItemId}")
+    @DeleteMapping(BILL_ITEM_MAPPING + "/{billItemId}")
     public ResponseEntity<Void> deleteBillItem(@PathVariable Long billItemId) {
         logger.debug("REST request to delete menu item : {}", billItemId);
         billService.deleteBillItem(billItemId);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(BILL_NAME, billItemId.toString())).build();
     }
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> UT
+

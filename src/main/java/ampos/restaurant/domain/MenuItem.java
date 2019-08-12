@@ -56,9 +56,6 @@ public class MenuItem implements Serializable {
     
     
 
-<<<<<<< HEAD
-    public long getId() {
-=======
     public MenuItem() {
 		super();
 	}
@@ -76,7 +73,6 @@ public class MenuItem implements Serializable {
 	}
 
 	public long getId() {
->>>>>>> UT
         return id;
     }
 

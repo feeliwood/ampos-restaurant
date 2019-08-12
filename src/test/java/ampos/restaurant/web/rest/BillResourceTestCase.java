@@ -36,6 +36,7 @@ import ampos.restaurant.models.BillItemsRequest;
 import ampos.restaurant.models.BillItemsResponse;
 import ampos.restaurant.models.BillResponse;
 import ampos.restaurant.models.MenuRequest;
+import ampos.restaurant.repository.BillItemRepository;
 import ampos.restaurant.repository.BillRepository;
 import ampos.restaurant.repository.MenuItemRepository;
 
@@ -45,6 +46,8 @@ public class BillResourceTestCase extends BaseTestCase {
 	private MenuItemRepository menuRepos;
 	@Autowired
 	private BillRepository billRepos;
+	@Autowired
+	private BillItemRepository billItemRepos;
 
 	@Before()
 	public void setUp() throws Exception {
@@ -179,12 +182,12 @@ public class BillResourceTestCase extends BaseTestCase {
 	 */
 	@Test
 	public void deleteBillItemsSuccessfully() throws IOException, Exception {
-		// assertTrue(billRepos.existsById((long) 1));
+		assertTrue(billItemRepos.existsById((long) 1));
 		MvcResult result = mockMvc.perform(delete("/bill-items/1"))
 				.andExpect(status().is(200)).andReturn();
 		assertEquals("", result.getResponse().getContentAsString());
 		// check database
-		// assertFalse(billRepos.existsById((long) 1));
+		assertFalse(billItemRepos.existsById((long) 1));
 
 	}
 
