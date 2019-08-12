@@ -40,7 +40,7 @@ public class ApplicationExceptionHandler {
      */
     @ExceptionHandler( RuntimeException.class )
     @ResponseStatus( HttpStatus.INTERNAL_SERVER_ERROR )
-    public ResponseEntity<String> handleRuntimeException( Exception e ) {
+    public ResponseEntity<String> handleInternalServerError( Exception e ) {
         logger.warn( "Internal server error ", e );
         return new ResponseEntity<>( e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR );
     }
@@ -53,8 +53,7 @@ public class ApplicationExceptionHandler {
      */
     @ExceptionHandler( NoHandlerFoundException.class )
     @ResponseStatus( HttpStatus.NOT_FOUND )
-    @ResponseBody
-    public ResponseEntity<String> handleThrowable( Exception e ) {
+    public ResponseEntity<String> handleRequestNotFound( Exception e ) {
         logger.warn( "Request is not found ", e );
         return new ResponseEntity<>( e.getMessage(), HttpStatus.NOT_FOUND );
 
