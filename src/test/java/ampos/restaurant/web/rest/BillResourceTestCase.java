@@ -74,7 +74,7 @@ public class BillResourceTestCase extends BaseTestCase {
 	 * @throws Exception
 	 */
 	@Test
-	public void createBillSuccessfully() throws IOException, Exception {
+	public void createBillTestCase() throws IOException, Exception {
 
 		MvcResult result = mockMvc.perform(post("/bills").contentType(MimeTypeUtils.APPLICATION_JSON_VALUE))
 				.andExpect(status().is(201)).andReturn();
@@ -91,7 +91,7 @@ public class BillResourceTestCase extends BaseTestCase {
 	 * @throws Exception
 	 */
 	@Test
-	public void deleteBillSuccessfully() throws IOException, Exception {
+	public void deleteBillTestCase() throws IOException, Exception {
 		assertTrue(billRepos.existsById((long) 1));
 		MvcResult result = mockMvc.perform(delete("/bills/1").contentType(MimeTypeUtils.APPLICATION_JSON_VALUE))
 				.andExpect(status().is(200)).andReturn();
@@ -108,7 +108,7 @@ public class BillResourceTestCase extends BaseTestCase {
 	 * @throws Exception
 	 */
 	@Test
-	public void getBillSuccessfully() throws IOException, Exception {
+	public void getBillTestCase() throws IOException, Exception {
 		// expected data
 		String[] str = { "Italian", "Thai" };
 		ArrayList<String> additionalData = Stream.of(str).collect(Collectors.toCollection(ArrayList::new));
@@ -129,7 +129,8 @@ public class BillResourceTestCase extends BaseTestCase {
 		expectedBill.setId((long) 1);
 		expectedBill.setBillItems(billItems);
 		expectedBill.setTotal(new BigDecimal(300.00).setScale(2));
-
+		
+		//compare
 		MvcResult result = mockMvc.perform(get("/bills/1")).andExpect(status().is(200)).andReturn();
 		assertEquals(asJsonString(expectedBill), result.getResponse().getContentAsString());
 
@@ -142,19 +143,20 @@ public class BillResourceTestCase extends BaseTestCase {
 	 * @throws Exception
 	 */
 	@Test
-	public void createBillItemSuccessfully() throws IOException, Exception {
+	public void createBillItemTestCase() throws IOException, Exception {
 		String[] str = { "Italian", "Thai" };
 		ArrayList<String> additionalData = Stream.of(str).collect(Collectors.toCollection(ArrayList::new));
-		MenuRequest input = new MenuRequest((long) 1, "Oolong tea edit",
+		MenuRequest menu = new MenuRequest((long) 1, "Oolong tea edit",
 				"All-time favourite toppings, Hawaiian pizza in Tropical Hawaii style",
 				"https://s3-ap-southeast-1.amazonaws.com/interview.ampostech.com/backend/restaurant/menu1.jpg",
 				new BigDecimal(300), additionalData);
-		BillItemsRequest billItems = new BillItemsRequest((long) 1, 1, input, "2019/08/05 04:44:44 PM", (long) 1,
+		BillItemsRequest billItems = new BillItemsRequest((long) 1, 1, menu, "2019/08/05 04:44:44 PM", (long) 1,
 				new BigDecimal(300));
+		//compare
 		MvcResult result = mockMvc.perform(post("/bills/1/bill-items").contentType(MimeTypeUtils.APPLICATION_JSON_VALUE)
 				.content(asJsonString(billItems))).andExpect(status().is(201)).andReturn();
 		 BillItemsResponse actualData = jsonToObject(result.getResponse().getContentAsString(), BillItemsResponse.class);
-		 assertEquals(input.getName(), actualData.getMenuItem().getName());
+		 assertEquals(menu.getName(), actualData.getMenuItem().getName());
 		 assertEquals(billItems.getBillId(), actualData.getBillId());
 	}
 
@@ -165,13 +167,14 @@ public class BillResourceTestCase extends BaseTestCase {
 	 * @throws Exception
 	 */
 	@Test
-	public void updateBillItemSuccessfully() throws IOException, Exception {
+	public void updateBillItemTestCase() throws IOException, Exception {
+		assertTrue(billItemRepos.findById((long)1).get().getQuantity() == 1);
 		MvcResult result = mockMvc
 				.perform(put("/bills/1/bill-items/1").contentType(MimeTypeUtils.APPLICATION_JSON_VALUE).content("2"))
 				.andExpect(status().is(200)).andReturn();
 		BillItemsResponse actualData = jsonToObject(result.getResponse().getContentAsString(), BillItemsResponse.class);
 		assertTrue(actualData.getQuantity() == 2);
-		 
+		assertTrue(billItemRepos.findById((long)1).get().getQuantity() == 2);
 	}
 
 	/**
@@ -181,7 +184,7 @@ public class BillResourceTestCase extends BaseTestCase {
 	 * @throws Exception
 	 */
 	@Test
-	public void deleteBillItemsSuccessfully() throws IOException, Exception {
+	public void deleteBillItemTestCase() throws IOException, Exception {
 		assertTrue(billItemRepos.existsById((long) 1));
 		MvcResult result = mockMvc.perform(delete("/bill-items/1"))
 				.andExpect(status().is(200)).andReturn();
