@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public class MenuRequest {
+	private long id;
 
     private String name;
 
@@ -18,6 +19,7 @@ public class MenuRequest {
 	public MenuRequest(Long id, String name, String description, String imageUrl, BigDecimal price,
 			List<String> details) {
 		super();
+		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.imageUrl = imageUrl;
@@ -26,6 +28,18 @@ public class MenuRequest {
 	}
 
 	
+
+	public long getId() {
+		return id;
+	}
+
+
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+
 
 	public String getName() {
 		return name;

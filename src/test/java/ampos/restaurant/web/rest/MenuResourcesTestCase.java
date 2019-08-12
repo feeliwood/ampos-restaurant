@@ -12,7 +12,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -65,6 +64,11 @@ public class MenuResourcesTestCase extends BaseTestCase {
 				.andExpect(status().is(201)).andReturn();
 		MenuItemDTO resultData = jsonToObject(result.getResponse().getContentAsString(), MenuItemDTO.class);
 		assertEquals(input.getName(), resultData.getName());
+		assertEquals(input.getDescription(), resultData.getDescription());
+		assertEquals(input.getImageUrl(), resultData.getImageUrl());
+		assertEquals(input.getPrice(), resultData.getPrice());
+		assertEquals(input.getDetails(), resultData.getDetails());
+		
 
 	}
 
@@ -89,27 +93,6 @@ public class MenuResourcesTestCase extends BaseTestCase {
 
 	}
 
-	/**
-	 * Test case of get menu
-	 * 
-	 * @throws IOException
-	 * @throws Exception
-	 */
-	@Test
-	public void getAllMenuSuccessfully() throws IOException, Exception {
-		// expected data
-		String[] str = { "Italian", "Thai" };
-		ArrayList<String> additionalData = Stream.of(str).collect(Collectors.toCollection(ArrayList::new));
-		List<MenuItemDTO> expectedResult = new ArrayList<>();
-		expectedResult.add(new MenuItemDTO((long) 1, "Oolong tea",
-				"All-time favourite toppings, Hawaiian pizza in Tropical Hawaii style",
-				"https://s3-ap-southeast-1.amazonaws.com/interview.ampostech.com/backend/restaurant/menu1.jpg",
-				new BigDecimal(300), additionalData));
-
-		MvcResult result = mockMvc.perform(get("/menu-items")).andExpect(status().is(200)).andReturn();
-		assertTrue(result.getResponse().getContentAsString().contains(asJsonString(expectedResult)));
-
-	}
 
 	/**
 	 * test case for create menu successfully
@@ -119,6 +102,7 @@ public class MenuResourcesTestCase extends BaseTestCase {
 	 */
 	@Test
 	public void updateMenuSuccessfully() throws IOException, Exception {
+		// expected data
 		String[] str = { "Italian", "Thai" };
 		ArrayList<String> additionalData = Stream.of(str).collect(Collectors.toCollection(ArrayList::new));
 		MenuRequest input = new MenuRequest((long) 1, "Oolong tea edit",
@@ -130,6 +114,10 @@ public class MenuResourcesTestCase extends BaseTestCase {
 				.andExpect(status().is(200)).andReturn();
 		MenuItemDTO resultData = jsonToObject(result.getResponse().getContentAsString(), MenuItemDTO.class);
 		assertEquals(input.getName(), resultData.getName());
+		assertEquals(input.getDescription(), resultData.getDescription());
+		assertEquals(input.getImageUrl(), resultData.getImageUrl());
+		assertEquals(input.getPrice(), resultData.getPrice());
+		assertEquals(input.getDetails(), resultData.getDetails());
 	}
 
 	/**
