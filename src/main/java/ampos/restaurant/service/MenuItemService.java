@@ -1,7 +1,7 @@
 package ampos.restaurant.service;
 
-import ampos.restaurant.exception.ApplicationException;
 import ampos.restaurant.domain.dto.MenuItemDTO;
+import ampos.restaurant.exception.ApplicationException;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -11,12 +11,12 @@ import org.springframework.data.domain.Pageable;
  */
 public interface MenuItemService {
     /**
-     *  Update menu item
+     * Update menu item
      *
      * @param menuItemDTO
      * @throws ApplicationException
      */
-    MenuItemDTO save( Long id,  MenuItemDTO menuItemDTO ) throws ApplicationException;
+    MenuItemDTO save( Long id, MenuItemDTO menuItemDTO ) throws ApplicationException;
 
     /**
      * Delete menu item
@@ -44,5 +44,14 @@ public interface MenuItemService {
      */
     Page<MenuItemDTO> findAll( Pageable pageable ) throws ApplicationException;
 
+    /**
+     * Search menu items by keyword
+     *
+     * @param keyword
+     * @param pageable
+     * @return
+     * @throws ApplicationException
+     */
+    Page<MenuItemDTO> searchMenuItems( String keyword, Pageable pageable ) throws ApplicationException;
 
 }

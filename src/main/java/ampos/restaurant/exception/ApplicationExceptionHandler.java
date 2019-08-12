@@ -1,18 +1,14 @@
 package ampos.restaurant.exception;
 
-import java.util.List;
-import java.util.concurrent.TimeoutException;
-
-import ampos.restaurant.exception.ApplicationException;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.FieldError;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.servlet.NoHandlerFoundException;
 
 /**
  * ExceptionHandlerController used to handle all exceptions and return specific
@@ -21,8 +17,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ControllerAdvice
 @ResponseBody
 public class ApplicationExceptionHandler {
+    private static final Logger logger = LoggerFactory.getLogger( ApplicationExceptionHandler.class );
+
     /**
-     * Handle bad request 400
+     * Handle bad request
      * 
      * @param e
      * @return
@@ -30,49 +28,35 @@ public class ApplicationExceptionHandler {
     @ExceptionHandler( ApplicationException.class )
     @ResponseStatus( HttpStatus.BAD_REQUEST )
     public ResponseEntity<String> handleBadRequest( ApplicationException e ) {
+        logger.warn( "Bad request ", e );
         return new ResponseEntity<>( e.getMessage(), HttpStatus.BAD_REQUEST );
     }
 
-
     /**
-     * Handle bad request MethodArgumentNotValidException
+     * Handle internal server errors with run time exception
      * 
      * @param e
      * @return
      */
-
-    @ResponseStatus( HttpStatus.BAD_REQUEST )
-    @ExceptionHandler( MethodArgumentNotValidException.class )
-    public ResponseEntity<String> handleBadRequestNull( MethodArgumentNotValidException e ) {
-        StringBuilder errors = new StringBuilder();
-        List<FieldError> fieldErrors = e.getBindingResult().getFieldErrors();
-        for ( FieldError fieldError : fieldErrors ) {
-            String error = fieldError.getDefaultMessage() + "\r\n";
-            errors.append( error );
-        }
-        return new ResponseEntity<>( errors.toString(), HttpStatus.BAD_REQUEST );
-    }
-
-    /**
-     * Handle internal server errors with timeout exception
-     * 
-     * @param e
-     * @return
-     */
-    @ExceptionHandler( TimeoutException.class )
-    public ResponseEntity<String> handleTimeOutError( Exception e ) {
-        return new ResponseEntity<>( "Request Timeout", HttpStatus.INTERNAL_SERVER_ERROR );
-    }
-
-    /**
-     * Handle internal server errors with timeout exception
-     * 
-     * @param e
-     * @return
-     */
+    @ExceptionHandler( RuntimeException.class )
     @ResponseStatus( HttpStatus.INTERNAL_SERVER_ERROR )
-    @ExceptionHandler( Exception.class )
-    public ResponseEntity<String> handleGeneralError( Exception e ) {
+    public ResponseEntity<String> handleRuntimeException( Exception e ) {
+        logger.warn( "Internal server error ", e );
         return new ResponseEntity<>( e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR );
+    }
+
+    /**
+     * Handle request not found
+     * 
+     * @param e
+     * @return
+     */
+    @ExceptionHandler( NoHandlerFoundException.class )
+    @ResponseStatus( HttpStatus.NOT_FOUND )
+    @ResponseBody
+    public ResponseEntity<String> handleThrowable( Exception e ) {
+        logger.warn( "Request is not found ", e );
+        return new ResponseEntity<>( e.getMessage(), HttpStatus.NOT_FOUND );
+
     }
 }

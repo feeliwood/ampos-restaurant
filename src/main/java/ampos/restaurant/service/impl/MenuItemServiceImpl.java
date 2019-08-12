@@ -99,4 +99,17 @@ public class MenuItemServiceImpl implements MenuItemService {
         MenuItem menuItem = menuItemRepository.findById( id ).orElseThrow( ( ) -> new ApplicationException( Constants.MENU_ITEM_NOT_FOUND ) );
         return menuItemMapper.toDto( menuItem );
     }
+
+    /**
+     * Search menu items by keyword
+     *
+     * @param keyword
+     * @param pageable
+     * @return
+     * @throws ApplicationException
+     */
+    @Override
+    public Page<MenuItemDTO> searchMenuItems( String keyword, Pageable pageable ) throws ApplicationException {
+        return menuItemRepository.search( keyword, pageable ).map( menuItemMapper::toDto );
+    }
 }
