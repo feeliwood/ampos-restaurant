@@ -1,6 +1,10 @@
 package ampos.restaurant.service.impl;
 
 import ampos.restaurant.domain.BillItem;
+import ampos.restaurant.domain.BillItemReport;
+import ampos.restaurant.domain.dto.BillItemReportDTO;
+import ampos.restaurant.domain.dto.TotalBillReportDTO;
+import ampos.restaurant.domain.mapper.BillItemReportMapper;
 import ampos.restaurant.service.BillService;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,7 +24,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.time.Instant;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Bill Item Service Implmentation
@@ -36,12 +43,14 @@ public class BillServiceImpl implements BillService {
     private final BillMapper billMapper;
     private final BillItemRepository billItemRepository;
     private final BillItemMapper billItemMapper;
+    private final BillItemReportMapper billItemReportMapper;
 
-    public BillServiceImpl(BillRepository billRepository, BillItemRepository billItemRepository, BillMapper billMapper, BillItemMapper billItemMapper) {
+    public BillServiceImpl(BillRepository billRepository, BillItemRepository billItemRepository, BillMapper billMapper, BillItemMapper billItemMapper, BillItemReportMapper billItemReportMapper) {
         this.billRepository = billRepository;
         this.billItemRepository = billItemRepository;
         this.billMapper = billMapper;
         this.billItemMapper = billItemMapper;
+        this.billItemReportMapper = billItemReportMapper;
     }
 
     /**
@@ -53,18 +62,6 @@ public class BillServiceImpl implements BillService {
     public BillDTO createBill(  )  throws ApplicationException {
         log.debug("Request to update Bill ");
         return billMapper.toDto(billRepository.save(new Bill()));
-    }
-
-    /**
-     * Delete a bill
-     *
-     * @param id of the menu item to be deleted
-     * @return the persisted entity
-     */
-    @Override
-    public void deleteBill( Long id ) {
-        log.debug("Request to delete Bill : {}", id);
-        billRepository.deleteById( id );
     }
 
     /**
@@ -154,4 +151,25 @@ public class BillServiceImpl implements BillService {
         billItemRepository.deleteById( id );
     }
 
+
+    /**
+     * Get Bill report
+
+     * @return
+     * @throws ApplicationException
+     */
+    @Override
+    public TotalBillReportDTO getBillReport( ) throws ApplicationException {
+        TotalBillReportDTO totalBillReportDTO = new TotalBillReportDTO();
+        totalBillReportDTO.setBillItemsReport(billItemRepository.getAllBillReport()
+                                                                .stream()
+                                                                .map( billItemReportMapper::toDto )
+                                                                .collect(Collectors.toList()));
+
+        totalBillReportDTO.setGrandTotal( totalBillReportDTO.getBillItemsReport()
+                                                            .stream()
+                                                            .map( BillItemReportDTO::getTotalPrice )
+                                                            .reduce(BigDecimal.ZERO, BigDecimal::add));
+        return totalBillReportDTO;
+    }
 }

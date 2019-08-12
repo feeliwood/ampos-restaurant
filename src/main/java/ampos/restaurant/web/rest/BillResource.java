@@ -2,6 +2,7 @@ package ampos.restaurant.web.rest;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.List;
 import java.util.Optional;
 
 import javax.validation.constraints.NotNull;
@@ -23,6 +24,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ampos.restaurant.domain.dto.BillDTO;
 import ampos.restaurant.domain.dto.BillItemDTO;
+import ampos.restaurant.domain.dto.BillItemReportDTO;
+import ampos.restaurant.domain.dto.TotalBillReportDTO;
 import ampos.restaurant.exception.ApplicationException;
 import ampos.restaurant.service.BillService;
 import ampos.restaurant.web.rest.util.HeaderUtil;
@@ -63,17 +66,17 @@ public class BillResource {
                 .body(result);
     }
 
+
     /**
-     * DELETE  /bills/:id : delete the "id" bill.
+     * GET  all bill report
      *
-     * @param id the id of the bill to be deleted
      * @return the ResponseEntity with status 200 (OK)
      */
-    @DeleteMapping(BILL_MAPPING + "/{id}")
-    public ResponseEntity<Void> deleteBill(@PathVariable Long id) {
-        logger.debug("REST request to delete bill : {}", id);
-        billService.deleteBill(id);
-        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(BILL_NAME, id.toString())).build();
+    @GetMapping(BILL_MAPPING + "/report")
+    public ResponseEntity<TotalBillReportDTO> getAllBillReport() throws ApplicationException {
+        logger.debug("REST request to bill item report: {}");
+        TotalBillReportDTO result = billService.getBillReport();
+        return new ResponseEntity<>(result, null, HttpStatus.OK);
     }
 
     /**
@@ -102,7 +105,6 @@ public class BillResource {
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, BILL_MAPPING);
         return new ResponseEntity<>(page, headers, HttpStatus.OK);
     }
-
 
     /**
      * Create bill item
@@ -150,6 +152,5 @@ public class BillResource {
         billService.deleteBillItem(billItemId);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(BILL_NAME, billItemId.toString())).build();
     }
-
 }
 

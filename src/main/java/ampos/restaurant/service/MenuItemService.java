@@ -53,5 +53,4 @@ public interface MenuItemService {
      * @throws ApplicationException
      */
     Page<MenuItemDTO> searchMenuItems( String keyword, Pageable pageable ) throws ApplicationException;
-
 }

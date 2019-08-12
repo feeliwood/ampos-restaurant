@@ -151,5 +151,4 @@ public class BillItem implements Serializable {
     public BigDecimal getSubTotal() {
         return BigDecimal.valueOf( quantity ).multiply( menuItem.getPrice());
     }
-
 }

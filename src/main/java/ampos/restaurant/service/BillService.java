@@ -1,7 +1,11 @@
 package ampos.restaurant.service;
 
+import java.util.List;
+
 import ampos.restaurant.domain.dto.BillDTO;
 import ampos.restaurant.domain.dto.BillItemDTO;
+import ampos.restaurant.domain.dto.BillItemReportDTO;
+import ampos.restaurant.domain.dto.TotalBillReportDTO;
 import ampos.restaurant.exception.ApplicationException;
 
 import org.springframework.data.domain.Page;
@@ -19,14 +23,6 @@ public interface BillService {
      * @throws ApplicationException
      */
     BillDTO createBill() throws ApplicationException;
-
-    /**
-     * Delete menu item
-     *
-     * @param id
-     * @throws ApplicationException
-     */
-    void deleteBill( Long id );
 
     /**
      * Get bill by Id
@@ -71,4 +67,12 @@ public interface BillService {
      * @throws ApplicationException
      */
     void deleteBillItem( Long id );
+
+    /**
+     * Get menu items report
+
+     * @return
+     * @throws ApplicationException
+     */
+    TotalBillReportDTO getBillReport( ) throws ApplicationException;
 }

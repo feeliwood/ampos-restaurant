@@ -21,7 +21,6 @@ public class BillItemDTO implements Serializable {
 
     private BigDecimal subTotal;
 
-
     public Long getId() {
 	return id;
     }
