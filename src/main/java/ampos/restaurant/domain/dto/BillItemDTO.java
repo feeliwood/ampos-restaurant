@@ -1,5 +1,7 @@
 package ampos.restaurant.domain.dto;
 
+import org.springframework.web.bind.annotation.PathVariable;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -12,6 +14,7 @@ public class BillItemDTO implements Serializable {
     private int quantity;
 
     private MenuItemDTO menuItem;
+<<<<<<< HEAD
 
     private Instant orderedTime;
 
@@ -19,6 +22,15 @@ public class BillItemDTO implements Serializable {
 
     private BigDecimal subTotal;
 
+=======
+
+    private Instant orderedTime;
+
+    private Long billId;
+
+    private BigDecimal subTotal;
+
+>>>>>>> UT
     public Long getId() {
 	return id;
     }

@@ -37,7 +37,17 @@ public class Bill implements Serializable {
     private Set<BillItem> billItems = new HashSet<>();
 
 
-    /**
+    public Bill() {
+		super();
+	}
+
+	public Bill(long id, Set<BillItem> billItems) {
+		super();
+		this.id = id;
+		this.billItems = billItems;
+	}
+
+	/**
      * 
      * @return id
      */

@@ -145,4 +145,8 @@ public class BillResource {
         billService.deleteBillItem(billItemId);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(BILL_NAME, billItemId.toString())).build();
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> UT

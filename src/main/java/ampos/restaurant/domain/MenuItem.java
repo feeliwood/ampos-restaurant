@@ -53,8 +53,30 @@ public class MenuItem implements Serializable {
 
     @Column( name = ACTIVE_COLUMN )
     private boolean active = true;
+    
+    
 
+<<<<<<< HEAD
     public long getId() {
+=======
+    public MenuItem() {
+		super();
+	}
+
+	public MenuItem(long id, @NotNull String name, @NotNull String description, String imageUrl,
+			@NotNull BigDecimal price, String details, boolean active) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.imageUrl = imageUrl;
+		this.price = price;
+		this.details = details;
+		this.active = active;
+	}
+
+	public long getId() {
+>>>>>>> UT
         return id;
     }
 
