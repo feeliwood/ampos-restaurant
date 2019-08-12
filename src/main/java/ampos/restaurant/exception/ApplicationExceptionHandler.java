@@ -33,7 +33,7 @@ public class ApplicationExceptionHandler {
     }
 
     /**
-     * Handle internal server errors with run time exception
+     * Handle internal server error
      * 
      * @param e
      * @return
