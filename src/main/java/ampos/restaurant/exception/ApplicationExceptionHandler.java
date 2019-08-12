@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
 /**
- * ExceptionHandlerController used to handle all exceptions and return specific
+ * This class used to handle all exceptions and return specific
  * errors object based on the exception
  */
 @ControllerAdvice

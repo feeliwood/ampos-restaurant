@@ -20,7 +20,7 @@ public class ApplicationException extends Exception {
     }
 
     /**
-     * COnstructor
+     * Constructor
      * 
      * @param message
      * @param exception

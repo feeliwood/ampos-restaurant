@@ -1,5 +1,26 @@
 package ampos.restaurant.web.rest;
 
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.Optional;
+
+import javax.validation.constraints.NotNull;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
 import ampos.restaurant.domain.dto.BillDTO;
 import ampos.restaurant.domain.dto.BillItemDTO;
 import ampos.restaurant.exception.ApplicationException;
@@ -7,21 +28,6 @@ import ampos.restaurant.service.BillService;
 import ampos.restaurant.web.rest.util.HeaderUtil;
 import ampos.restaurant.web.rest.util.PaginationUtil;
 import ampos.restaurant.web.rest.util.ResponseUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.Optional;
 
 /**
  * Bill order management controller is used to CRU bill order.
@@ -32,7 +38,6 @@ public class BillResource {
     public static final String BILL_MAPPING = "/bills";
     public static final String BILL_ITEM_MAPPING = "/bill-items";
     private static final String BILL_NAME = "bill";
-    private static final String BILL_ITEM_NAME = "bill-item";
 
     private static final Logger logger = LoggerFactory.getLogger( BillResource.class );
 
