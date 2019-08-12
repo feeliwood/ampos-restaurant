@@ -164,7 +164,7 @@ public class BillResourceTestCase extends BaseTestCase {
 		MvcResult result = mockMvc.perform(delete("/bill-items/1")).andExpect(status().is(200)).andReturn();
 		assertEquals("", result.getResponse().getContentAsString());
 		// check database
-		assertTrue(billItemRepos.existsById((long) 1));
+		assertFalse(billItemRepos.existsById((long) 1));
 
 	}
 
