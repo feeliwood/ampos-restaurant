@@ -41,7 +41,7 @@ public class MenuResourcesTestCase extends BaseTestCase {
 		menuRepos.save(new MenuItem((long) 1, "Chicken Tom Yum Pizza",
 				"All-time favourite toppings, Hawaiian pizza in Tropical Hawaii style",
 				"https://s3-ap-southeast-1.amazonaws.com/interview.ampostech.com/backend/restaurant/menu1.jpg",
-				new BigDecimal(300), "Italian,Thai", true));
+				new BigDecimal(300), "Italian,Thai"));
 
 	}
 

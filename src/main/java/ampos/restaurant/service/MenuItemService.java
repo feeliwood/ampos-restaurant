@@ -11,7 +11,7 @@ import org.springframework.data.domain.Pageable;
  */
 public interface MenuItemService {
     /**
-     * Update menu item
+     * Create or update menu item
      *
      * @param menuItemDTO
      * @throws ApplicationException

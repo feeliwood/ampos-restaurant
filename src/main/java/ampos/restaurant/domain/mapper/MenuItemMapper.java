@@ -20,7 +20,6 @@ public interface MenuItemMapper extends EntityMapper <MenuItemDTO, MenuItem> {
     @Mapping(source = "menuItem", target = "details", qualifiedByName = "toDetailsDto")
     MenuItemDTO toDto(MenuItem menuItem);
 
-    @Mapping(target = "active", ignore = true)
     @Mapping(source = "menuItemDTO", target = "details", qualifiedByName = "toDetails")
     MenuItem toEntity(MenuItemDTO menuItemDTO);
 
