@@ -51,9 +51,10 @@ public class BillServiceImpl implements BillService {
     }
 
     /**
-     * Create a new bill
+     * Create new bill
      *
-     * @return the persisted entity
+     * @param
+     * @throws ApplicationException
      */
     @Override
     public BillDTO createBill() throws ApplicationException {
@@ -62,11 +63,12 @@ public class BillServiceImpl implements BillService {
     }
 
     /**
-     * Get all the bill with pageable information.
+     * Get list bill items
      *
      * @param pageable
-     *            the pagination information
-     * @return the list of entities
+     *            :the pagination information
+     * @return
+     * @throws ApplicationException
      */
     @Override
     @Transactional( readOnly = true )
@@ -76,17 +78,18 @@ public class BillServiceImpl implements BillService {
     }
 
     /**
-     * Get one bill by id.
+     * Get bill by Id
      *
      * @param id
-     *            the id of the entity
-     * @return the entity
+     *            : of the bill that this bill item belongs to
+     * @return
+     * @throws ApplicationException
      */
     @Override
     @Transactional( readOnly = true )
     public BillDTO findBillById( Long id ) throws ApplicationException {
         log.debug( "Request to get Menu Item : {}", id );
-        Bill bill = billRepository.findById( id ).orElseThrow( () -> new ApplicationException( Constants.MENU_ITEM_NOT_FOUND ) );
+        Bill bill = billRepository.findById( id ).orElseThrow( () -> new ApplicationException( Constants.BILL_NOT_FOUND ) );
         return billMapper.toDto( bill );
     }
 
@@ -94,8 +97,9 @@ public class BillServiceImpl implements BillService {
      * Create bill item
      *
      * @param billId
-     *            of the Bill that this Bill Item belongs to
+     *            : of the bill that this bill item belongs
      * @param billItemDTO
+     *            : the bill item to be persisted
      * @throws ApplicationException
      */
     @Override
@@ -115,11 +119,11 @@ public class BillServiceImpl implements BillService {
      * Update bill item
      *
      * @param billId
-     *            : Bill that this Bill Item belongs
+     *            : of the bill that this bill item belongs
      * @param billItemId
-     *            : id of the Bill Item to be updated
+     *            : id of the bill item to be updated
      * @param quantity
-     *            : update quantity of the Bill Item
+     *            : update quantity of the bill item
      * @throws ApplicationException
      */
     @Override
@@ -140,13 +144,13 @@ public class BillServiceImpl implements BillService {
     }
 
     /**
-     * Delete a bill item
+     * Delete bill item
      *
      * @param billId
-     *            : Bill that this Bill Item belongs
+     *            : of the bill that this bill item belongs
      * @param billItemId
-     *            of the menu item to be deleted
-     * @return
+     *            : id of the bill item to be deleted
+     * @throws ApplicationException
      */
     @Override
     public void deleteBillItem( Long billId, Long billItemId ) throws ApplicationException {

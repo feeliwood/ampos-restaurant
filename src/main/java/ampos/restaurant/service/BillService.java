@@ -14,7 +14,7 @@ import org.springframework.data.domain.Pageable;
  */
 public interface BillService {
     /**
-     * Update bill
+     * Create new bill
      *
      * @param
      * @throws ApplicationException
@@ -35,6 +35,7 @@ public interface BillService {
      * Get list bill items
      *
      * @param pageable
+     *            :the pagination information
      * @return
      * @throws ApplicationException
      */
