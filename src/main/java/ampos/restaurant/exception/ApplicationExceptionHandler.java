@@ -23,7 +23,7 @@ public class ApplicationExceptionHandler {
 
     /**
      * Handle bad request
-     * 
+     *
      * @param e
      * @return
      */
@@ -37,7 +37,7 @@ public class ApplicationExceptionHandler {
 
     /**
      * Handle request not found
-     * 
+     *
      * @param e
      * @return
      */
@@ -52,7 +52,7 @@ public class ApplicationExceptionHandler {
 
     /**
      * Handle constraint violation exception
-     * 
+     *
      * @param e
      * @return
      */
@@ -73,16 +73,15 @@ public class ApplicationExceptionHandler {
      */
     private RestResourceErrorInfo exceptionHandling( Exception e ) {
         if ( e instanceof ConstraintViolationException ) {
-            ConstraintViolationException cve = ((ConstraintViolationException) e);
-            int sqlErrorCode = cve.getSQLException().getErrorCode();
-            return new RestResourceErrorInfo( ErrorMessage.getErrorMessage( sqlErrorCode ).getMessage() );
+            return new RestResourceErrorInfo( ErrorMessage.getErrorMessage( ((ConstraintViolationException) e).getSQLException().getErrorCode() ).getMessage() );
         }
         return new RestResourceErrorInfo( e.getMessage() );
     }
 
     enum ErrorMessage {
         MESSAGE_FK_CONSTRAINT_KEY( MysqlErrorNumbers.ER_ROW_IS_REFERENCED_2, "Cannot delete or update due to forgein key constraint" ),
-        MESSAGE_DUP_ENTRY( MysqlErrorNumbers.ER_DUP_ENTRY, "Duplicate entry name" );
+        MESSAGE_DUP_ENTRY( MysqlErrorNumbers.ER_DUP_ENTRY, "Duplicate entry name" ),
+        UNKNOWN( -1, "Unkown error" );
 
         private int errorCode;
         private String message;
@@ -110,7 +109,7 @@ public class ApplicationExceptionHandler {
 
         /**
          * Get error message
-         * 
+         *
          * @param code
          * @return
          */
@@ -120,7 +119,7 @@ public class ApplicationExceptionHandler {
                     return e;
                 }
             }
-            return null;
+            return UNKNOWN;
         }
     }
 
