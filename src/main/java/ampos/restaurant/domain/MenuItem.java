@@ -11,9 +11,16 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 /**
  * MenuItem entity
  */
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table( name = MenuItem.TABLE_NAME )
 public class MenuItem implements Serializable {
@@ -47,14 +54,6 @@ public class MenuItem implements Serializable {
 
     @Column( name = DETAILS_COLUMN )
     private String details;
-
-    /**
-     *
-     * Default constructor
-     */
-    public MenuItem() {
-        super();
-    }
 
     /**
      *

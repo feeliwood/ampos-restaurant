@@ -15,9 +15,16 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 /**
  * BillItem entity
  */
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table( name = BillItem.TABLE_NAME )
 public class BillItem implements Serializable {
@@ -47,100 +54,11 @@ public class BillItem implements Serializable {
     @JoinColumn( name = FK_BILL_ID_COLUMN )
     private Bill bill;
 
-    public BillItem() {
-        super();
-    }
-
     public BillItem( long id, int quantity, MenuItem menuItem, Instant orderedTime ) {
         super();
         this.id = id;
         this.quantity = quantity;
         this.menuItem = menuItem;
-        this.orderedTime = orderedTime;
-    }
-
-    /**
-     * 
-     * @return id
-     */
-    public long getId() {
-        return id;
-    }
-
-    /**
-     * set id
-     * 
-     * @param id
-     */
-    public void setId( long id ) {
-        this.id = id;
-    }
-
-    /**
-     * 
-     * @return menuItem
-     */
-    public MenuItem getMenuItem() {
-        return menuItem;
-    }
-
-    /**
-     * set MenuItem
-     * 
-     * @param menuItem
-     */
-    public void setMenuItem( MenuItem menuItem ) {
-        this.menuItem = menuItem;
-    }
-
-    /**
-     *
-     * @return billOrder
-     */
-    public Bill getBill() {
-        return bill;
-    }
-
-    /**
-     * set bill
-     *
-     * @param bill
-     */
-    public void setBill( Bill bill ) {
-        this.bill = bill;
-    }
-
-    /**
-     * 
-     * @return quantity
-     */
-    public int getQuantity() {
-        return quantity;
-    }
-
-    /**
-     * set quantity
-     * 
-     * @param quantity
-     */
-    public void setQuantity( int quantity ) {
-        this.quantity = quantity;
-    }
-
-    /**
-     *
-     * @return ordered time
-     */
-    public Instant getOrderedTime() {
-        return orderedTime;
-    }
-
-    /**
-     * set orderedTime
-     *
-     * @param orderedTime
-     */
-    public void setOrderedTime( Instant orderedTime ) {
         this.orderedTime = orderedTime;
     }
 

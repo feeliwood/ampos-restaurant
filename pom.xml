@@ -7,7 +7,7 @@
 	<packaging>jar</packaging>
 	<name>ampos-restaurant</name>
 	<url>http://maven.apache.org</url>
-	
+
 	<properties>
 		<package.version>${product.version}_${build.number}</package.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -64,7 +64,7 @@
 				<!--</exclusion>-->
 			<!--</exclusions>-->
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-aop</artifactId>
@@ -161,14 +161,21 @@
     		<artifactId>orika-core</artifactId>
     		<version>1.4.6</version>
 		</dependency>
-		
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.8</version>
+            <scope>provided</scope>
+        </dependency>
+
 		<!-- connector -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>${mysql.version}</version>
 		</dependency>
-		
+
 		<!-- test -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -196,7 +203,7 @@
             <scope>test</scope>
         </dependency>
 	</dependencies>
-	
+
 	<build>
 		<defaultGoal>spring-boot:run</defaultGoal>
 		<plugins>
@@ -279,7 +286,7 @@
 					</archive>
 				</configuration>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
@@ -297,7 +304,7 @@
 					</excludes>
 				</configuration>
 			</plugin>
-			
+
 			<!-- plugin for mvn spring-boot:run -->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
