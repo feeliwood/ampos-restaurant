@@ -7,7 +7,6 @@ import java.util.Optional;
 import ampos.restaurant.domain.dto.MenuItemDTO;
 import ampos.restaurant.exception.ApplicationException;
 import ampos.restaurant.service.MenuItemService;
-
 import ampos.restaurant.web.rest.util.HeaderUtil;
 import ampos.restaurant.web.rest.util.PaginationUtil;
 import ampos.restaurant.web.rest.util.ResponseUtil;
@@ -26,6 +25,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -125,5 +125,24 @@ public class MenuItemResource {
         return ResponseEntity.ok()
         					 .headers( HeaderUtil.createEntityDeletionAlert( ENTITY_NAME, id.toString() ) )
         					 .build();
+    }
+    
+    /**
+     * GET /items/search?keyword=<keyword> : search menu items by keyword.
+     *
+     * @param keyword
+     *            the keyword of menu title or description or additional
+     *            details.
+     * @param pageable
+     *            the pagination information
+     * @return the ResponseEntity with status 200 (OK) and the list of menu
+     *         items in body
+     */
+    @GetMapping( "/search" )
+    public ResponseEntity<Page<MenuItemDTO>> searchMenuItems( @RequestParam( value = "keyword" ) String keyword, Pageable pageable ) throws ApplicationException {
+        logger.debug( "REST request to search menu items" );
+        Page<MenuItemDTO> page = menuItemService.searchMenuItems( keyword, pageable );
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders( page, "/menu/search" );
+        return new ResponseEntity<>( page, headers, HttpStatus.OK );
     }
 }
