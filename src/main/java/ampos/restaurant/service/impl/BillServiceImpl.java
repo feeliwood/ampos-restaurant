@@ -124,7 +124,7 @@ public class BillServiceImpl implements BillService {
      */
     @Override
     public BillItemDTO updateBillItem( Long billId, Long billItemId, Integer quantity ) throws ApplicationException {
-        if ( quantity.intValue() <= 0 )
+        if ( quantity == null || quantity.intValue() <= 0 )
             throw new ApplicationException( Constants.INVALID_QUANTITY_FOR_BILL_ITEM );
 
         log.debug( "Request to edit new BillItem with id : ", billItemId );

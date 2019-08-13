@@ -43,7 +43,7 @@ public class BillItem implements Serializable {
     @Column( name = QUANTITY_COLUMN )
     private int quantity;
 
-    @OneToOne( fetch = FetchType.EAGER )
+    @OneToOne
     @JoinColumn( name = FK_MENU_ITEM_ID_COLUMN )
     private MenuItem menuItem;
 
