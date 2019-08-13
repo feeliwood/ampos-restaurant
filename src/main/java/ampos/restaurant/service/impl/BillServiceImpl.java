@@ -142,13 +142,20 @@ public class BillServiceImpl implements BillService {
     /**
      * Delete a bill item
      *
-     * @param id of the menu item to be deleted
-     * @return the persisted entity
+     * @param billId: Bill that this Bill Item belongs
+     * @param billItemId of the menu item to be deleted
+     * @return
      */
     @Override
-    public void deleteBillItem( Long id ) {
-        log.debug("Request to delete Bill item : {}", id);
-        billItemRepository.deleteById( id );
+    public void deleteBillItem(Long billId, Long billItemId ) throws ApplicationException {
+        log.debug("Request to delete Bill item : {}", billItemId);
+        Bill bill = billRepository.findById(billId).orElseThrow( () -> new ApplicationException( Constants.BILL_NOT_FOUND ) ) ;
+        bill.getBillItems()
+                .stream()
+                .filter( item -> item.getId() == billItemId.longValue() )
+                .findAny()
+                .orElseThrow( () -> new ApplicationException( Constants.BILL_ITEM_NOT_FOUND ) ) ;
+        billItemRepository.deleteById( billItemId );
     }
 
 

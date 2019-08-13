@@ -63,10 +63,11 @@ public interface BillService {
     /**
      * Delete bill item
      *
-     * @param id
+     * @param billId
+     * @param billItemId
      * @throws ApplicationException
      */
-    void deleteBillItem( Long id );
+    void deleteBillItem( Long billId, Long billItemId ) throws ApplicationException;
 
     /**
      * Get menu items report

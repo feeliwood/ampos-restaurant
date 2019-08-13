@@ -32,7 +32,7 @@ import ampos.restaurant.web.rest.util.ResponseUtil;
 
 /**
  * Bill order management controller is used to CRU bill order.
- * 
+ *
  */
 @RestController
 public class BillResource {
@@ -44,64 +44,65 @@ public class BillResource {
 
     private BillService billService;
 
-    public BillResource(BillService billService) {
-        this.billService = billService;
+    public BillResource( BillService billService ) {
+	this.billService = billService;
     }
 
     /**
-     * CREATE  /bills : create new bill
+     * CREATE /bills : create new bill
      *
      * @Param BillItemDTO: contain data about the bill to be created
      * @throws ApplicationException
      */
-    @PostMapping(BILL_MAPPING)
+    @PostMapping( BILL_MAPPING )
     public ResponseEntity<BillDTO> createBill() throws ApplicationException, URISyntaxException {
-        logger.debug("REST request to create bill:");
+	logger.debug( "REST request to create bill:" );
 
-        BillDTO result = billService.createBill();
-        return ResponseEntity.created(new URI(BILL_MAPPING + result.getId()))
-                .headers(HeaderUtil.createEntityCreationAlert(BILL_NAME, result.getId().toString()))
-                .body(result);
+	BillDTO result = billService.createBill();
+	return ResponseEntity.created( new URI( BILL_MAPPING + result.getId() ) ).headers( HeaderUtil.createEntityCreationAlert( BILL_NAME, result.getId().toString() ) ).body( result );
     }
 
-
     /**
-     * GET  all bill report
+     * GET all bill report
      *
      * @return the ResponseEntity with status 200 (OK)
      */
-    @GetMapping(BILL_MAPPING + "/report")
+    @GetMapping( BILL_MAPPING + "/report" )
     public ResponseEntity<TotalBillReportDTO> getAllBillReport() throws ApplicationException {
-        logger.debug("REST request to bill item report: {}");
-        TotalBillReportDTO result = billService.getBillReport();
-        return new ResponseEntity<>(result, null, HttpStatus.OK);
+	logger.debug( "REST request to bill item report: {}" );
+	TotalBillReportDTO result = billService.getBillReport();
+	return new ResponseEntity<>( result, null, HttpStatus.OK );
     }
 
     /**
-     * GET  /bills/:id : get the "id" bill
+     * GET /bills/:id : get the "id" bill
      *
-     * @param id the id of the BillItemDTO to retrieve
-     * @return the ResponseEntity with status 200 (OK) and with body the BillItemDTO, or with status 404 (Not Found)
+     * @param id
+     *            the id of the BillItemDTO to retrieve
+     * @return the ResponseEntity with status 200 (OK) and with body the
+     *         BillItemDTO, or with status 404 (Not Found)
      */
-    @GetMapping(BILL_MAPPING + "/{id}")
-    public ResponseEntity<BillDTO> getBill(@PathVariable @NotNull Long id) throws ApplicationException {
-        logger.debug("REST request to get Bill : {}", id);
-        BillDTO billDTO = billService.findBillById(id);
-        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(billDTO));
+    @GetMapping( BILL_MAPPING + "/{id}" )
+    public ResponseEntity<BillDTO> getBill( @PathVariable @NotNull Long id ) throws ApplicationException {
+	logger.debug( "REST request to get Bill : {}", id );
+	BillDTO billDTO = billService.findBillById( id );
+	return ResponseUtil.wrapOrNotFound( Optional.ofNullable( billDTO ) );
     }
 
     /**
-     * GET  /bills : get all the Bill.
+     * GET /bills : get all the Bill.
      *
-     * @param pageable the pagination information
-     * @return the ResponseEntity with status 200 (OK) and the list of Bills in body
+     * @param pageable
+     *            the pagination information
+     * @return the ResponseEntity with status 200 (OK) and the list of Bills in
+     *         body
      */
-    @GetMapping(BILL_MAPPING)
-    public ResponseEntity<Page<BillDTO>> getAllBill(Pageable pageable) throws ApplicationException {
-        logger.debug("REST request to get a page of Menu Items");
-        Page<BillDTO> page = billService.findAllBill(pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, BILL_MAPPING);
-        return new ResponseEntity<>(page, headers, HttpStatus.OK);
+    @GetMapping( BILL_MAPPING )
+    public ResponseEntity<Page<BillDTO>> getAllBill( Pageable pageable ) throws ApplicationException {
+	logger.debug( "REST request to get a page of Menu Items" );
+	Page<BillDTO> page = billService.findAllBill( pageable );
+	HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders( page, BILL_MAPPING );
+	return new ResponseEntity<>( page, headers, HttpStatus.OK );
     }
 
     /**
@@ -110,45 +111,43 @@ public class BillResource {
      * @Param BillItemDTO: contain data about the menu item to be created
      * @throws ApplicationException
      */
-    @PostMapping(BILL_MAPPING + "/{billId}" + BILL_ITEM_MAPPING)
-    public ResponseEntity<BillItemDTO> createBillItem(@PathVariable @NotNull Long billId, @RequestBody BillItemDTO billItemDTO ) throws ApplicationException, URISyntaxException {
-        logger.debug("REST request to create bill:");
+    @PostMapping( BILL_MAPPING + "/{billId}" + BILL_ITEM_MAPPING )
+    public ResponseEntity<BillItemDTO> createBillItem( @PathVariable @NotNull Long billId, @RequestBody BillItemDTO billItemDTO ) throws ApplicationException, URISyntaxException {
+	logger.debug( "REST request to create bill:" );
 
-        BillItemDTO result = billService.createBillItem(billId, billItemDTO);
-        return ResponseEntity.created(new URI(BILL_MAPPING + result.getId()))
-                .headers(HeaderUtil.createEntityCreationAlert(BILL_NAME, result.getId().toString()))
-                .body(result);
+	BillItemDTO result = billService.createBillItem( billId, billItemDTO );
+	return ResponseEntity.created( new URI( BILL_MAPPING + result.getId() ) ).headers( HeaderUtil.createEntityCreationAlert( BILL_NAME, result.getId().toString() ) ).body( result );
     }
 
     /**
-     * PUT  /bill/{billId}/item/{billItemId} : Updates an existing menu item.
+     * PUT /bill/{billId}/item/{billItemId} : Updates an existing bill item.
      *
      * @pathVariable billId: Bill that this Bill Item belongs
      * @pathVariable billItemId: id of the Bill Item to be updated
      * @requestBody quantity: update quantity of the Bill Item
-     * @return the ResponseEntity with status 200 (OK) and with body the updated clientDTO,
+     * @return the ResponseEntity with status 200 (OK) and with body the updated
+     *         clientDTO,
      */
-    @PutMapping(BILL_MAPPING + "/{billId}" + BILL_ITEM_MAPPING + "/{billItemId}")
-    public ResponseEntity<BillItemDTO> updateBillItem(@PathVariable @NotNull  Long billId, @PathVariable @NotNull  Long billItemId, @RequestBody Integer quantity) throws ApplicationException {
-        logger.debug("REST request to update Bill Item with id  : {}", billItemId);
+    @PutMapping( BILL_MAPPING + "/{billId}" + BILL_ITEM_MAPPING + "/{billItemId}" )
+    public ResponseEntity<BillItemDTO> updateBillItem( @PathVariable @NotNull Long billId, @PathVariable @NotNull Long billItemId, @RequestBody Integer quantity ) throws ApplicationException {
+	logger.debug( "REST request to update Bill Item with id  : {}", billItemId );
 
-        BillItemDTO result = billService.editBillItem(billId, billItemId, quantity);
-        return ResponseEntity.ok()
-                .headers(HeaderUtil.createEntityUpdateAlert(BILL_NAME, result.getId().toString()))
-                .body(result);
+	BillItemDTO result = billService.editBillItem( billId, billItemId, quantity );
+	return ResponseEntity.ok().headers( HeaderUtil.createEntityUpdateAlert( BILL_NAME, result.getId().toString() ) ).body( result );
     }
 
     /**
-     * DELETE  /billItems/:billItemId : delete the "id" menu item.
+     * DELETE /bill/{billId}/item/{billItemId} : delete the "id" bill item.
      *
-     * @param billItemId the id of the BillItemDTO to delete
+     * @param billItemId
+     *            the id of the BillItemDTO to delete
      * @return the ResponseEntity with status 200 (OK)
+     * @throws ApplicationException
      */
-    @DeleteMapping(BILL_ITEM_MAPPING + "/{billItemId}")
-    public ResponseEntity<Void> deleteBillItem(@PathVariable Long billItemId) {
-        logger.debug("REST request to delete menu item : {}", billItemId);
-        billService.deleteBillItem(billItemId);
-        return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(BILL_NAME, billItemId.toString())).build();
+    @DeleteMapping( BILL_MAPPING + "/{billId}" + BILL_ITEM_MAPPING + "/{billItemId}" )
+    public ResponseEntity<Void> deleteBillItem( @PathVariable Long billId, @PathVariable Long billItemId ) throws ApplicationException {
+	logger.debug( "REST request to delete menu item : {}", billItemId );
+	billService.deleteBillItem( billId, billItemId );
+	return ResponseEntity.ok().headers( HeaderUtil.createEntityDeletionAlert( BILL_NAME, billItemId.toString() ) ).build();
     }
 }
-
