@@ -11,26 +11,26 @@ public class BillItemReportDTO {
     private BigDecimal totalPrice;
 
     public String getName() {
-	return name;
+        return name;
     }
 
     public void setName( String name ) {
-	this.name = name;
+        this.name = name;
     }
 
     public long getQuantity() {
-	return quantity;
+        return quantity;
     }
 
     public void setQuantity( long quantity ) {
-	this.quantity = quantity;
+        this.quantity = quantity;
     }
 
     public BigDecimal getTotalPrice() {
-	return totalPrice;
+        return totalPrice;
     }
 
     public void setTotalPrice( BigDecimal totalPrice ) {
-	this.totalPrice = totalPrice;
+        this.totalPrice = totalPrice;
     }
 }

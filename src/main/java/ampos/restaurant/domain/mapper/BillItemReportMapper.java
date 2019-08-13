@@ -5,8 +5,8 @@ import ampos.restaurant.domain.dto.BillItemReportDTO;
 
 import org.mapstruct.Mapper;
 
-@Mapper(componentModel = "spring")
-public interface BillItemReportMapper extends EntityMapper <BillItemReportDTO, BillItemReport> {
+@Mapper( componentModel = "spring" )
+public interface BillItemReportMapper extends EntityMapper<BillItemReportDTO, BillItemReport> {
 
-    BillItemReportDTO toDto(BillItemReport billItemReport );
+    BillItemReportDTO toDto( BillItemReport billItemReport );
 }

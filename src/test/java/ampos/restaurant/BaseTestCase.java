@@ -16,11 +16,11 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest(classes = RestaurantApplication.class)
+@RunWith( SpringRunner.class )
+@SpringBootTest( classes = RestaurantApplication.class )
 @AutoConfigureMockMvc
-@TestPropertySource(locations = "classpath:application-test.properties")
-@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
+@TestPropertySource( locations = "classpath:application-test.properties" )
+@DirtiesContext( classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD )
 public abstract class BaseTestCase {
     @Autowired
     protected MockMvc mockMvc;
@@ -30,8 +30,8 @@ public abstract class BaseTestCase {
      * 
      * @throws JsonProcessingException
      */
-    public String asJsonString(final Object obj) throws JsonProcessingException {
-	return new ObjectMapper().writeValueAsString(obj);
+    public String asJsonString( final Object obj ) throws JsonProcessingException {
+        return new ObjectMapper().writeValueAsString( obj );
     }
 
     /**
@@ -44,10 +44,9 @@ public abstract class BaseTestCase {
      * @throws JsonMappingException
      * @throws JsonParseException
      */
-    public <T> T jsonToObject(String jsonContent, Class<T> valueType)
-	    throws JsonParseException, JsonMappingException, IOException {
-	ObjectMapper mapper = new ObjectMapper();
-	return mapper.readValue(jsonContent, valueType);
+    public <T> T jsonToObject( String jsonContent, Class<T> valueType ) throws JsonParseException, JsonMappingException, IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        return mapper.readValue( jsonContent, valueType );
     }
 
 }

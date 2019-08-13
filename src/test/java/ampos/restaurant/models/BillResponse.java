@@ -12,27 +12,27 @@ public class BillResponse {
     private BigDecimal total;
 
     public Long getId() {
-	return id;
+        return id;
     }
 
-    public void setId(Long id) {
-	this.id = id;
+    public void setId( Long id ) {
+        this.id = id;
     }
 
     public Set<BillItemsResponse> getBillItems() {
-	return billItems;
+        return billItems;
     }
 
-    public void setBillItems(Set<BillItemsResponse> billItems) {
-	this.billItems = billItems;
+    public void setBillItems( Set<BillItemsResponse> billItems ) {
+        this.billItems = billItems;
     }
 
     public BigDecimal getTotal() {
-	return total;
+        return total;
     }
 
-    public void setTotal(BigDecimal totalBill) {
-	this.total = totalBill;
+    public void setTotal( BigDecimal totalBill ) {
+        this.total = totalBill;
     }
 
 }

@@ -33,7 +33,7 @@ public class BillItem implements Serializable {
     @Column( name = ID )
     private long id;
 
-    @Column(name = QUANTITY_COLUMN)
+    @Column( name = QUANTITY_COLUMN )
     private int quantity;
 
     @OneToOne( fetch = FetchType.EAGER )
@@ -43,15 +43,15 @@ public class BillItem implements Serializable {
     @Column( name = ORDERED_TIME_COLUMN, nullable = false )
     private Instant orderedTime;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = FK_BILL_ID_COLUMN )
+    @ManyToOne( fetch = FetchType.LAZY )
+    @JoinColumn( name = FK_BILL_ID_COLUMN )
     private Bill bill;
-    
 
     public BillItem() {
-        super(); }
+        super();
+    }
 
-    public BillItem(long id, int quantity, MenuItem menuItem, Instant orderedTime) {
+    public BillItem( long id, int quantity, MenuItem menuItem, Instant orderedTime ) {
         super();
         this.id = id;
         this.quantity = quantity;
@@ -146,9 +146,10 @@ public class BillItem implements Serializable {
 
     /**
      *
-     * @return sub total of a bill item which is equal menu item price multiply quantity
+     * @return sub total of a bill item which is equal menu item price multiply
+     *         quantity
      */
     public BigDecimal getSubTotal() {
-        return BigDecimal.valueOf( quantity ).multiply( menuItem.getPrice());
+        return BigDecimal.valueOf( quantity ).multiply( menuItem.getPrice() );
     }
 }

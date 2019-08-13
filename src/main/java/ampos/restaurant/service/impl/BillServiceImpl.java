@@ -1,14 +1,9 @@
 package ampos.restaurant.service.impl;
 
-import ampos.restaurant.domain.BillItem;
-import ampos.restaurant.domain.BillItemReport;
-import ampos.restaurant.domain.dto.BillItemReportDTO;
-import ampos.restaurant.domain.dto.TotalBillReportDTO;
-import ampos.restaurant.domain.mapper.BillItemReportMapper;
-import ampos.restaurant.service.BillService;
-import org.springframework.transaction.annotation.Transactional;
+import java.time.Instant;
 
 import ampos.restaurant.domain.Bill;
+import ampos.restaurant.domain.BillItem;
 import ampos.restaurant.domain.dto.BillDTO;
 import ampos.restaurant.domain.dto.BillItemDTO;
 import ampos.restaurant.domain.mapper.BillItemMapper;
@@ -16,18 +11,16 @@ import ampos.restaurant.domain.mapper.BillMapper;
 import ampos.restaurant.exception.ApplicationException;
 import ampos.restaurant.repository.BillItemRepository;
 import ampos.restaurant.repository.BillRepository;
+import ampos.restaurant.service.BillService;
 import ampos.restaurant.util.Constants;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.math.BigDecimal;
-import java.time.Instant;
-import java.util.List;
-import java.util.stream.Collectors;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Bill Item Service Implmentation
@@ -37,20 +30,19 @@ import java.util.stream.Collectors;
 @Transactional
 public class BillServiceImpl implements BillService {
 
-    private final Logger log = LoggerFactory.getLogger(BillServiceImpl.class);
+    private final Logger log = LoggerFactory.getLogger( BillServiceImpl.class );
 
     private final BillRepository billRepository;
     private final BillMapper billMapper;
+    @Autowired
     private final BillItemRepository billItemRepository;
     private final BillItemMapper billItemMapper;
-    private final BillItemReportMapper billItemReportMapper;
 
-    public BillServiceImpl(BillRepository billRepository, BillItemRepository billItemRepository, BillMapper billMapper, BillItemMapper billItemMapper, BillItemReportMapper billItemReportMapper) {
+    public BillServiceImpl( BillRepository billRepository, BillItemRepository billItemRepository, BillMapper billMapper, BillItemMapper billItemMapper ) {
         this.billRepository = billRepository;
         this.billItemRepository = billItemRepository;
         this.billMapper = billMapper;
         this.billItemMapper = billItemMapper;
-        this.billItemReportMapper = billItemReportMapper;
     }
 
     /**
@@ -59,117 +51,113 @@ public class BillServiceImpl implements BillService {
      * @return the persisted entity
      */
     @Override
-    public BillDTO createBill(  )  throws ApplicationException {
-        log.debug("Request to update Bill ");
-        return billMapper.toDto(billRepository.save(new Bill()));
+    public BillDTO createBill() throws ApplicationException {
+        log.debug( "Request to update Bill " );
+        return billMapper.toDto( billRepository.save( new Bill() ) );
     }
 
     /**
-     *  Get all the bill with pageable information.
+     * Delete a bill
      *
-     *  @param pageable the pagination information
-     *  @return the list of entities
+     * @param id
+     *            of the menu item to be deleted
+     * @return the persisted entity
      */
     @Override
-    @Transactional(readOnly = true)
-    public Page<BillDTO> findAllBill(Pageable pageable) {
-        log.debug("Request to get all BillItems");
-        return billRepository.findAll(pageable)
-                        .map(billMapper::toDto);
+    public void deleteBill( Long id ) {
+        log.debug( "Request to delete Bill : {}", id );
+        billRepository.deleteById( id );
     }
 
     /**
-     *  Get one bill by id.
+     * Get all the bill with pageable information.
      *
-     *  @param id the id of the entity
-     *  @return the entity
+     * @param pageable
+     *            the pagination information
+     * @return the list of entities
      */
     @Override
-    @Transactional(readOnly = true)
-    public BillDTO findBillById(Long id) throws ApplicationException {
-        log.debug("Request to get Menu Item : {}", id);
-        Bill bill = billRepository.findById(id).orElseThrow( () -> new ApplicationException( Constants.MENU_ITEM_NOT_FOUND ) ) ;
-        return billMapper.toDto(bill);
+    @Transactional( readOnly = true )
+    public Page<BillDTO> findAllBill( Pageable pageable ) {
+        log.debug( "Request to get all BillItems" );
+        return billRepository.findAll( pageable ).map( billMapper::toDto );
     }
 
     /**
-     *  Save Bill Item to a Bill specify by billId
+     * Get one bill by id.
      *
-     * @param billId of the Bill that this Bill Item belongs to
+     * @param id
+     *            the id of the entity
+     * @return the entity
+     */
+    @Override
+    @Transactional( readOnly = true )
+    public BillDTO findBillById( Long id ) throws ApplicationException {
+        log.debug( "Request to get Menu Item : {}", id );
+        Bill bill = billRepository.findById( id ).orElseThrow( ( ) -> new ApplicationException( Constants.MENU_ITEM_NOT_FOUND ) );
+        return billMapper.toDto( bill );
+    }
+
+    /**
+     * Save Bill Item to a Bill specify by billId
+     *
+     * @param billId
+     *            of the Bill that this Bill Item belongs to
      * @param billItemDTO
      * @throws ApplicationException
      */
     @Override
     public BillItemDTO createBillItem( Long billId, BillItemDTO billItemDTO ) throws ApplicationException {
-        log.debug("Request to create new BillItem : {}", billItemDTO);
+        log.debug( "Request to create new BillItem : {}", billItemDTO );
 
-        billRepository.findById(billId).orElseThrow( () -> new ApplicationException( Constants.BILL_NOT_FOUND ) ) ;
-        billItemDTO.setBillId(billId);
+        billRepository.findById( billId ).orElseThrow( ( ) -> new ApplicationException( Constants.BILL_NOT_FOUND ) );
+        billItemDTO.setBillId( billId );
 
-        BillItem newBillItem = billItemMapper.toEntity(billItemDTO);
-        newBillItem.setId(0);   // Set 0 here because we use DTO as creation request also. It is better to create requestVM type or use Json ignore here.
-        newBillItem.setOrderedTime(Instant.now());
-        return billItemMapper.toDto( billItemRepository.save(newBillItem));
+        BillItem newBillItem = billItemMapper.toEntity( billItemDTO );
+        newBillItem.setId( 0 ); // Set 0 here because we use DTO as creation request also. It is better to create requestVM type or use Json ignore here.
+        newBillItem.setOrderedTime( Instant.now() );
+        return billItemMapper.toDto( billItemRepository.save( newBillItem ) );
     }
 
     /**
-     *  Create bill item
+     * Create bill item
      *
-     * @param billId: Bill that this Bill Item belongs
-     * @param billItemId: id of the Bill Item to be updated
-     * @param quantity: update quantity of the Bill Item
+     * @param billId
+     *            : Bill that this Bill Item belongs
+     * @param billItemId
+     *            : id of the Bill Item to be updated
+     * @param quantity
+     *            : update quantity of the Bill Item
      * @throws ApplicationException
      */
     @Override
     public BillItemDTO editBillItem( Long billId, Long billItemId, Integer quantity ) throws ApplicationException {
-        if (quantity.intValue() <= 0)
+        if ( quantity.intValue() <= 0 )
             throw new ApplicationException( Constants.INVALID_QUANTITY_FOR_BILL_ITEM );
 
-        log.debug("Request to edit new BillItem with id : ", billItemId);
+        log.debug( "Request to edit new BillItem with id : ", billItemId );
 
-        Bill bill = billRepository.findById(billId).orElseThrow( () -> new ApplicationException( Constants.BILL_NOT_FOUND ) ) ;
-        BillItem billItem = bill.getBillItems()
-                .stream()
-                .filter( item -> item.getId() == billItemId.longValue() )
-                .findAny()
-                .orElseThrow( () -> new ApplicationException( Constants.BILL_ITEM_NOT_FOUND ) ) ;
-        billItem.setQuantity(quantity);
-        billItem.setOrderedTime(Instant.now());
-        billRepository.save(bill);
-        return billItemMapper.toDto(billItem);
+        Bill bill = billRepository.findById( billId ).orElseThrow( ( ) -> new ApplicationException( Constants.BILL_NOT_FOUND ) );
+        BillItem billItem = bill.getBillItems().stream().filter( item -> item.getId() == billItemId.longValue() ).findAny().orElseThrow( ( ) -> new ApplicationException( Constants.BILL_ITEM_NOT_FOUND ) );
+        billItem.setQuantity( quantity );
+        billItem.setOrderedTime( Instant.now() );
+        billRepository.save( bill );
+        return billItemMapper.toDto( billItem );
     }
 
     /**
      * Delete a bill item
      *
-     * @param id of the menu item to be deleted
+     * @param id
+     *            of the menu item to be deleted
      * @return the persisted entity
      */
     @Override
+    @Transactional( readOnly = false )
     public void deleteBillItem( Long id ) {
-        log.debug("Request to delete Bill item : {}", id);
+        log.debug( "Request to delete Bill item : {}", id );
         billItemRepository.deleteById( id );
     }
 
-
-    /**
-     * Get Bill report
-
-     * @return
-     * @throws ApplicationException
-     */
-    @Override
-    public TotalBillReportDTO getBillReport( ) throws ApplicationException {
-        TotalBillReportDTO totalBillReportDTO = new TotalBillReportDTO();
-        totalBillReportDTO.setBillItemsReport(billItemRepository.getAllBillReport()
-                                                                .stream()
-                                                                .map( billItemReportMapper::toDto )
-                                                                .collect(Collectors.toList()));
-
-        totalBillReportDTO.setGrandTotal( totalBillReportDTO.getBillItemsReport()
-                                                            .stream()
-                                                            .map( BillItemReportDTO::getTotalPrice )
-                                                            .reduce(BigDecimal.ZERO, BigDecimal::add));
-        return totalBillReportDTO;
-    }
+    public List<Menu>
 }

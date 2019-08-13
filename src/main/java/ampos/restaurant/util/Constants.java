@@ -17,4 +17,3 @@ public interface Constants {
     public static final String DATE_TIME_FORMAT = "yyyy/MM/dd hh:mm:ss a";
     public static final String ORDER_ITEM_SHOW = "ORDER_ITEM_SHOW";
 }
-

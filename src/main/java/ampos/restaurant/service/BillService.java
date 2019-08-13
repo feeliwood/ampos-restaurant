@@ -17,7 +17,7 @@ import org.springframework.data.domain.Pageable;
  */
 public interface BillService {
     /**
-     *  Update bill
+     * Update bill
      *
      * @param
      * @throws ApplicationException
@@ -43,19 +43,22 @@ public interface BillService {
     Page<BillDTO> findAllBill( Pageable pageable ) throws ApplicationException;
 
     /**
-     *  Create bill item
+     * Create bill item
      *
      * @param billItemDTO
      * @throws ApplicationException
      */
-    BillItemDTO createBillItem( Long billId,  BillItemDTO billItemDTO ) throws ApplicationException;
+    BillItemDTO createBillItem( Long billId, BillItemDTO billItemDTO ) throws ApplicationException;
 
     /**
-     *  Create bill item
+     * Create bill item
      *
-     * @param billId: Bill that this Bill Item belongs
-     * @param billItemId: id of the Bill Item to be updated
-     * @param quantity: update quantity of the Bill Item
+     * @param billId
+     *            : Bill that this Bill Item belongs
+     * @param billItemId
+     *            : id of the Bill Item to be updated
+     * @param quantity
+     *            : update quantity of the Bill Item
      * @throws ApplicationException
      */
     BillItemDTO editBillItem( Long billId, Long billItemId, Integer quantity ) throws ApplicationException;
@@ -70,9 +73,9 @@ public interface BillService {
 
     /**
      * Get menu items report
-
+     * 
      * @return
      * @throws ApplicationException
      */
-    TotalBillReportDTO getBillReport( ) throws ApplicationException;
+    TotalBillReportDTO getBillReport() throws ApplicationException;
 }

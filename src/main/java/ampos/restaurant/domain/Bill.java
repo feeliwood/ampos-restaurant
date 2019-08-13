@@ -22,25 +22,18 @@ public class Bill implements Serializable {
     @Column( name = ID )
     private long id;
 
-    @OneToMany(
-                    mappedBy = MAPPED_MANY_TO_ONE_FIELD_NAME,
-                    cascade = CascadeType.ALL,
-                    orphanRemoval = true,
-                    fetch = FetchType.EAGER
-    )
+    @OneToMany( mappedBy = MAPPED_MANY_TO_ONE_FIELD_NAME, cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER )
     private Set<BillItem> billItems = new HashSet<>();
-
 
     public Bill() {
         super();
     }
 
-    public Bill(long id, Set<BillItem> billItems) {
+    public Bill( long id, Set<BillItem> billItems ) {
         super();
         this.id = id;
         this.billItems = billItems;
     }
-
 
     /**
      * 
@@ -55,7 +48,7 @@ public class Bill implements Serializable {
      *
      * @param id
      */
-    public void setId(long id) {
+    public void setId( long id ) {
         this.id = id;
     }
 
@@ -81,9 +74,9 @@ public class Bill implements Serializable {
      *
      * @param billItem
      */
-    public void addBillItem(BillItem billItem) {
+    public void addBillItem( BillItem billItem ) {
         billItems.add( billItem );
-        billItem.setBill(this);
+        billItem.setBill( this );
     }
 
     /**
@@ -91,9 +84,9 @@ public class Bill implements Serializable {
      *
      * @param billItem
      */
-    public void removeBillItem(BillItem billItem) {
+    public void removeBillItem( BillItem billItem ) {
         billItems.remove( billItem );
-        billItem.setBill(null);
+        billItem.setBill( null );
     }
 
     /**
@@ -101,8 +94,6 @@ public class Bill implements Serializable {
      *
      */
     public BigDecimal getTotal() {
-        return billItems.stream()
-                        .map(BillItem::getSubTotal)
-                        .reduce(BigDecimal.ZERO, BigDecimal::add);
+        return billItems.stream().map( BillItem::getSubTotal ).reduce( BigDecimal.ZERO, BigDecimal::add );
     }
 }

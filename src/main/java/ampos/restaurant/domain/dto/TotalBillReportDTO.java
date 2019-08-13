@@ -10,18 +10,18 @@ public class TotalBillReportDTO {
     BigDecimal grandTotal;
 
     public List<BillItemReportDTO> getBillItemsReport() {
-	return billItemsReport;
+        return billItemsReport;
     }
 
     public void setBillItemsReport( List<BillItemReportDTO> billItemsReport ) {
-	this.billItemsReport = billItemsReport;
+        this.billItemsReport = billItemsReport;
     }
 
     public BigDecimal getGrandTotal() {
-	return grandTotal;
+        return grandTotal;
     }
 
     public void setGrandTotal( BigDecimal grandTotal ) {
-	this.grandTotal = grandTotal;
+        this.grandTotal = grandTotal;
     }
 }

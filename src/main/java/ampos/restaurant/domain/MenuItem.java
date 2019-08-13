@@ -35,14 +35,14 @@ public class MenuItem implements Serializable {
     private String name;
 
     @NotNull
-    @Column( name = DESCRIPTION_COLUMN, nullable = false  )
+    @Column( name = DESCRIPTION_COLUMN, nullable = false )
     private String description;
 
     @Column( name = IMAGE_COLUMN )
     private String imageUrl;
 
     @NotNull
-    @Column( name = PRICE_COLUMN, precision=10, scale=2, nullable = false)
+    @Column( name = PRICE_COLUMN, precision = 10, scale = 2, nullable = false )
     private BigDecimal price;
 
     @Column( name = DETAILS_COLUMN )
@@ -65,8 +65,7 @@ public class MenuItem implements Serializable {
      * @param price
      * @param details
      */
-    public MenuItem(long id, @NotNull String name, @NotNull String description, String imageUrl,
-                    @NotNull BigDecimal price, String details) {
+    public MenuItem( long id, @NotNull String name, @NotNull String description, String imageUrl, @NotNull BigDecimal price, String details ) {
         super();
         this.id = id;
         this.name = name;
@@ -86,7 +85,8 @@ public class MenuItem implements Serializable {
 
     /**
      *
-     * @param id to be set
+     * @param id
+     *            to be set
      */
     public void setId( long id ) {
         this.id = id;
@@ -102,7 +102,8 @@ public class MenuItem implements Serializable {
 
     /**
      *
-     * @param name set MenuItem name
+     * @param name
+     *            set MenuItem name
      */
     public void setName( String name ) {
         this.name = name;
@@ -118,7 +119,8 @@ public class MenuItem implements Serializable {
 
     /**
      *
-     * @param description set MenuItem description
+     * @param description
+     *            set MenuItem description
      */
     public void setDescription( String description ) {
         this.description = description;
@@ -134,7 +136,8 @@ public class MenuItem implements Serializable {
 
     /**
      *
-     * @param imageUrl set url to MenuItem image
+     * @param imageUrl
+     *            set url to MenuItem image
      */
     public void setImageUrl( String imageUrl ) {
         this.imageUrl = imageUrl;
@@ -150,7 +153,8 @@ public class MenuItem implements Serializable {
 
     /**
      *
-     * @param price set MenuItem price
+     * @param price
+     *            set MenuItem price
      */
     public void setPrice( BigDecimal price ) {
         this.price = price;
@@ -166,7 +170,8 @@ public class MenuItem implements Serializable {
 
     /**
      *
-     * @param details set MenuItem details
+     * @param details
+     *            set MenuItem details
      */
     public void setDetails( String details ) {
         this.details = details;

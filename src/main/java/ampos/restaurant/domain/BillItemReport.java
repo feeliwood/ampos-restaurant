@@ -9,35 +9,36 @@ public class BillItemReport {
 
     private BigDecimal totalPrice;
 
-    public BillItemReport() {}
+    public BillItemReport() {
+    }
 
     public BillItemReport( String name, long quantity, BigDecimal totalPrice ) {
-	this.name = name;
-	this.quantity = quantity;
-	this.totalPrice = totalPrice;
+        this.name = name;
+        this.quantity = quantity;
+        this.totalPrice = totalPrice;
     }
 
     public String getName() {
-	return name;
+        return name;
     }
 
     public void setName( String name ) {
-	this.name = name;
+        this.name = name;
     }
 
     public long getQuantity() {
-	return quantity;
+        return quantity;
     }
 
     public void setQuantity( long quantity ) {
-	this.quantity = quantity;
+        this.quantity = quantity;
     }
 
     public BigDecimal getTotalPrice() {
-	return totalPrice;
+        return totalPrice;
     }
 
     public void setTotalPrice( BigDecimal totalPrice ) {
-	this.totalPrice = totalPrice;
+        this.totalPrice = totalPrice;
     }
 }
