@@ -97,12 +97,20 @@ public class BillResource {
      * @return the ResponseEntity with status 200 (OK) and the list of Bills in
      *         body
      */
+<<<<<<< HEAD
     @GetMapping( BILL_MAPPING )
     public ResponseEntity<Page<BillDTO>> getAllBill( Pageable pageable ) throws ApplicationException {
         logger.debug( "REST request to get a page of Menu Items" );
         Page<BillDTO> page = billService.findAllBill( pageable );
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders( page, BILL_MAPPING );
         return new ResponseEntity<>( page, headers, HttpStatus.OK );
+=======
+    @GetMapping(BILL_MAPPING)
+    public ResponseEntity<Page<BillDTO>> getAllBill(Pageable pageable) throws ApplicationException {
+        logger.debug("REST request to get a page of Menu Items");
+        Page<BillDTO> page = billService.findAllBills(pageable);
+        return new ResponseEntity<>(page, null, HttpStatus.OK);
+>>>>>>> -Remove http header
     }
 
     /**
@@ -144,6 +152,7 @@ public class BillResource {
      * @return the ResponseEntity with status 200 (OK)
      * @throws ApplicationException
      */
+<<<<<<< HEAD
     @ApiOperation( value = "Delete a bill item in a bill", response = ResponseEntity.class )
     @DeleteMapping( BILL_MAPPING + "/{billId}" + BILL_ITEM_MAPPING + "/{billItemId}" )
     public ResponseEntity<Void> deleteBillItem( @PathVariable Long billId, @PathVariable Long billItemId ) throws ApplicationException {
@@ -152,5 +161,12 @@ public class BillResource {
         return ResponseEntity.ok()
                 .headers( HeaderUtil.createEntityDeletionAlert( BILL_NAME, billItemId.toString() ) )
                 .build();
+=======
+    @DeleteMapping(BILL_MAPPING + "/{billId}" +  BILL_ITEM_MAPPING + "/{billItemId}")
+    public ResponseEntity<Void> deleteBillItem(@PathVariable @NotNull  Long billId, @PathVariable @NotNull  Long billItemId) throws ApplicationException {
+        logger.debug("REST request to delete menu item : {}", billItemId);
+        billService.deleteBillItem(billId, billItemId);
+        return ResponseEntity.ok().build();
+>>>>>>> -Remove http header
     }
 }

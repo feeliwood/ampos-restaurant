@@ -8,15 +8,13 @@ import ampos.restaurant.domain.dto.MenuItemDTO;
 import ampos.restaurant.exception.ApplicationException;
 import ampos.restaurant.service.MenuItemService;
 
-import ampos.restaurant.web.rest.util.HeaderUtil;
-import ampos.restaurant.web.rest.util.PaginationUtil;
+
 import ampos.restaurant.web.rest.util.ResponseUtil;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -56,7 +54,7 @@ public class MenuItemResource {
     public ResponseEntity<MenuItemDTO> createMenuItem( @RequestBody MenuItemDTO menuItemDTO ) throws ApplicationException, URISyntaxException {
         logger.debug( "Creating menu item...." );
 
-        MenuItemDTO result = menuItemService.save(null, menuItemDTO);
+        MenuItemDTO result = menuItemService.createOrUpdateMenuItem(null, menuItemDTO);
         return ResponseEntity.created(new URI(MENU_ITEM__MAPPING + "/" + result.getId())).body(result);
     }
 
@@ -70,7 +68,7 @@ public class MenuItemResource {
     public ResponseEntity<MenuItemDTO> updateMenuItem( @PathVariable Long id, @RequestBody MenuItemDTO menuItemDTO ) throws ApplicationException {
         logger.debug( "REST request to update Menu Item : {}", menuItemDTO );
 
-        MenuItemDTO result = menuItemService.save(id, menuItemDTO);
+        MenuItemDTO result = menuItemService.createOrUpdateMenuItem(id, menuItemDTO);
         return ResponseEntity.ok().body(result);
     }
 
@@ -80,11 +78,19 @@ public class MenuItemResource {
      * @param id the id of the menuItemDTO to retrieve
      * @return the ResponseEntity with status 200 (OK) and with body the menuItemDTO, or with status 404 (Not Found)
      */
+<<<<<<< HEAD
     @GetMapping( "/{id}" )
     public ResponseEntity<MenuItemDTO> getMenuItem( @PathVariable Long id ) throws ApplicationException {
         logger.debug( "REST request to get Menu Item : {}", id );
         MenuItemDTO menuItemDTO = menuItemService.findById( id );
         return ResponseUtil.wrapOrNotFound( Optional.ofNullable( menuItemDTO ) );
+=======
+    @GetMapping("/{id}")
+    public ResponseEntity<MenuItemDTO> getMenuItem(@PathVariable Long id) throws ApplicationException {
+        logger.debug("REST request to get Menu Item : {}", id);
+        MenuItemDTO menuItemDTO = menuItemService.findMenuItemById(id);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(menuItemDTO));
+>>>>>>> -Remove http header
     }
 
     /**
@@ -96,11 +102,18 @@ public class MenuItemResource {
      *         items in body
      */
     @GetMapping
+<<<<<<< HEAD
     public ResponseEntity<Page<MenuItemDTO>> getAllMenuItems( Pageable pageable ) throws ApplicationException {
         logger.debug( "REST request to get a page of Menu Items" );
         Page<MenuItemDTO> page = menuItemService.findAll( pageable );
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders( page, "/menu/items" );
         return new ResponseEntity<>( page, headers, HttpStatus.OK );
+=======
+    public ResponseEntity<Page<MenuItemDTO>> getAllMenuItems(Pageable pageable) throws ApplicationException {
+        logger.debug("REST request to get a page of Menu Items");
+        Page<MenuItemDTO> page = menuItemService.findAllMenuItems(pageable);
+        return new ResponseEntity<>(page, null , HttpStatus.OK);
+>>>>>>> -Remove http header
     }
 
     /**
@@ -110,6 +123,7 @@ public class MenuItemResource {
      *            the id of the menuItemDTO to delete
      * @return the ResponseEntity with status 200 (OK)
      */
+<<<<<<< HEAD
     @DeleteMapping( "/{id}" )
     public ResponseEntity<Void> deleteMenuItem( @PathVariable Long id ) {
         logger.debug( "REST request to delete menu item : {}", id );
@@ -135,5 +149,12 @@ public class MenuItemResource {
         Page<MenuItemDTO> page = menuItemService.searchMenuItems( keyword, pageable );
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders( page, "/menu/search" );
         return new ResponseEntity<>( page, headers, HttpStatus.OK );
+=======
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteMenuItem(@PathVariable Long id) {
+        logger.debug("REST request to delete menu item : {}", id);
+        menuItemService.deleteMenuItem(id);
+        return ResponseEntity.ok().build();
+>>>>>>> -Remove http header
     }
 }

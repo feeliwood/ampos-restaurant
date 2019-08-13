@@ -70,7 +70,7 @@ public class BillServiceImpl implements BillService {
      */
     @Override
     @Transactional( readOnly = true )
-    public Page<BillDTO> findAllBill( Pageable pageable ) {
+    public Page<BillDTO> findAllBills( Pageable pageable ) {
         log.debug( "Request to get all BillItems" );
         return billRepository.findAll( pageable ).map( billMapper::toDto );
     }
@@ -151,11 +151,18 @@ public class BillServiceImpl implements BillService {
     @Override
     public void deleteBillItem( Long billId, Long billItemId ) throws ApplicationException {
         log.debug( "Request to delete Bill item : {}", billItemId );
+<<<<<<< HEAD
         Bill bill = billRepository.findById( billId ).orElseThrow( () -> new ApplicationException( Constants.BILL_NOT_FOUND ) );
         bill.getBillItems().stream()
         .filter( item -> item.getId() == billItemId.longValue() ).findAny()
         .orElseThrow( () -> new ApplicationException( Constants.BILL_ITEM_NOT_FOUND ) );
         billItemRepository.deleteById( billItemId );
+=======
+//        Bill bill = billRepository.findById( billId ).orElseThrow( ( ) -> new ApplicationException( Constants.BILL_NOT_FOUND ) );
+//        BillItem billItem = bill.getBillItems().stream().filter( item -> item.getId() == billItemId.longValue() ).findAny().orElseThrow( ( ) -> new ApplicationException( Constants.BILL_ITEM_NOT_FOUND ) );
+//        bill.getBillItems().remove( billItem );
+        billItemRepository.deleteBillItemByIdAndBillId( billId, billItemId );
+>>>>>>> -Remove http header
     }
 
     /**

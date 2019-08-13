@@ -45,7 +45,7 @@ public class MenuItemServiceImpl implements MenuItemService {
      * @return the persisted entity
      */
     @Override
-    public MenuItemDTO save( Long id, MenuItemDTO menuItemDTO ) {
+    public MenuItemDTO createOrUpdateMenuItem( Long id, MenuItemDTO menuItemDTO ) {
         log.debug( "Request to update MenuItem : {}", menuItemDTO );
 
         MenuItem menuItem = menuItemMapper.toEntity( menuItemDTO );
@@ -66,7 +66,7 @@ public class MenuItemServiceImpl implements MenuItemService {
      * @return the persisted entity
      */
     @Override
-    public void delete( Long id ) {
+    public void deleteMenuItem( Long id ) {
         log.debug( "Request to delete Menu Item : {}", id );
         menuItemRepository.deleteById( id );
     }
@@ -80,7 +80,7 @@ public class MenuItemServiceImpl implements MenuItemService {
      */
     @Override
     @Transactional( readOnly = true )
-    public Page<MenuItemDTO> findAll( Pageable pageable ) {
+    public Page<MenuItemDTO> findAllMenuItems( Pageable pageable ) {
         log.debug( "Request to get all MenuItems" );
         return menuItemRepository.findAll( pageable ).map( menuItemMapper::toDto );
     }
@@ -94,7 +94,7 @@ public class MenuItemServiceImpl implements MenuItemService {
      */
     @Override
     @Transactional( readOnly = true )
-    public MenuItemDTO findById( Long id ) throws ApplicationException {
+    public MenuItemDTO findMenuItemById( Long id ) throws ApplicationException {
         log.debug( "Request to get Menu Item : {}", id );
         MenuItem menuItem = menuItemRepository.findById( id ).orElseThrow( () -> new ApplicationException( Constants.MENU_ITEM_NOT_FOUND ) );
         return menuItemMapper.toDto( menuItem );
@@ -111,6 +111,6 @@ public class MenuItemServiceImpl implements MenuItemService {
     @Override
     @Transactional( readOnly = true )
     public Page<MenuItemDTO> searchMenuItems( String keyword, Pageable pageable ) throws ApplicationException {
-        return menuItemRepository.search( keyword, pageable ).map( menuItemMapper::toDto );
+        return menuItemRepository.search( keyword.toLowerCase(), pageable ).map( menuItemMapper::toDto );
     }
 }

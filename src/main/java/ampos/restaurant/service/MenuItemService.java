@@ -16,7 +16,7 @@ public interface MenuItemService {
      * @param menuItemDTO
      * @throws ApplicationException
      */
-    MenuItemDTO save( Long id, MenuItemDTO menuItemDTO ) throws ApplicationException;
+    MenuItemDTO createOrUpdateMenuItem( Long id, MenuItemDTO menuItemDTO ) throws ApplicationException;
 
     /**
      * Delete menu item
@@ -24,7 +24,7 @@ public interface MenuItemService {
      * @param id
      * @throws ApplicationException
      */
-    void delete( Long id );
+    void deleteMenuItem( Long id );
 
     /**
      * Get menu item by Id
@@ -33,7 +33,7 @@ public interface MenuItemService {
      * @return
      * @throws ApplicationException
      */
-    MenuItemDTO findById( Long id ) throws ApplicationException;
+    MenuItemDTO findMenuItemById( Long id ) throws ApplicationException;
 
     /**
      * Get list menu items
@@ -42,7 +42,7 @@ public interface MenuItemService {
      * @return
      * @throws ApplicationException
      */
-    Page<MenuItemDTO> findAll( Pageable pageable ) throws ApplicationException;
+    Page<MenuItemDTO> findAllMenuItems( Pageable pageable ) throws ApplicationException;
 
     /**
      * Search menu items by keyword

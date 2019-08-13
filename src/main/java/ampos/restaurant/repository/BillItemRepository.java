@@ -7,7 +7,9 @@ import ampos.restaurant.domain.BillItemReport;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -20,4 +22,11 @@ public interface BillItemRepository extends JpaRepository<BillItem, Long>, JpaSp
             + " GROUP BY menuItem.id" )
     // @formatter:on
     List<BillItemReport> getAllBillReport();
+
+
+    @Modifying
+    @Query("DELETE"
+            + " FROM BillItem billItem"
+            + " WHERE billItem.bill.id = :billId AND billItem.id = :billItemId")
+    void deleteBillItemByIdAndBillId(@Param("billId") Long billId, @Param("billItemId") Long billItemId);
 }

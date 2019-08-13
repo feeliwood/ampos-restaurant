@@ -37,7 +37,7 @@ public interface BillService {
      * @return
      * @throws ApplicationException
      */
-    Page<BillDTO> findAllBill( Pageable pageable ) throws ApplicationException;
+    Page<BillDTO> findAllBills( Pageable pageable ) throws ApplicationException;
 
     /**
      * Create bill item
