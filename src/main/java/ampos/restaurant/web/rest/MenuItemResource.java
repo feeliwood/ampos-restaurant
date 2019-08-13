@@ -4,13 +4,6 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Optional;
 
-import ampos.restaurant.domain.dto.MenuItemDTO;
-import ampos.restaurant.exception.ApplicationException;
-import ampos.restaurant.service.MenuItemService;
-import ampos.restaurant.web.rest.util.HeaderUtil;
-import ampos.restaurant.web.rest.util.PaginationUtil;
-import ampos.restaurant.web.rest.util.ResponseUtil;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -28,9 +21,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import ampos.restaurant.domain.dto.MenuItemDTO;
+import ampos.restaurant.exception.ApplicationException;
+import ampos.restaurant.service.MenuItemService;
+import ampos.restaurant.web.rest.util.HeaderUtil;
+import ampos.restaurant.web.rest.util.PaginationUtil;
+import ampos.restaurant.web.rest.util.ResponseUtil;
+import io.swagger.annotations.ApiOperation;
+
 /**
  * Controller for Menu Item
- * 
+ *
  */
 @RestController
 @RequestMapping( MenuItemResource.MENU_ITEM__MAPPING )
@@ -52,6 +53,7 @@ public class MenuItemResource {
      * @Param menuItemDTO: contain data about the menu item to be created
      * @throws ApplicationException
      */
+    @ApiOperation( value = "Create a new menu item", response = ResponseEntity.class )
     @PostMapping
     public ResponseEntity<MenuItemDTO> createMenuItem( @RequestBody MenuItemDTO menuItemDTO ) throws ApplicationException, URISyntaxException {
         logger.debug( "Creating menu item...." );
@@ -65,9 +67,12 @@ public class MenuItemResource {
      *
      * @param menuItemDTO
      *            the clientDTO to update
+     * @param id
+     *            the menu item id
      * @return the ResponseEntity with status 200 (OK) and with body the updated
      *         clientDTO,
      */
+    @ApiOperation( value = "Updates an existing menu item", response = ResponseEntity.class )
     @PutMapping( "/{id}" )
     public ResponseEntity<MenuItemDTO> updateMenuItem( @PathVariable Long id, @RequestBody MenuItemDTO menuItemDTO ) throws ApplicationException {
         logger.debug( "REST request to update Menu Item : {}", menuItemDTO );
@@ -80,10 +85,11 @@ public class MenuItemResource {
      * GET /items/:id : get the "id" menu item.
      *
      * @param id
-     *            the id of the menuItemDTO to retrieve
+     *            the id of the menu item to retrieve
      * @return the ResponseEntity with status 200 (OK) and with body the
      *         menuItemDTO, or with status 404 (Not Found)
      */
+    @ApiOperation( value = "Get the menu item with id", response = ResponseEntity.class )
     @GetMapping( "/{id}" )
     public ResponseEntity<MenuItemDTO> getMenuItem( @PathVariable Long id ) throws ApplicationException {
         logger.debug( "REST request to get Menu Item : {}", id );
@@ -99,6 +105,7 @@ public class MenuItemResource {
      * @return the ResponseEntity with status 200 (OK) and the list of menu
      *         items in body
      */
+    @ApiOperation( value = "Get all the menu items", response = ResponseEntity.class )
     @GetMapping
     public ResponseEntity<Page<MenuItemDTO>> getAllMenuItems( Pageable pageable ) throws ApplicationException {
         logger.debug( "REST request to get a page of Menu Items" );
@@ -114,13 +121,14 @@ public class MenuItemResource {
      *            the id of the menuItemDTO to delete
      * @return the ResponseEntity with status 200 (OK)
      */
+    @ApiOperation( value = "Delete a menu item with id", response = ResponseEntity.class )
     @DeleteMapping( "/{id}" )
     public ResponseEntity<Void> deleteMenuItem( @PathVariable Long id ) {
         logger.debug( "REST request to delete menu item : {}", id );
         menuItemService.delete( id );
         return ResponseEntity.ok().headers( HeaderUtil.createEntityDeletionAlert( ENTITY_NAME, id.toString() ) ).build();
     }
-    
+
     /**
      * GET /items/search?keyword=<keyword> : search menu items by keyword.
      *
@@ -132,6 +140,7 @@ public class MenuItemResource {
      * @return the ResponseEntity with status 200 (OK) and the list of menu
      *         items in body
      */
+    @ApiOperation( value = "Search menu items by title or description or additional details", response = ResponseEntity.class )
     @GetMapping( "/search" )
     public ResponseEntity<Page<MenuItemDTO>> searchMenuItems( @RequestParam( value = "keyword" ) String keyword, Pageable pageable ) throws ApplicationException {
         logger.debug( "REST request to search menu items" );
