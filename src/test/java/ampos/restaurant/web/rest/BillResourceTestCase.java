@@ -17,6 +17,13 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import org.junit.FixMethodOrder;
+import org.junit.Test;
+import org.junit.runners.MethodSorters;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.util.MimeTypeUtils;
+
 import ampos.restaurant.BaseTestCase;
 import ampos.restaurant.domain.BillItem;
 import ampos.restaurant.domain.dto.BillDTO;
@@ -28,14 +35,7 @@ import ampos.restaurant.models.MenuRequest;
 import ampos.restaurant.repository.BillItemRepository;
 import ampos.restaurant.repository.BillRepository;
 
-import org.junit.FixMethodOrder;
-import org.junit.Test;
-import org.junit.runners.MethodSorters;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.util.MimeTypeUtils;
-
-@FixMethodOrder( MethodSorters.NAME_ASCENDING )
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class BillResourceTestCase extends BaseTestCase {
     @Autowired
     private BillRepository billRepos;
@@ -44,56 +44,55 @@ public class BillResourceTestCase extends BaseTestCase {
 
     /**
      * test case for create bill
-     * 
+     *
      * @throws IOException
      * @throws Exception
      */
     @Test
     public void createBillTestCase() throws IOException, Exception {
-
 	MvcResult result = mockMvc.perform(post("/bills").contentType(MimeTypeUtils.APPLICATION_JSON_VALUE))
 		.andExpect(status().is(201)).andReturn();
 	// check database
 	BillDTO bill = jsonToObject(result.getResponse().getContentAsString(), BillDTO.class);
 	assertTrue(billRepos.existsById(bill.getId()));
-
     }
 
     /**
      * Test case of get Bill
-     * 
+     *
      * @throws IOException
      * @throws Exception
      */
     @Test
     public void getBillTestCase() throws IOException, Exception {
-        // expected data
-        String[] str = { "Italian", "Thai" };
-        ArrayList<String> additionalData = Stream.of( str ).collect( Collectors.toCollection( ArrayList::new ) );
-        MenuItemDTO expectedResult = new MenuItemDTO( (long) 1, "Chicken Tom Yum Pizza", "All-time favourite toppings, Hawaiian pizza in Tropical Hawaii style.", "https://s3-ap-southeast-1.amazonaws.com/interview.ampostech.com/backend/restaurant/menu1.jpg", new BigDecimal( 300.00 ).setScale( 2 ), additionalData );
-        BillResponse expectedBill = new BillResponse();
-        Set<BillItemsResponse> billItems = new HashSet<>();
-        BillItemsResponse billItem = new BillItemsResponse();
-        billItem.setBillId( (long) 1 );
-        billItem.setMenuItem( expectedResult );
-        billItem.setOrderedTime( "2019-11-11T04:11:11Z" );
-        billItem.setQuantity( 1 );
-        billItem.setId( (long) 1 );
-        billItem.setSubTotal( new BigDecimal( 300.00 ).setScale( 2 ) );
-        billItems.add( billItem );
-        expectedBill.setId( (long) 1 );
-        expectedBill.setBillItems( billItems );
-        expectedBill.setTotal( new BigDecimal( 300.00 ).setScale( 2 ) );
-
-        // compare
-        MvcResult result = mockMvc.perform( get( "/bills/1" ) ).andExpect( status().is( 200 ) ).andReturn();
-        assertEquals( asJsonString( expectedBill ), result.getResponse().getContentAsString() );
-
+	// expected data
+	String[] str = { "Italian", "Thai" };
+	ArrayList<String> additionalData = Stream.of(str).collect(Collectors.toCollection(ArrayList::new));
+	MenuItemDTO expectedResult = new MenuItemDTO((long) 1, "Chicken Tom Yum Pizza",
+		"All-time favourite toppings, Hawaiian pizza in Tropical Hawaii style.",
+		"https://s3-ap-southeast-1.amazonaws.com/interview.ampostech.com/backend/restaurant/menu1.jpg",
+		new BigDecimal(300.00).setScale(2), additionalData);
+	BillResponse expectedBill = new BillResponse();
+	Set<BillItemsResponse> billItems = new HashSet<>();
+	BillItemsResponse billItem = new BillItemsResponse();
+	billItem.setBillId((long) 1);
+	billItem.setMenuItem(expectedResult);
+	billItem.setOrderedTime("2019-11-11T04:11:11Z");
+	billItem.setQuantity(1);
+	billItem.setId((long) 1);
+	billItem.setSubTotal(new BigDecimal(300.00).setScale(2));
+	billItems.add(billItem);
+	expectedBill.setId((long) 1);
+	expectedBill.setBillItems(billItems);
+	expectedBill.setTotal(new BigDecimal(300.00).setScale(2));
+	// compare
+	MvcResult result = mockMvc.perform(get("/bills/1")).andExpect(status().is(200)).andReturn();
+	assertEquals(asJsonString(expectedBill), result.getResponse().getContentAsString());
     }
 
     /**
      * test case for create bill item
-     * 
+     *
      * @throws IOException
      * @throws Exception
      */
@@ -105,8 +104,7 @@ public class BillResourceTestCase extends BaseTestCase {
 		"All-time favourite toppings, Hawaiian pizza in Tropical Hawaii style.",
 		"https://s3-ap-southeast-1.amazonaws.com/interview.ampostech.com/backend/restaurant/menu1.jpg",
 		new BigDecimal(300), additionalData);
-	BillItemsRequest billItems = new BillItemsRequest((long) 1, 1, menu, "2019/08/05 04:44:44 PM", (long) 1,
-		new BigDecimal(300));
+	BillItemsRequest billItems = new BillItemsRequest((long) 1, 1, menu, (long) 1, new BigDecimal(300));
 	// compare
 	MvcResult result = mockMvc.perform(post("/bills/1/bill-items").contentType(MimeTypeUtils.APPLICATION_JSON_VALUE)
 		.content(asJsonString(billItems))).andExpect(status().is(201)).andReturn();
@@ -117,19 +115,16 @@ public class BillResourceTestCase extends BaseTestCase {
 	BillItem billItemResult = billItemRepos.findById(actualData.getId()).get();
 	assertEquals(menu.getName(), billItemResult.getMenuItem().getName());
 	assertTrue(billItems.getBillId() == billItemResult.getBill().getId());
-	
-     
     }
 
     /**
      * test case for update bill item
-     * 
+     *
      * @throws IOException
      * @throws Exception
      */
     @Test
     public void updateBillItemTestCase() throws IOException, Exception {
-	
 	assertTrue(billItemRepos.findById((long) 1).get().getQuantity() == 1);
 	MvcResult result = mockMvc
 		.perform(put("/bills/1/bill-items/1").contentType(MimeTypeUtils.APPLICATION_JSON_VALUE).content("2"))
@@ -140,21 +135,20 @@ public class BillResourceTestCase extends BaseTestCase {
 	// check database
 	BillItem billItemResult = billItemRepos.findById(actualData.getId()).get();
 	assertTrue(billItemResult.getQuantity() == 2);
-
     }
 
     /**
      * Test case for delete bill item
-     * 
+     *
      * @throws IOException
      * @throws Exception
      */
     @Test
     public void deleteBillItemTestCase() throws IOException, Exception {
-        assertTrue( billItemRepos.existsById( (long) 1 ) );
-        MvcResult result = mockMvc.perform( delete( "/bills/1/bill-items/1" ) ).andExpect( status().is( 200 ) ).andReturn();
-        assertEquals( "", result.getResponse().getContentAsString() );
-        // check database
-        assertFalse( billItemRepos.existsById( (long) 1 ) );
+	assertTrue(billItemRepos.existsById((long) 1));
+	MvcResult result = mockMvc.perform(delete("/bills/1/bill-items/1")).andExpect(status().is(200)).andReturn();
+	assertEquals("", result.getResponse().getContentAsString());
+	// check database
+	assertFalse(billItemRepos.existsById((long) 1));
     }
 }

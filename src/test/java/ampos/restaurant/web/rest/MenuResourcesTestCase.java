@@ -28,7 +28,7 @@ import ampos.restaurant.domain.dto.MenuItemDTO;
 import ampos.restaurant.models.MenuRequest;
 import ampos.restaurant.repository.MenuItemRepository;
 
-@FixMethodOrder( MethodSorters.NAME_ASCENDING )
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class MenuResourcesTestCase extends BaseTestCase {
 
     @Autowired
@@ -64,7 +64,6 @@ public class MenuResourcesTestCase extends BaseTestCase {
 	assertEquals(input.getDescription(), menuItems.getDescription());
 	assertEquals(input.getImageUrl(), menuItems.getImageUrl());
 	assertEquals(input.getPrice().setScale(2), menuItems.getPrice());
-
     }
 
     /**
@@ -75,15 +74,17 @@ public class MenuResourcesTestCase extends BaseTestCase {
      */
     @Test
     public void getMenuTestCase() throws IOException, Exception {
-        // expected data
-        String[] str = { "Italian", "Thai" };
-        ArrayList<String> additionalData = Stream.of( str ).collect( Collectors.toCollection( ArrayList::new ) );
-        MenuItemDTO expectedResult = new MenuItemDTO( (long) 1, "Chicken Tom Yum Pizza", "All-time favourite toppings, Hawaiian pizza in Tropical Hawaii style.", "https://s3-ap-southeast-1.amazonaws.com/interview.ampostech.com/backend/restaurant/menu1.jpg", new BigDecimal( 300.00 ).setScale( 2 ), additionalData );
-        // compare
-        MvcResult result = mockMvc.perform( get( "/menu-items/1" ) ).andExpect( status().is( 200 ) ).andReturn();
-        assertEquals( asJsonString( expectedResult ), result.getResponse().getContentAsString() );
+	// expected data
+	String[] str = { "Italian", "Thai" };
+	ArrayList<String> additionalData = Stream.of(str).collect(Collectors.toCollection(ArrayList::new));
+	MenuItemDTO expectedResult = new MenuItemDTO((long) 1, "Chicken Tom Yum Pizza",
+		"All-time favourite toppings, Hawaiian pizza in Tropical Hawaii style.",
+		"https://s3-ap-southeast-1.amazonaws.com/interview.ampostech.com/backend/restaurant/menu1.jpg",
+		new BigDecimal(300.00).setScale(2), additionalData);
+	// compare
+	MvcResult result = mockMvc.perform(get("/menu-items/1")).andExpect(status().is(200)).andReturn();
+	assertEquals(asJsonString(expectedResult), result.getResponse().getContentAsString());
     }
-
     /**
      * test case for update menu
      * 
@@ -115,9 +116,7 @@ public class MenuResourcesTestCase extends BaseTestCase {
 	assertEquals(input.getDescription(), menuItems.getDescription());
 	assertEquals(input.getImageUrl(), menuItems.getImageUrl());
 	assertEquals(input.getPrice().setScale(2), menuItems.getPrice());
-
     }
-
     /**
      * Test case for delete menu
      * 
@@ -126,10 +125,11 @@ public class MenuResourcesTestCase extends BaseTestCase {
      */
     @Test
     public void deleteMenuTestCase() throws IOException, Exception {
-        assertTrue( menuRepos.existsById( (long) 2 ) );
-        MvcResult result = mockMvc.perform( delete( "/menu-items/2" ).contentType( MimeTypeUtils.APPLICATION_JSON_VALUE ) ).andExpect( status().is( 200 ) ).andReturn();
-        assertEquals( "", result.getResponse().getContentAsString() );
-        // check database
-        assertFalse( menuRepos.existsById( (long) 2 ) );
+	assertTrue(menuRepos.existsById((long) 2));
+	MvcResult result = mockMvc.perform(delete("/menu-items/2").contentType(MimeTypeUtils.APPLICATION_JSON_VALUE))
+		.andExpect(status().is(200)).andReturn();
+	assertEquals("", result.getResponse().getContentAsString());
+	// check database
+	assertFalse(menuRepos.existsById((long) 2));
     }
 }
