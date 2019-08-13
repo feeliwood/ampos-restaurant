@@ -1,7 +1,5 @@
 package ampos.restaurant.exception;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.hibernate.exception.ConstraintViolationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,85 +24,104 @@ public class ApplicationExceptionHandler {
     /**
      * Handle bad request
      * 
-     * @param httpServletRequest
      * @param e
      * @return
      */
     @ExceptionHandler( ApplicationException.class )
     @ResponseStatus( HttpStatus.BAD_REQUEST )
     @ResponseBody
-    public RestResourceErrorInfo handleBadRequest( HttpServletRequest httpServletRequest, ApplicationException e ) {
+    public RestResourceErrorInfo handleBadRequest( ApplicationException e ) {
         logger.warn( "Bad request ", e );
-        return exceptionHandling( httpServletRequest, e, HttpStatus.BAD_REQUEST );
+        return exceptionHandling( e );
     }
 
     /**
      * Handle request not found
      * 
-     * @param httpServletRequest
      * @param e
      * @return
      */
     @ExceptionHandler( NoHandlerFoundException.class )
     @ResponseStatus( HttpStatus.NOT_FOUND )
     @ResponseBody
-    public RestResourceErrorInfo handleRequestNotFound( HttpServletRequest httpServletRequest, Exception e ) {
+    public RestResourceErrorInfo handleRequestNotFound( Exception e ) {
         logger.warn( "Request is not found ", e );
-        return exceptionHandling( httpServletRequest, e, HttpStatus.NOT_FOUND );
+        return exceptionHandling( e );
 
     }
 
     /**
      * Handle constraint violation exception
      * 
-     * @param httpServletRequest
      * @param e
      * @return
      */
     @ExceptionHandler( { ConstraintViolationException.class } )
     @ResponseStatus( HttpStatus.BAD_REQUEST )
     @ResponseBody
-    public RestResourceErrorInfo handleConstraintViolationException( HttpServletRequest httpServletRequest, ConstraintViolationException e ) {
+    public RestResourceErrorInfo handleConstraintViolationException( ConstraintViolationException e ) {
         logger.warn( "Request is not found ", e );
-        return exceptionHandling( httpServletRequest, e, HttpStatus.BAD_REQUEST );
+        return exceptionHandling( e );
     }
 
     /**
      * Exception handling
      *
-     * @param httpServletRequest
      * @param e
      * @param httpStatus
      * @return
      */
-    private RestResourceErrorInfo exceptionHandling( HttpServletRequest httpServletRequest, Exception e, HttpStatus httpStatus ) {
+    private RestResourceErrorInfo exceptionHandling( Exception e ) {
         if ( e instanceof ConstraintViolationException ) {
             ConstraintViolationException cve = ((ConstraintViolationException) e);
             int sqlErrorCode = cve.getSQLException().getErrorCode();
-
-            if ( sqlErrorCode == MysqlErrorNumbers.ER_ROW_IS_REFERENCED_2 ) {
-                return new RestResourceErrorInfo( httpStatus.value(), ErrorMessage.MESSAGE_FK_CONSTRAINT_KEY.getMessage(), httpServletRequest.getRequestURI() );
-            }
-
-            if ( sqlErrorCode == MysqlErrorNumbers.ER_DUP_ENTRY ) {
-                return new RestResourceErrorInfo( httpStatus.value(), ErrorMessage.MESSAGE_DUP_ENTRY.getMessage(), httpServletRequest.getRequestURI() );
-            }
+            return new RestResourceErrorInfo( ErrorMessage.getErrorMessage( sqlErrorCode ).getMessage() );
         }
-        return new RestResourceErrorInfo( httpStatus.value(), e.getMessage(), httpServletRequest.getRequestURI() );
+        return new RestResourceErrorInfo( e.getMessage() );
     }
 
     enum ErrorMessage {
-        MESSAGE_FK_CONSTRAINT_KEY( "Cannot delete or update due to forgein key constraint" ),
-        MESSAGE_DUP_ENTRY( "Duplicate entry name" );
+        MESSAGE_FK_CONSTRAINT_KEY( MysqlErrorNumbers.ER_ROW_IS_REFERENCED_2, "Cannot delete or update due to forgein key constraint" ),
+        MESSAGE_DUP_ENTRY( MysqlErrorNumbers.ER_DUP_ENTRY, "Duplicate entry name" );
+
+        private int errorCode;
         private String message;
 
-        private ErrorMessage( String message ) {
+        private ErrorMessage( int errorCode, String message ) {
+            this.errorCode = errorCode;
             this.message = message;
+        }
+
+        public int getErrorCode() {
+            return errorCode;
+        }
+
+        public void setErrorCode( int errorCode ) {
+            this.errorCode = errorCode;
         }
 
         public String getMessage() {
             return message;
         }
 
+        public void setMessage( String message ) {
+            this.message = message;
+        }
+
+        /**
+         * Get error message
+         * 
+         * @param code
+         * @return
+         */
+        public static ErrorMessage getErrorMessage( int code ) {
+            for ( ErrorMessage e : values() ) {
+                if ( e.errorCode == code ) {
+                    return e;
+                }
+            }
+            return null;
+        }
     }
+
 }
