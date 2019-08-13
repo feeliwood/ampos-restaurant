@@ -163,10 +163,10 @@ public class BillServiceImpl implements BillService {
     @Override
     public TotalBillItemReportDTO getBillItemReport() throws ApplicationException {
         TotalBillItemReportDTO totalBillReportDTO = new TotalBillItemReportDTO();
-        totalBillReportDTO.setBillItemsReport( billItemRepository.getAllBillReport().stream().map( billItemReportMapper::toDto )
+        totalBillReportDTO.setBillItems( billItemRepository.getAllBillReport().stream().map( billItemReportMapper::toDto )
                 .collect( Collectors.toList() ) );
 
-        totalBillReportDTO.setGrandTotal( totalBillReportDTO.getBillItemsReport().stream().map( BillItemReportDTO::getTotalPrice )
+        totalBillReportDTO.setTotal( totalBillReportDTO.getBillItems().stream().map( BillItemReportDTO::getSubTotal )
                 .reduce( BigDecimal.ZERO, BigDecimal::add ) );
         return totalBillReportDTO;
     }

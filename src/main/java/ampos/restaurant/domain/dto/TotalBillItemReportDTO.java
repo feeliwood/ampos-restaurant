@@ -9,6 +9,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class TotalBillItemReportDTO {
-    private List<BillItemReportDTO> billItemsReport;
-    private BigDecimal grandTotal;
+    private List<BillItemReportDTO> billItems;
+    private BigDecimal total;
 }
