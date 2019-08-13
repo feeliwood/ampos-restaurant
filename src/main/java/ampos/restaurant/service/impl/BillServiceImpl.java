@@ -16,7 +16,7 @@ import ampos.restaurant.domain.BillItem;
 import ampos.restaurant.domain.dto.BillDTO;
 import ampos.restaurant.domain.dto.BillItemDTO;
 import ampos.restaurant.domain.dto.BillItemReportDTO;
-import ampos.restaurant.domain.dto.TotalBillReportDTO;
+import ampos.restaurant.domain.dto.TotalBillItemReportDTO;
 import ampos.restaurant.domain.mapper.BillItemMapper;
 import ampos.restaurant.domain.mapper.BillItemReportMapper;
 import ampos.restaurant.domain.mapper.BillMapper;
@@ -27,7 +27,7 @@ import ampos.restaurant.service.BillService;
 import ampos.restaurant.util.Constants;
 
 /**
- * Bill Item Service implementation
+ * Bill item service implementation
  *
  */
 @Service
@@ -91,7 +91,7 @@ public class BillServiceImpl implements BillService {
     }
 
     /**
-     * Save Bill Item to a Bill specify by billId
+     * Create bill item
      *
      * @param billId
      *            of the Bill that this Bill Item belongs to
@@ -112,7 +112,7 @@ public class BillServiceImpl implements BillService {
     }
 
     /**
-     * Create bill item
+     * Update bill item
      *
      * @param billId
      *            : Bill that this Bill Item belongs
@@ -123,7 +123,7 @@ public class BillServiceImpl implements BillService {
      * @throws ApplicationException
      */
     @Override
-    public BillItemDTO editBillItem( Long billId, Long billItemId, Integer quantity ) throws ApplicationException {
+    public BillItemDTO updateBillItem( Long billId, Long billItemId, Integer quantity ) throws ApplicationException {
         if ( quantity.intValue() <= 0 )
             throw new ApplicationException( Constants.INVALID_QUANTITY_FOR_BILL_ITEM );
 
@@ -155,14 +155,14 @@ public class BillServiceImpl implements BillService {
     }
 
     /**
-     * Get Bill report
+     * Get bill item report
      *
      * @return
      * @throws ApplicationException
      */
     @Override
-    public TotalBillReportDTO getBillReport() throws ApplicationException {
-        TotalBillReportDTO totalBillReportDTO = new TotalBillReportDTO();
+    public TotalBillItemReportDTO getBillItemReport() throws ApplicationException {
+        TotalBillItemReportDTO totalBillReportDTO = new TotalBillItemReportDTO();
         totalBillReportDTO.setBillItemsReport( billItemRepository.getAllBillReport().stream().map( billItemReportMapper::toDto )
                 .collect( Collectors.toList() ) );
 

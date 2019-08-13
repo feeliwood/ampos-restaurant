@@ -1,5 +1,7 @@
 package ampos.restaurant.web.rest;
 
+import io.swagger.annotations.ApiOperation;
+
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Optional;
@@ -8,7 +10,7 @@ import javax.validation.constraints.NotNull;
 
 import ampos.restaurant.domain.dto.BillDTO;
 import ampos.restaurant.domain.dto.BillItemDTO;
-import ampos.restaurant.domain.dto.TotalBillReportDTO;
+import ampos.restaurant.domain.dto.TotalBillItemReportDTO;
 import ampos.restaurant.exception.ApplicationException;
 import ampos.restaurant.service.BillService;
 import ampos.restaurant.web.rest.util.ResponseUtil;
@@ -35,7 +37,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class BillResource {
     public static final String BILL_MAPPING = "/bills";
     public static final String BILL_ITEM_MAPPING = "/bill-items";
-    private static final String BILL_NAME = "bill";
 
     private static final Logger logger = LoggerFactory.getLogger( BillResource.class );
 
@@ -51,23 +52,25 @@ public class BillResource {
      * @Param BillItemDTO: contain data about the bill to be created
      * @throws ApplicationException
      */
+    @ApiOperation( value = "Create new bill", response = ResponseEntity.class )
     @PostMapping( BILL_MAPPING )
     public ResponseEntity<BillDTO> createBill() throws ApplicationException, URISyntaxException {
-        logger.debug( "REST request to create bill:" );
+        logger.debug( "REST request to create bill" );
 
         BillDTO result = billService.createBill();
         return ResponseEntity.created(new URI(BILL_MAPPING + result.getId())).body(result);
     }
 
     /**
-     * GET all bill report
+     * GET /bills/check : check all bill items
      *
      * @return the ResponseEntity with status 200 (OK)
      */
-    @GetMapping( BILL_MAPPING + "/report" )
-    public ResponseEntity<TotalBillReportDTO> getAllBillReport() throws ApplicationException {
-        logger.debug( "REST request to bill item report: {}" );
-        TotalBillReportDTO result = billService.getBillReport();
+    @ApiOperation( value = "Check all bill items", response = ResponseEntity.class )
+    @GetMapping( BILL_MAPPING + "/check" )
+    public ResponseEntity<TotalBillItemReportDTO> checkBillItems() throws ApplicationException {
+        logger.debug( "REST request to check all bill items" );
+        TotalBillItemReportDTO result = billService.getBillItemReport();
         return new ResponseEntity<>( result, null, HttpStatus.OK );
     }
 
@@ -79,9 +82,10 @@ public class BillResource {
      * @return the ResponseEntity with status 200 (OK) and with body the
      *         BillItemDTO, or with status 404 (Not Found)
      */
+    @ApiOperation( value = "Get the bill with id", response = ResponseEntity.class )
     @GetMapping( BILL_MAPPING + "/{id}" )
     public ResponseEntity<BillDTO> getBill( @PathVariable @NotNull Long id ) throws ApplicationException {
-        logger.debug( "REST request to get Bill : {}", id );
+        logger.debug( "REST request to get bill : {}", id );
         BillDTO billDTO = billService.findBillById( id );
         return ResponseUtil.wrapOrNotFound( Optional.ofNullable( billDTO ) );
     }
@@ -94,9 +98,10 @@ public class BillResource {
      * @return the ResponseEntity with status 200 (OK) and the list of Bills in
      *         body
      */
+    @ApiOperation( value = "Get all bills", response = ResponseEntity.class )
     @GetMapping(BILL_MAPPING)
     public ResponseEntity<Page<BillDTO>> getAllBill(Pageable pageable) throws ApplicationException {
-        logger.debug("REST request to get a page of Menu Items");
+        logger.debug("REST request to get a page of menu items");
         Page<BillDTO> page = billService.findAllBills(pageable);
         return new ResponseEntity<>(page, null, HttpStatus.OK);
     }
@@ -107,9 +112,10 @@ public class BillResource {
      * @Param BillItemDTO: contain data about the menu item to be created
      * @throws ApplicationException
      */
+    @ApiOperation( value = "Create a bill item", response = ResponseEntity.class )
     @PostMapping( BILL_MAPPING + "/{billId}" + BILL_ITEM_MAPPING )
     public ResponseEntity<BillItemDTO> createBillItem( @PathVariable @NotNull Long billId, @RequestBody BillItemDTO billItemDTO ) throws ApplicationException, URISyntaxException {
-        logger.debug( "REST request to create bill:" );
+        logger.debug( "REST request to create bill item" );
 
         BillItemDTO result = billService.createBillItem(billId, billItemDTO);
         return ResponseEntity.created(new URI(BILL_MAPPING + result.getId())).body(result);
@@ -124,11 +130,12 @@ public class BillResource {
      * @return the ResponseEntity with status 200 (OK) and with body the updated
      *         clientDTO,
      */
+    @ApiOperation( value = "Update an existing bill item in a bill", response = ResponseEntity.class )
     @PutMapping( BILL_MAPPING + "/{billId}" + BILL_ITEM_MAPPING + "/{billItemId}" )
     public ResponseEntity<BillItemDTO> updateBillItem( @PathVariable @NotNull Long billId, @PathVariable @NotNull Long billItemId, @RequestBody Integer quantity ) throws ApplicationException {
-        logger.debug( "REST request to update Bill Item with id  : {}", billItemId );
+        logger.debug( "REST request to update bill item with id  : {}", billItemId );
 
-        BillItemDTO result = billService.editBillItem(billId, billItemId, quantity);
+        BillItemDTO result = billService.updateBillItem(billId, billItemId, quantity);
         return ResponseEntity.ok().body(result);
     }
 
@@ -140,6 +147,7 @@ public class BillResource {
      * @return the ResponseEntity with status 200 (OK)
      * @throws ApplicationException
      */
+    @ApiOperation( value = "Delete a bill item in a bill", response = ResponseEntity.class )
     @DeleteMapping(BILL_MAPPING + "/{billId}" +  BILL_ITEM_MAPPING + "/{billItemId}")
     public ResponseEntity<Void> deleteBillItem(@PathVariable @NotNull  Long billId, @PathVariable @NotNull  Long billItemId) throws ApplicationException {
         logger.debug("REST request to delete menu item : {}", billItemId);

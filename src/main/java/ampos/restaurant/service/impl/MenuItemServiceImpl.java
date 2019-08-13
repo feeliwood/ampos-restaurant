@@ -37,15 +37,16 @@ public class MenuItemServiceImpl implements MenuItemService {
         this.menuItemMapper = menuItemMapper;
     }
 
-    /**
-     * create or update a menu item.
-     *
-     * @param id
-     *            If id is not null, entity with id "id" will be updated
-     * @param menuItemDTO
-     *            the entity to update
-     * @return the persisted entity
-     */
+	/**
+	 * Create or update menu item
+	 * 
+	 * @param id
+	 *            : of the menu item to be updated ( in case of updating menu item )
+	 * @param menuItemDTO
+	 *            : the menu item to be persisted
+	 * @return
+	 * @throws ApplicationException
+	 */
     @Override
     public MenuItemDTO createOrUpdateMenuItem( Long id, MenuItemDTO menuItemDTO ) {
         log.debug( "Request to update MenuItem : {}", menuItemDTO );
@@ -61,11 +62,10 @@ public class MenuItemServiceImpl implements MenuItemService {
     }
 
     /**
-     * Delete a Menu Item
-     *
+     * Delete menu item
+     * 
      * @param id
-     *            of the menu item to be deleted
-     * @return the persisted entity
+	 *            : of the menu item to be deleted
      */
     @Override
     public void deleteMenuItem( Long id ) {
@@ -74,11 +74,12 @@ public class MenuItemServiceImpl implements MenuItemService {
     }
 
     /**
-     * Get all the menu items.
-     *
+     * Get list menu items
+     * 
      * @param pageable
-     *            the pagination information
-     * @return the list of entities
+     *            : the pagination information
+     * @return
+     * @throws ApplicationException
      */
     @Override
     @Transactional( readOnly = true )
@@ -88,11 +89,12 @@ public class MenuItemServiceImpl implements MenuItemService {
     }
 
     /**
-     * Get one menu item by id.
-     *
+     * Get menu item by Id
+     * 
      * @param id
-     *            the id of the entity
-     * @return the entity
+	 *            : of the menu item to be retrieved
+     * @return
+     * @throws ApplicationException
      */
     @Override
     @Transactional( readOnly = true )
@@ -106,7 +108,10 @@ public class MenuItemServiceImpl implements MenuItemService {
      * Search menu items by keyword
      *
      * @param keyword
+     *            : the keyword of menu title or description or additional
+     *            details.
      * @param pageable
+     *            : the pagination information
      * @return
      * @throws ApplicationException
      */

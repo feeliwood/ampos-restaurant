@@ -2,7 +2,7 @@ package ampos.restaurant.service;
 
 import ampos.restaurant.domain.dto.BillDTO;
 import ampos.restaurant.domain.dto.BillItemDTO;
-import ampos.restaurant.domain.dto.TotalBillReportDTO;
+import ampos.restaurant.domain.dto.TotalBillItemReportDTO;
 import ampos.restaurant.exception.ApplicationException;
 
 import org.springframework.data.domain.Page;
@@ -25,6 +25,7 @@ public interface BillService {
      * Get bill by Id
      *
      * @param id
+     *            : of the bill that this bill item belongs to
      * @return
      * @throws ApplicationException
      */
@@ -42,38 +43,43 @@ public interface BillService {
     /**
      * Create bill item
      *
+     * @param billId
+     *            : of the bill that this bill item belongs
      * @param billItemDTO
+     *            : the bill item to be persisted
      * @throws ApplicationException
      */
     BillItemDTO createBillItem( Long billId, BillItemDTO billItemDTO ) throws ApplicationException;
 
     /**
-     * Create bill item
+     * Update bill item
      *
      * @param billId
-     *            : Bill that this Bill Item belongs
+     *            : of the bill that this bill item belongs
      * @param billItemId
-     *            : id of the Bill Item to be updated
+     *            : id of the bill item to be updated
      * @param quantity
-     *            : update quantity of the Bill Item
+     *            : update quantity of the bill item
      * @throws ApplicationException
      */
-    BillItemDTO editBillItem( Long billId, Long billItemId, Integer quantity ) throws ApplicationException;
+    BillItemDTO updateBillItem( Long billId, Long billItemId, Integer quantity ) throws ApplicationException;
 
     /**
      * Delete bill item
      *
      * @param billId
+     *            : of the bill that this bill item belongs
      * @param billItemId
+     *            : id of the bill item to be deleted
      * @throws ApplicationException
      */
     void deleteBillItem( Long billId, Long billItemId ) throws ApplicationException;
 
     /**
-     * Get menu items report
+     * Get bill item report
      * 
      * @return
      * @throws ApplicationException
      */
-    TotalBillReportDTO getBillReport() throws ApplicationException;
+    TotalBillItemReportDTO getBillItemReport() throws ApplicationException;
 }

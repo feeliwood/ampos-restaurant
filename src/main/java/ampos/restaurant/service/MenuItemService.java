@@ -10,19 +10,23 @@ import org.springframework.data.domain.Pageable;
  * Menu Item Service
  */
 public interface MenuItemService {
-    /**
-     * Create or update menu item
-     *
-     * @param menuItemDTO
-     * @throws ApplicationException
-     */
+	/**
+	 * Create or update menu item
+	 * 
+	 * @param id
+	 *            : of the menu item to be updated ( in case of updating menu item )
+	 * @param menuItemDTO
+	 *            : the menu item to be persisted
+	 * @return
+	 * @throws ApplicationException
+	 */
     MenuItemDTO createOrUpdateMenuItem( Long id, MenuItemDTO menuItemDTO ) throws ApplicationException;
 
     /**
      * Delete menu item
      * 
      * @param id
-     * @throws ApplicationException
+	 *            : of the menu item to be deleted
      */
     void deleteMenuItem( Long id );
 
@@ -30,6 +34,7 @@ public interface MenuItemService {
      * Get menu item by Id
      * 
      * @param id
+	 *            : of the menu item to be retrieved
      * @return
      * @throws ApplicationException
      */
@@ -39,6 +44,7 @@ public interface MenuItemService {
      * Get list menu items
      * 
      * @param pageable
+     *            : the pagination information
      * @return
      * @throws ApplicationException
      */
@@ -48,7 +54,10 @@ public interface MenuItemService {
      * Search menu items by keyword
      *
      * @param keyword
+     *            : the keyword of menu title or description or additional
+     *            details.
      * @param pageable
+     *            : the pagination information
      * @return
      * @throws ApplicationException
      */
