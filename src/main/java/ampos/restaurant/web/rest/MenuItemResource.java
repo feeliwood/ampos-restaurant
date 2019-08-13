@@ -46,10 +46,13 @@ public class MenuItemResource {
     }
 
     /**
-     * Create menu item
-     *
-     * @Param menuItemDTO: contain data about the menu item to be created
+     * POST /items: Create menu item
+     * 
+     * @param menuItemDTO:
+     *            contain data about the menu item to be created
+     * @return the ResponseEntity with status 200 (OK)
      * @throws ApplicationException
+     * @throws URISyntaxException
      */
     @ApiOperation( value = "Create a new menu item", response = ResponseEntity.class )
     @PostMapping
@@ -63,7 +66,8 @@ public class MenuItemResource {
     /**
      * PUT /items : Updates an existing menu item.
      *
-     * @param menuItemDTO the clientDTO to update
+     * @param menuItemDTO:
+     *            the clientDTO to update
      * @return the ResponseEntity with status 200 (OK) and with body the updated clientDTO,
      */
     @ApiOperation( value = "Updates an existing menu item", response = ResponseEntity.class )
@@ -76,9 +80,10 @@ public class MenuItemResource {
     }
 
     /**
-     * GET /items/:id : get the "id" menu item.
+     * GET /items/:id : Get the "id" menu item.
      *
-     * @param id the id of the menuItemDTO to retrieve
+     * @param id:
+     *            the id of the menuItemDTO to retrieve
      * @return the ResponseEntity with status 200 (OK) and with body the menuItemDTO, or with status 404 (Not Found)
      */
     @ApiOperation( value = "Get the menu item with id", response = ResponseEntity.class )
@@ -90,7 +95,7 @@ public class MenuItemResource {
     }
 
     /**
-     * GET /items : get all the menu items.
+     * GET /items : Get all the menu items.
      *
      * @param pageable
      *            the pagination information
@@ -106,9 +111,9 @@ public class MenuItemResource {
     }
 
     /**
-     * DELETE /items/:id : delete the "id" menu item.
+     * DELETE /items/:id : Delete the "id" menu item.
      *
-     * @param id
+     * @param id:
      *            the id of the menuItemDTO to delete
      * @return the ResponseEntity with status 200 (OK)
      */
@@ -121,12 +126,12 @@ public class MenuItemResource {
     }
 
     /**
-     * GET /items/search?keyword=<keyword> : search menu items by keyword.
+     * GET /items/search?keyword=<keyword> : Search menu items by keyword.
      *
-     * @param keyword
+     * @param keyword:
      *            the keyword of menu title or description or additional
      *            details.
-     * @param pageable
+     * @param pageable:
      *            the pagination information
      * @return the ResponseEntity with status 200 (OK) and the list of menu
      *         items in body

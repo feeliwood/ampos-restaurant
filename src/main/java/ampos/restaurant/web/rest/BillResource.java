@@ -47,10 +47,11 @@ public class BillResource {
     }
 
     /**
-     * CREATE /bills : create new bill
-     *
-     * @Param BillItemDTO: contain data about the bill to be created
+     * CREATE /bills : Create new bill
+     * 
+     * @return the ResponseEntity with status 200 (OK)
      * @throws ApplicationException
+     * @throws URISyntaxException
      */
     @ApiOperation( value = "Create new bill", response = ResponseEntity.class )
     @PostMapping( BILL_MAPPING )
@@ -62,7 +63,7 @@ public class BillResource {
     }
 
     /**
-     * GET /bills/check : check all bill items
+     * GET /bills/check : Check all bill items
      *
      * @return the ResponseEntity with status 200 (OK)
      */
@@ -75,9 +76,9 @@ public class BillResource {
     }
 
     /**
-     * GET /bills/:id : get the "id" bill
+     * GET /bills/:id : Get the "id" bill
      *
-     * @param id
+     * @param id:
      *            the id of the BillItemDTO to retrieve
      * @return the ResponseEntity with status 200 (OK) and with body the
      *         BillItemDTO, or with status 404 (Not Found)
@@ -91,23 +92,23 @@ public class BillResource {
     }
 
     /**
-     * GET /bills : get all the Bill.
+     * GET /bills : Get all the Bill.
      *
-     * @param pageable
+     * @param pageable:
      *            the pagination information
      * @return the ResponseEntity with status 200 (OK) and the list of Bills in
      *         body
      */
     @ApiOperation( value = "Get all bills", response = ResponseEntity.class )
     @GetMapping(BILL_MAPPING)
-    public ResponseEntity<Page<BillDTO>> getAllBill(Pageable pageable) throws ApplicationException {
+    public ResponseEntity<Page<BillDTO>> getAllBills(Pageable pageable) throws ApplicationException {
         logger.debug("REST request to get a page of menu items");
         Page<BillDTO> page = billService.findAllBills(pageable);
         return new ResponseEntity<>(page, null, HttpStatus.OK);
     }
 
     /**
-     * Create bill item
+     * POST /bills/{billId}/bill-items : Create a bill item
      *
      * @Param BillItemDTO: contain data about the menu item to be created
      * @throws ApplicationException
@@ -124,8 +125,10 @@ public class BillResource {
     /**
      * PUT /bill/{billId}/item/{billItemId} : Updates an existing bill item.
      *
-     * @pathVariable billId: Bill that this Bill Item belongs
-     * @pathVariable billItemId: id of the Bill Item to be updated
+     * @pathVariable billId: 
+     *            bill that this Bill Item belongs
+     * @pathVariable billItemId:
+     *            id of the Bill Item to be updated
      * @requestBody quantity: update quantity of the Bill Item
      * @return the ResponseEntity with status 200 (OK) and with body the updated
      *         clientDTO,
@@ -140,9 +143,9 @@ public class BillResource {
     }
 
     /**
-     * DELETE /bill/{billId}/item/{billItemId} : delete the "id" bill item.
+     * DELETE /bill/{billId}/item/{billItemId} : Delete the "id" bill item.
      *
-     * @param billItemId
+     * @param billItemId:
      *            the id of the BillItemDTO to delete
      * @return the ResponseEntity with status 200 (OK)
      * @throws ApplicationException
