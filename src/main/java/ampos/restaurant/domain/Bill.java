@@ -5,11 +5,28 @@ import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
  * Bill entity
  */
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table( name = Bill.TABLE_NAME )
 public class Bill implements Serializable {
@@ -24,50 +41,6 @@ public class Bill implements Serializable {
 
     @OneToMany( mappedBy = MAPPED_MANY_TO_ONE_FIELD_NAME, cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER )
     private Set<BillItem> billItems = new HashSet<>();
-
-    public Bill() {
-        super();
-    }
-
-    public Bill( long id, Set<BillItem> billItems ) {
-        super();
-        this.id = id;
-        this.billItems = billItems;
-    }
-
-    /**
-     * 
-     * @return id
-     */
-    public long getId() {
-        return id;
-    }
-
-    /**
-     * set id
-     *
-     * @param id
-     */
-    public void setId( long id ) {
-        this.id = id;
-    }
-
-    /**
-     *
-     * @return billItems
-     */
-    public Set<BillItem> getBillItems() {
-        return billItems;
-    }
-
-    /**
-     * set list billItems
-     *
-     * @param billItems
-     */
-    public void setBillItems( Set<BillItem> billItems ) {
-        this.billItems = billItems;
-    }
 
     /**
      * add billItem to collection
