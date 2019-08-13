@@ -57,9 +57,7 @@ public class MenuItemResource {
         logger.debug( "Creating menu item...." );
 
         MenuItemDTO result = menuItemService.save( null, menuItemDTO );
-        return ResponseEntity.created( new URI( "/menu/items/" + result.getId() ) )
-        					 .headers( HeaderUtil.createEntityCreationAlert( ENTITY_NAME, result.getId().toString() ) )
-        					 .body( result );
+        return ResponseEntity.created( new URI( "/menu/items/" + result.getId() ) ).headers( HeaderUtil.createEntityCreationAlert( ENTITY_NAME, result.getId().toString() ) ).body( result );
     }
 
     /**
@@ -75,9 +73,7 @@ public class MenuItemResource {
         logger.debug( "REST request to update Menu Item : {}", menuItemDTO );
 
         MenuItemDTO result = menuItemService.save( id, menuItemDTO );
-        return ResponseEntity.ok()
-        					 .headers( HeaderUtil.createEntityUpdateAlert( ENTITY_NAME, result.getId().toString() ) )
-        					 .body( result );
+        return ResponseEntity.ok().headers( HeaderUtil.createEntityUpdateAlert( ENTITY_NAME, result.getId().toString() ) ).body( result );
     }
 
     /**
@@ -122,9 +118,7 @@ public class MenuItemResource {
     public ResponseEntity<Void> deleteMenuItem( @PathVariable Long id ) {
         logger.debug( "REST request to delete menu item : {}", id );
         menuItemService.delete( id );
-        return ResponseEntity.ok()
-        					 .headers( HeaderUtil.createEntityDeletionAlert( ENTITY_NAME, id.toString() ) )
-        					 .build();
+        return ResponseEntity.ok().headers( HeaderUtil.createEntityDeletionAlert( ENTITY_NAME, id.toString() ) ).build();
     }
     
     /**

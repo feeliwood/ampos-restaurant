@@ -96,7 +96,7 @@ public class MenuItemServiceImpl implements MenuItemService {
     @Transactional( readOnly = true )
     public MenuItemDTO findById( Long id ) throws ApplicationException {
         log.debug( "Request to get Menu Item : {}", id );
-        MenuItem menuItem = menuItemRepository.findById( id ).orElseThrow( ( ) -> new ApplicationException( Constants.MENU_ITEM_NOT_FOUND ) );
+        MenuItem menuItem = menuItemRepository.findById( id ).orElseThrow( () -> new ApplicationException( Constants.MENU_ITEM_NOT_FOUND ) );
         return menuItemMapper.toDto( menuItem );
     }
 
