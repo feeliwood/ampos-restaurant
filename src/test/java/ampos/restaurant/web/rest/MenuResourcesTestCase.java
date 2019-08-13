@@ -23,6 +23,7 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.util.MimeTypeUtils;
 
 import ampos.restaurant.BaseTestCase;
+import ampos.restaurant.domain.MenuItem;
 import ampos.restaurant.domain.dto.MenuItemDTO;
 import ampos.restaurant.models.MenuRequest;
 import ampos.restaurant.repository.MenuItemRepository;
@@ -41,17 +42,29 @@ public class MenuResourcesTestCase extends BaseTestCase {
      */
     @Test
     public void createMenuTestCase() throws IOException, Exception {
-        String[] str = { "Italian", "Thai" };
-        ArrayList<String> additionalData = Stream.of( str ).collect( Collectors.toCollection( ArrayList::new ) );
-        MenuRequest input = new MenuRequest( (long) 2, "Oolong tea 2", "All-time favourite toppings, Hawaiian pizza in Tropical Hawaii style", "https://s3-ap-southeast-1.amazonaws.com/interview.ampostech.com/backend/restaurant/menu1.jpg", new BigDecimal( 300 ), additionalData );
-        // compare
-        MvcResult result = mockMvc.perform( post( "/menu-items" ).contentType( MimeTypeUtils.APPLICATION_JSON_VALUE ).content( asJsonString( input ) ) ).andExpect( status().is( 201 ) ).andReturn();
-        MenuItemDTO resultData = jsonToObject( result.getResponse().getContentAsString(), MenuItemDTO.class );
-        assertEquals( input.getName(), resultData.getName() );
-        assertEquals( input.getDescription(), resultData.getDescription() );
-        assertEquals( input.getImageUrl(), resultData.getImageUrl() );
-        assertEquals( input.getPrice(), resultData.getPrice() );
-        assertEquals( input.getDetails(), resultData.getDetails() );
+	String[] str = { "Italian", "Thai" };
+	ArrayList<String> additionalData = Stream.of(str).collect(Collectors.toCollection(ArrayList::new));
+	MenuRequest input = new MenuRequest((long) 2, "Oolong tea 2",
+		"All-time favourite toppings, Hawaiian pizza in Tropical Hawaii style",
+		"https://s3-ap-southeast-1.amazonaws.com/interview.ampostech.com/backend/restaurant/menu1.jpg",
+		new BigDecimal(300), additionalData);
+	// compare
+	MvcResult result = mockMvc.perform(
+		post("/menu-items").contentType(MimeTypeUtils.APPLICATION_JSON_VALUE).content(asJsonString(input)))
+		.andExpect(status().is(201)).andReturn();
+	MenuItemDTO resultData = jsonToObject(result.getResponse().getContentAsString(), MenuItemDTO.class);
+	assertEquals(input.getName(), resultData.getName());
+	assertEquals(input.getDescription(), resultData.getDescription());
+	assertEquals(input.getImageUrl(), resultData.getImageUrl());
+	assertEquals(input.getPrice(), resultData.getPrice());
+	assertEquals(input.getDetails(), resultData.getDetails());
+	// check database
+	MenuItem menuItems = menuRepos.findById(resultData.getId()).get();
+	assertEquals(input.getName(), menuItems.getName());
+	assertEquals(input.getDescription(), menuItems.getDescription());
+	assertEquals(input.getImageUrl(), menuItems.getImageUrl());
+	assertEquals(input.getPrice().setScale(2), menuItems.getPrice());
+
     }
 
     /**
@@ -79,18 +92,30 @@ public class MenuResourcesTestCase extends BaseTestCase {
      */
     @Test
     public void updateMenuTestCase() throws IOException, Exception {
-        // expected data
-        String[] str = { "Italian", "Thai" };
-        ArrayList<String> additionalData = Stream.of( str ).collect( Collectors.toCollection( ArrayList::new ) );
-        MenuRequest input = new MenuRequest( (long) 1, "Oolong tea edit", "All-time favourite toppings, Hawaiian pizza in Tropical Hawaii style", "https://s3-ap-southeast-1.amazonaws.com/interview.ampostech.com/backend/restaurant/menu1.jpg", new BigDecimal( 300 ), additionalData );
-        // compare
-        MvcResult result = mockMvc.perform( put( "/menu-items/1" ).contentType( MimeTypeUtils.APPLICATION_JSON_VALUE ).content( asJsonString( input ) ) ).andExpect( status().is( 200 ) ).andReturn();
-        MenuItemDTO resultData = jsonToObject( result.getResponse().getContentAsString(), MenuItemDTO.class );
-        assertEquals( input.getName(), resultData.getName() );
-        assertEquals( input.getDescription(), resultData.getDescription() );
-        assertEquals( input.getImageUrl(), resultData.getImageUrl() );
-        assertEquals( input.getPrice(), resultData.getPrice() );
-        assertEquals( input.getDetails(), resultData.getDetails() );
+	// expected data
+	String[] str = { "Italian", "Thai" };
+	ArrayList<String> additionalData = Stream.of(str).collect(Collectors.toCollection(ArrayList::new));
+	MenuRequest input = new MenuRequest((long) 1, "Oolong tea edit",
+		"All-time favourite toppings, Hawaiian pizza in Tropical Hawaii style",
+		"https://s3-ap-southeast-1.amazonaws.com/interview.ampostech.com/backend/restaurant/menu1.jpg",
+		new BigDecimal(300), additionalData);
+	// compare
+	MvcResult result = mockMvc.perform(
+		put("/menu-items/1").contentType(MimeTypeUtils.APPLICATION_JSON_VALUE).content(asJsonString(input)))
+		.andExpect(status().is(200)).andReturn();
+	MenuItemDTO resultData = jsonToObject(result.getResponse().getContentAsString(), MenuItemDTO.class);
+	assertEquals(input.getName(), resultData.getName());
+	assertEquals(input.getDescription(), resultData.getDescription());
+	assertEquals(input.getImageUrl(), resultData.getImageUrl());
+	assertEquals(input.getPrice(), resultData.getPrice());
+	assertEquals(input.getDetails(), resultData.getDetails());
+	// check database
+	MenuItem menuItems = menuRepos.findById(resultData.getId()).get();
+	assertEquals(input.getName(), menuItems.getName());
+	assertEquals(input.getDescription(), menuItems.getDescription());
+	assertEquals(input.getImageUrl(), menuItems.getImageUrl());
+	assertEquals(input.getPrice().setScale(2), menuItems.getPrice());
+
     }
 
     /**
