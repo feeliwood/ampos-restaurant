@@ -86,7 +86,7 @@ public class BillServiceImpl implements BillService {
     @Transactional( readOnly = true )
     public BillDTO findBillById( Long id ) throws ApplicationException {
         log.debug( "Request to get Menu Item : {}", id );
-        Bill bill = billRepository.findById( id ).orElseThrow( ( ) -> new ApplicationException( Constants.MENU_ITEM_NOT_FOUND ) );
+        Bill bill = billRepository.findById( id ).orElseThrow( () -> new ApplicationException( Constants.MENU_ITEM_NOT_FOUND ) );
         return billMapper.toDto( bill );
     }
 
@@ -102,7 +102,7 @@ public class BillServiceImpl implements BillService {
     public BillItemDTO createBillItem( Long billId, BillItemDTO billItemDTO ) throws ApplicationException {
         log.debug( "Request to create new BillItem : {}", billItemDTO );
 
-        billRepository.findById( billId ).orElseThrow( ( ) -> new ApplicationException( Constants.BILL_NOT_FOUND ) );
+        billRepository.findById( billId ).orElseThrow( () -> new ApplicationException( Constants.BILL_NOT_FOUND ) );
         billItemDTO.setBillId( billId );
 
         BillItem newBillItem = billItemMapper.toEntity( billItemDTO );
@@ -129,8 +129,8 @@ public class BillServiceImpl implements BillService {
 
         log.debug( "Request to edit new BillItem with id : ", billItemId );
 
-        Bill bill = billRepository.findById( billId ).orElseThrow( ( ) -> new ApplicationException( Constants.BILL_NOT_FOUND ) );
-        BillItem billItem = bill.getBillItems().stream().filter( item -> item.getId() == billItemId.longValue() ).findAny().orElseThrow( ( ) -> new ApplicationException( Constants.BILL_ITEM_NOT_FOUND ) );
+        Bill bill = billRepository.findById( billId ).orElseThrow( () -> new ApplicationException( Constants.BILL_NOT_FOUND ) );
+        BillItem billItem = bill.getBillItems().stream().filter( item -> item.getId() == billItemId.longValue() ).findAny().orElseThrow( () -> new ApplicationException( Constants.BILL_ITEM_NOT_FOUND ) );
         billItem.setQuantity( quantity );
         billItem.setOrderedTime( Instant.now() );
         billRepository.save( bill );
@@ -149,8 +149,8 @@ public class BillServiceImpl implements BillService {
     @Override
     public void deleteBillItem( Long billId, Long billItemId ) throws ApplicationException {
         log.debug( "Request to delete Bill item : {}", billItemId );
-        Bill bill = billRepository.findById( billId ).orElseThrow( ( ) -> new ApplicationException( Constants.BILL_NOT_FOUND ) );
-        bill.getBillItems().stream().filter( item -> item.getId() == billItemId.longValue() ).findAny().orElseThrow( ( ) -> new ApplicationException( Constants.BILL_ITEM_NOT_FOUND ) );
+        Bill bill = billRepository.findById( billId ).orElseThrow( () -> new ApplicationException( Constants.BILL_NOT_FOUND ) );
+        bill.getBillItems().stream().filter( item -> item.getId() == billItemId.longValue() ).findAny().orElseThrow( () -> new ApplicationException( Constants.BILL_ITEM_NOT_FOUND ) );
         billItemRepository.deleteById( billItemId );
     }
 
@@ -163,15 +163,9 @@ public class BillServiceImpl implements BillService {
     @Override
     public TotalBillReportDTO getBillReport() throws ApplicationException {
         TotalBillReportDTO totalBillReportDTO = new TotalBillReportDTO();
-        totalBillReportDTO.setBillItemsReport( billItemRepository.getAllBillReport()
-        														 .stream()
-        														 .map( billItemReportMapper::toDto )
-        														 .collect( Collectors.toList() ) );
+        totalBillReportDTO.setBillItemsReport( billItemRepository.getAllBillReport().stream().map( billItemReportMapper::toDto ).collect( Collectors.toList() ) );
 
-        totalBillReportDTO.setGrandTotal( totalBillReportDTO.getBillItemsReport()
-        													.stream()
-        													.map( BillItemReportDTO::getTotalPrice )
-        													.reduce( BigDecimal.ZERO, BigDecimal::add ) );
+        totalBillReportDTO.setGrandTotal( totalBillReportDTO.getBillItemsReport().stream().map( BillItemReportDTO::getTotalPrice ).reduce( BigDecimal.ZERO, BigDecimal::add ) );
         return totalBillReportDTO;
     }
 }
