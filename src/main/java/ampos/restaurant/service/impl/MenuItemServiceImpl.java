@@ -1,5 +1,7 @@
 package ampos.restaurant.service.impl;
 
+import java.util.Arrays;
+
 import ampos.restaurant.domain.MenuItem;
 import ampos.restaurant.domain.dto.MenuItemDTO;
 import ampos.restaurant.domain.mapper.MenuItemMapper;
@@ -68,7 +70,7 @@ public class MenuItemServiceImpl implements MenuItemService {
     @Override
     public void deleteMenuItem( Long id ) {
         log.debug( "Request to delete Menu Item : {}", id );
-        menuItemRepository.deleteById( id );
+        menuItemRepository.deleteAllMenuItemWithIds( Arrays.asList(id) );
     }
 
     /**
