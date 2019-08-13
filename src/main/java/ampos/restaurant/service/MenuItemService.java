@@ -1,40 +1,41 @@
 package ampos.restaurant.service;
 
-import ampos.restaurant.domain.dto.MenuItemDTO;
-import ampos.restaurant.exception.ApplicationException;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+
+import ampos.restaurant.domain.dto.MenuItemDTO;
+import ampos.restaurant.exception.ApplicationException;
 
 /**
  * Menu Item Service
  */
 public interface MenuItemService {
-	/**
-	 * Create or update menu item
-	 * 
-	 * @param id
-	 *            : of the menu item to be updated ( in case of updating menu item )
-	 * @param menuItemDTO
-	 *            : the menu item to be persisted
-	 * @return
-	 * @throws ApplicationException
-	 */
+    /**
+     * Create or update menu item
+     *
+     * @param id
+     *            : of the menu item to be updated ( in case of updating menu
+     *            item )
+     * @param menuItemDTO
+     *            : the menu item to be persisted
+     * @return
+     * @throws ApplicationException
+     */
     MenuItemDTO createOrUpdateMenuItem( Long id, MenuItemDTO menuItemDTO ) throws ApplicationException;
 
     /**
      * Delete menu item
-     * 
+     *
      * @param id
-	 *            : of the menu item to be deleted
+     *            : of the menu item to be deleted
      */
     void deleteMenuItem( Long id );
 
     /**
      * Get menu item by Id
-     * 
+     *
      * @param id
-	 *            : of the menu item to be retrieved
+     *            : of the menu item to be retrieved
      * @return
      * @throws ApplicationException
      */
@@ -42,7 +43,7 @@ public interface MenuItemService {
 
     /**
      * Get list menu items
-     * 
+     *
      * @param pageable
      *            : the pagination information
      * @return
