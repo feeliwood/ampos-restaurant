@@ -6,6 +6,15 @@ import java.util.Optional;
 
 import javax.validation.constraints.NotNull;
 
+import ampos.restaurant.domain.dto.BillDTO;
+import ampos.restaurant.domain.dto.BillItemDTO;
+import ampos.restaurant.domain.dto.TotalBillReportDTO;
+import ampos.restaurant.exception.ApplicationException;
+import ampos.restaurant.service.BillService;
+import ampos.restaurant.web.rest.util.HeaderUtil;
+import ampos.restaurant.web.rest.util.PaginationUtil;
+import ampos.restaurant.web.rest.util.ResponseUtil;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -20,16 +29,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import ampos.restaurant.domain.dto.BillDTO;
-import ampos.restaurant.domain.dto.BillItemDTO;
-import ampos.restaurant.domain.dto.TotalBillReportDTO;
-import ampos.restaurant.exception.ApplicationException;
-import ampos.restaurant.service.BillService;
-import ampos.restaurant.web.rest.util.HeaderUtil;
-import ampos.restaurant.web.rest.util.PaginationUtil;
-import ampos.restaurant.web.rest.util.ResponseUtil;
-import io.swagger.annotations.ApiOperation;
 
 /**
  * Bill order management controller is used to CRU bill order.
@@ -55,16 +54,12 @@ public class BillResource {
      * @Param BillItemDTO: contain data about the bill to be created
      * @throws ApplicationException
      */
-    @ApiOperation( value = "Create new bill", response = ResponseEntity.class )
     @PostMapping( BILL_MAPPING )
     public ResponseEntity<BillDTO> createBill() throws ApplicationException, URISyntaxException {
         logger.debug( "REST request to create bill:" );
 
         BillDTO result = billService.createBill();
-        return ResponseEntity
-                .created( new URI( BILL_MAPPING + result.getId() ) )
-                .headers( HeaderUtil.createEntityCreationAlert( BILL_NAME, result.getId().toString() ) )
-                .body( result );
+        return ResponseEntity.created(new URI(BILL_MAPPING + result.getId())).body(result);
     }
 
     /**
@@ -72,7 +67,6 @@ public class BillResource {
      *
      * @return the ResponseEntity with status 200 (OK)
      */
-    @ApiOperation( value = "View a list of bill items", response = ResponseEntity.class )
     @GetMapping( BILL_MAPPING + "/report" )
     public ResponseEntity<TotalBillReportDTO> getAllBillReport() throws ApplicationException {
         logger.debug( "REST request to bill item report: {}" );
@@ -88,7 +82,6 @@ public class BillResource {
      * @return the ResponseEntity with status 200 (OK) and with body the
      *         BillItemDTO, or with status 404 (Not Found)
      */
-    @ApiOperation( value = "Get the bill with id", response = ResponseEntity.class )
     @GetMapping( BILL_MAPPING + "/{id}" )
     public ResponseEntity<BillDTO> getBill( @PathVariable @NotNull Long id ) throws ApplicationException {
         logger.debug( "REST request to get Bill : {}", id );
@@ -104,7 +97,6 @@ public class BillResource {
      * @return the ResponseEntity with status 200 (OK) and the list of Bills in
      *         body
      */
-    @ApiOperation( value = "Get all bills", response = ResponseEntity.class )
     @GetMapping( BILL_MAPPING )
     public ResponseEntity<Page<BillDTO>> getAllBill( Pageable pageable ) throws ApplicationException {
         logger.debug( "REST request to get a page of Menu Items" );
@@ -119,16 +111,12 @@ public class BillResource {
      * @Param BillItemDTO: contain data about the menu item to be created
      * @throws ApplicationException
      */
-    @ApiOperation( value = "Create a bill item", response = ResponseEntity.class )
     @PostMapping( BILL_MAPPING + "/{billId}" + BILL_ITEM_MAPPING )
     public ResponseEntity<BillItemDTO> createBillItem( @PathVariable @NotNull Long billId, @RequestBody BillItemDTO billItemDTO ) throws ApplicationException, URISyntaxException {
         logger.debug( "REST request to create bill:" );
 
-        BillItemDTO result = billService.createBillItem( billId, billItemDTO );
-        return ResponseEntity
-                .created( new URI( BILL_MAPPING + result.getId() ) )
-                .headers( HeaderUtil.createEntityCreationAlert( BILL_NAME, result.getId().toString() ) )
-                .body( result );
+        BillItemDTO result = billService.createBillItem(billId, billItemDTO);
+        return ResponseEntity.created(new URI(BILL_MAPPING + result.getId())).body(result);
     }
 
     /**
@@ -140,15 +128,12 @@ public class BillResource {
      * @return the ResponseEntity with status 200 (OK) and with body the updated
      *         clientDTO,
      */
-    @ApiOperation( value = "Update an existing bill item in a bill", response = ResponseEntity.class )
     @PutMapping( BILL_MAPPING + "/{billId}" + BILL_ITEM_MAPPING + "/{billItemId}" )
     public ResponseEntity<BillItemDTO> updateBillItem( @PathVariable @NotNull Long billId, @PathVariable @NotNull Long billItemId, @RequestBody Integer quantity ) throws ApplicationException {
         logger.debug( "REST request to update Bill Item with id  : {}", billItemId );
 
-        BillItemDTO result = billService.editBillItem( billId, billItemId, quantity );
-        return ResponseEntity.ok()
-                .headers( HeaderUtil.createEntityUpdateAlert( BILL_NAME, result.getId().toString() ) )
-                .body( result );
+        BillItemDTO result = billService.editBillItem(billId, billItemId, quantity);
+        return ResponseEntity.ok().body(result);
     }
 
     /**

@@ -4,6 +4,14 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Optional;
 
+import ampos.restaurant.domain.dto.MenuItemDTO;
+import ampos.restaurant.exception.ApplicationException;
+import ampos.restaurant.service.MenuItemService;
+
+import ampos.restaurant.web.rest.util.HeaderUtil;
+import ampos.restaurant.web.rest.util.PaginationUtil;
+import ampos.restaurant.web.rest.util.ResponseUtil;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -18,20 +26,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import ampos.restaurant.domain.dto.MenuItemDTO;
-import ampos.restaurant.exception.ApplicationException;
-import ampos.restaurant.service.MenuItemService;
-import ampos.restaurant.web.rest.util.HeaderUtil;
-import ampos.restaurant.web.rest.util.PaginationUtil;
-import ampos.restaurant.web.rest.util.ResponseUtil;
-import io.swagger.annotations.ApiOperation;
 
 /**
  * Controller for Menu Item
- *
+ * 
  */
 @RestController
 @RequestMapping( MenuItemResource.MENU_ITEM__MAPPING )
@@ -53,48 +52,34 @@ public class MenuItemResource {
      * @Param menuItemDTO: contain data about the menu item to be created
      * @throws ApplicationException
      */
-    @ApiOperation( value = "Create a new menu item", response = ResponseEntity.class )
     @PostMapping
     public ResponseEntity<MenuItemDTO> createMenuItem( @RequestBody MenuItemDTO menuItemDTO ) throws ApplicationException, URISyntaxException {
         logger.debug( "Creating menu item...." );
 
-        MenuItemDTO result = menuItemService.save( null, menuItemDTO );
-        return ResponseEntity
-                .created( new URI( "/menu/items/" + result.getId() ) )
-                .headers( HeaderUtil.createEntityCreationAlert( ENTITY_NAME, result.getId().toString() ) )
-                .body( result );
+        MenuItemDTO result = menuItemService.save(null, menuItemDTO);
+        return ResponseEntity.created(new URI(MENU_ITEM__MAPPING + "/" + result.getId())).body(result);
     }
 
     /**
      * PUT /items : Updates an existing menu item.
      *
-     * @param menuItemDTO
-     *            the clientDTO to update
-     * @param id
-     *            the menu item id
-     * @return the ResponseEntity with status 200 (OK) and with body the updated
-     *         clientDTO,
+     * @param menuItemDTO the clientDTO to update
+     * @return the ResponseEntity with status 200 (OK) and with body the updated clientDTO,
      */
-    @ApiOperation( value = "Updates an existing menu item", response = ResponseEntity.class )
     @PutMapping( "/{id}" )
     public ResponseEntity<MenuItemDTO> updateMenuItem( @PathVariable Long id, @RequestBody MenuItemDTO menuItemDTO ) throws ApplicationException {
         logger.debug( "REST request to update Menu Item : {}", menuItemDTO );
 
-        MenuItemDTO result = menuItemService.save( id, menuItemDTO );
-        return ResponseEntity.ok()
-                .headers( HeaderUtil.createEntityUpdateAlert( ENTITY_NAME, result.getId().toString() ) )
-                .body( result );
+        MenuItemDTO result = menuItemService.save(id, menuItemDTO);
+        return ResponseEntity.ok().body(result);
     }
 
     /**
      * GET /items/:id : get the "id" menu item.
      *
-     * @param id
-     *            the id of the menu item to retrieve
-     * @return the ResponseEntity with status 200 (OK) and with body the
-     *         menuItemDTO, or with status 404 (Not Found)
+     * @param id the id of the menuItemDTO to retrieve
+     * @return the ResponseEntity with status 200 (OK) and with body the menuItemDTO, or with status 404 (Not Found)
      */
-    @ApiOperation( value = "Get the menu item with id", response = ResponseEntity.class )
     @GetMapping( "/{id}" )
     public ResponseEntity<MenuItemDTO> getMenuItem( @PathVariable Long id ) throws ApplicationException {
         logger.debug( "REST request to get Menu Item : {}", id );
@@ -110,7 +95,6 @@ public class MenuItemResource {
      * @return the ResponseEntity with status 200 (OK) and the list of menu
      *         items in body
      */
-    @ApiOperation( value = "Get all the menu items", response = ResponseEntity.class )
     @GetMapping
     public ResponseEntity<Page<MenuItemDTO>> getAllMenuItems( Pageable pageable ) throws ApplicationException {
         logger.debug( "REST request to get a page of Menu Items" );
@@ -126,7 +110,6 @@ public class MenuItemResource {
      *            the id of the menuItemDTO to delete
      * @return the ResponseEntity with status 200 (OK)
      */
-    @ApiOperation( value = "Delete a menu item with id", response = ResponseEntity.class )
     @DeleteMapping( "/{id}" )
     public ResponseEntity<Void> deleteMenuItem( @PathVariable Long id ) {
         logger.debug( "REST request to delete menu item : {}", id );
