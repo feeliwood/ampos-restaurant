@@ -14,9 +14,9 @@ public interface MenuItemRepository extends JpaRepository<MenuItem, Long> {
 
     // @formatter:off
     @Query( "SELECT distinct menuItem FROM MenuItem AS menuItem WHERE (:keyword is NULL) "
-    + " OR (LOWER(menuItem.name) LIKE CONCAT('%',:keyword,'%'))"
-    + " OR (LOWER(menuItem.description) LIKE CONCAT('%',:keyword,'%'))"
-    + " OR (LOWER(menuItem.details) LIKE CONCAT('%',:keyword,'%'))")
+    		+ " OR (LOWER(menuItem.name) LIKE CONCAT('%',:keyword,'%'))"
+    		+ " OR (LOWER(menuItem.description) LIKE CONCAT('%',:keyword,'%'))"
+    		+ " OR (LOWER(menuItem.details) LIKE CONCAT('%',:keyword,'%'))")
     // @formatter:on
     Page<MenuItem> search( @Param( "keyword" ) String keyword, Pageable pageable );
 

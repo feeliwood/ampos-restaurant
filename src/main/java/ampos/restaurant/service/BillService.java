@@ -1,15 +1,12 @@
 package ampos.restaurant.service;
 
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import ampos.restaurant.domain.dto.BillDTO;
 import ampos.restaurant.domain.dto.BillItemDTO;
-import ampos.restaurant.domain.dto.BillItemReportDTO;
 import ampos.restaurant.domain.dto.TotalBillReportDTO;
 import ampos.restaurant.exception.ApplicationException;
-
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 
 /**
  * Bill and Bill Item Service

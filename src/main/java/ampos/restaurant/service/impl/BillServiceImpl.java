@@ -1,12 +1,17 @@
 package ampos.restaurant.service.impl;
 
+import java.math.BigDecimal;
 import java.time.Instant;
+import java.util.stream.Collectors;
 
 import ampos.restaurant.domain.Bill;
 import ampos.restaurant.domain.BillItem;
 import ampos.restaurant.domain.dto.BillDTO;
 import ampos.restaurant.domain.dto.BillItemDTO;
+import ampos.restaurant.domain.dto.BillItemReportDTO;
+import ampos.restaurant.domain.dto.TotalBillReportDTO;
 import ampos.restaurant.domain.mapper.BillItemMapper;
+import ampos.restaurant.domain.mapper.BillItemReportMapper;
 import ampos.restaurant.domain.mapper.BillMapper;
 import ampos.restaurant.exception.ApplicationException;
 import ampos.restaurant.repository.BillItemRepository;
@@ -16,7 +21,6 @@ import ampos.restaurant.util.Constants;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -34,15 +38,16 @@ public class BillServiceImpl implements BillService {
 
     private final BillRepository billRepository;
     private final BillMapper billMapper;
-    @Autowired
     private final BillItemRepository billItemRepository;
     private final BillItemMapper billItemMapper;
+    private final BillItemReportMapper billItemReportMapper;
 
-    public BillServiceImpl( BillRepository billRepository, BillItemRepository billItemRepository, BillMapper billMapper, BillItemMapper billItemMapper ) {
+    public BillServiceImpl( BillRepository billRepository, BillItemRepository billItemRepository, BillMapper billMapper, BillItemMapper billItemMapper, BillItemReportMapper billItemReportMapper ) {
         this.billRepository = billRepository;
         this.billItemRepository = billItemRepository;
         this.billMapper = billMapper;
         this.billItemMapper = billItemMapper;
+        this.billItemReportMapper = billItemReportMapper;
     }
 
     /**
@@ -54,19 +59,6 @@ public class BillServiceImpl implements BillService {
     public BillDTO createBill() throws ApplicationException {
         log.debug( "Request to update Bill " );
         return billMapper.toDto( billRepository.save( new Bill() ) );
-    }
-
-    /**
-     * Delete a bill
-     *
-     * @param id
-     *            of the menu item to be deleted
-     * @return the persisted entity
-     */
-    @Override
-    public void deleteBill( Long id ) {
-        log.debug( "Request to delete Bill : {}", id );
-        billRepository.deleteById( id );
     }
 
     /**
@@ -138,7 +130,10 @@ public class BillServiceImpl implements BillService {
         log.debug( "Request to edit new BillItem with id : ", billItemId );
 
         Bill bill = billRepository.findById( billId ).orElseThrow( ( ) -> new ApplicationException( Constants.BILL_NOT_FOUND ) );
-        BillItem billItem = bill.getBillItems().stream().filter( item -> item.getId() == billItemId.longValue() ).findAny().orElseThrow( ( ) -> new ApplicationException( Constants.BILL_ITEM_NOT_FOUND ) );
+        BillItem billItem = bill.getBillItems()
+        						.stream()
+        						.filter( item -> item.getId() == billItemId.longValue() )
+        						.findAny().orElseThrow( ( ) -> new ApplicationException( Constants.BILL_ITEM_NOT_FOUND ) );
         billItem.setQuantity( quantity );
         billItem.setOrderedTime( Instant.now() );
         billRepository.save( bill );
@@ -153,11 +148,26 @@ public class BillServiceImpl implements BillService {
      * @return the persisted entity
      */
     @Override
-    @Transactional( readOnly = false )
     public void deleteBillItem( Long id ) {
         log.debug( "Request to delete Bill item : {}", id );
         billItemRepository.deleteById( id );
     }
 
-    public List<Menu>
+    /**
+     * Get Bill report
+     * 
+     * @return
+     * @throws ApplicationException
+     */
+    @Override
+    public TotalBillReportDTO getBillReport() throws ApplicationException {
+        TotalBillReportDTO totalBillReportDTO = new TotalBillReportDTO();
+        totalBillReportDTO.setBillItemsReport( billItemRepository.getAllBillReport()
+        														 .stream()
+        														 .map( billItemReportMapper::toDto )
+        														 .collect( Collectors.toList() ) );
+
+        totalBillReportDTO.setGrandTotal( totalBillReportDTO.getBillItemsReport().stream().map( BillItemReportDTO::getTotalPrice ).reduce( BigDecimal.ZERO, BigDecimal::add ) );
+        return totalBillReportDTO;
+    }
 }

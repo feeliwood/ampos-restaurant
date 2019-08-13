@@ -59,7 +59,9 @@ public class BillResource {
         logger.debug( "REST request to create bill:" );
 
         BillDTO result = billService.createBill();
-        return ResponseEntity.created( new URI( BILL_MAPPING + result.getId() ) ).headers( HeaderUtil.createEntityCreationAlert( BILL_NAME, result.getId().toString() ) ).body( result );
+        return ResponseEntity.created( new URI( BILL_MAPPING + result.getId() ) )
+        					 .headers( HeaderUtil.createEntityCreationAlert( BILL_NAME, result.getId().toString() ) )
+        					 .body( result );
     }
 
     /**
@@ -116,7 +118,9 @@ public class BillResource {
         logger.debug( "REST request to create bill:" );
 
         BillItemDTO result = billService.createBillItem( billId, billItemDTO );
-        return ResponseEntity.created( new URI( BILL_MAPPING + result.getId() ) ).headers( HeaderUtil.createEntityCreationAlert( BILL_NAME, result.getId().toString() ) ).body( result );
+        return ResponseEntity.created( new URI( BILL_MAPPING + result.getId() ) )
+        					 .headers( HeaderUtil.createEntityCreationAlert( BILL_NAME, result.getId().toString() ) )
+        					 .body( result );
     }
 
     /**
@@ -133,7 +137,9 @@ public class BillResource {
         logger.debug( "REST request to update Bill Item with id  : {}", billItemId );
 
         BillItemDTO result = billService.editBillItem( billId, billItemId, quantity );
-        return ResponseEntity.ok().headers( HeaderUtil.createEntityUpdateAlert( BILL_NAME, result.getId().toString() ) ).body( result );
+        return ResponseEntity.ok()
+        					 .headers( HeaderUtil.createEntityUpdateAlert( BILL_NAME, result.getId().toString() ) )
+        					 .body( result );
     }
 
     /**
@@ -147,6 +153,8 @@ public class BillResource {
     public ResponseEntity<Void> deleteBillItem( @PathVariable Long billItemId ) {
         logger.debug( "REST request to delete menu item : {}", billItemId );
         billService.deleteBillItem( billItemId );
-        return ResponseEntity.ok().headers( HeaderUtil.createEntityDeletionAlert( BILL_NAME, billItemId.toString() ) ).build();
+        return ResponseEntity.ok()
+        					 .headers( HeaderUtil.createEntityDeletionAlert( BILL_NAME, billItemId.toString() ) )
+        					 .build();
     }
 }
