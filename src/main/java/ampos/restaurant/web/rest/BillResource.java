@@ -32,7 +32,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Bill order management controller is used to CRU bill order.
- * 
+ *
  */
 @RestController
 public class BillResource {
@@ -59,9 +59,7 @@ public class BillResource {
         logger.debug( "REST request to create bill:" );
 
         BillDTO result = billService.createBill();
-        return ResponseEntity.created( new URI( BILL_MAPPING + result.getId() ) )
-        					 .headers( HeaderUtil.createEntityCreationAlert( BILL_NAME, result.getId().toString() ) )
-        					 .body( result );
+        return ResponseEntity.created( new URI( BILL_MAPPING + result.getId() ) ).headers( HeaderUtil.createEntityCreationAlert( BILL_NAME, result.getId().toString() ) ).body( result );
     }
 
     /**
@@ -124,7 +122,7 @@ public class BillResource {
     }
 
     /**
-     * PUT /bill/{billId}/item/{billItemId} : Updates an existing menu item.
+     * PUT /bill/{billId}/item/{billItemId} : Updates an existing bill item.
      *
      * @pathVariable billId: Bill that this Bill Item belongs
      * @pathVariable billItemId: id of the Bill Item to be updated
@@ -143,16 +141,17 @@ public class BillResource {
     }
 
     /**
-     * DELETE /billItems/:billItemId : delete the "id" menu item.
+     * DELETE /bill/{billId}/item/{billItemId} : delete the "id" bill item.
      *
      * @param billItemId
      *            the id of the BillItemDTO to delete
      * @return the ResponseEntity with status 200 (OK)
+     * @throws ApplicationException
      */
-    @DeleteMapping( BILL_ITEM_MAPPING + "/{billItemId}" )
-    public ResponseEntity<Void> deleteBillItem( @PathVariable Long billItemId ) {
+    @DeleteMapping( BILL_MAPPING + "/{billId}" + BILL_ITEM_MAPPING + "/{billItemId}" )
+    public ResponseEntity<Void> deleteBillItem( @PathVariable Long billId, @PathVariable Long billItemId ) throws ApplicationException {
         logger.debug( "REST request to delete menu item : {}", billItemId );
-        billService.deleteBillItem( billItemId );
+        billService.deleteBillItem( billId, billItemId );
         return ResponseEntity.ok()
         					 .headers( HeaderUtil.createEntityDeletionAlert( BILL_NAME, billItemId.toString() ) )
         					 .build();
