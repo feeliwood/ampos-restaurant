@@ -12,6 +12,9 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+/**
+ * Repository to manage menu item
+ */
 @Repository
 public interface MenuItemRepository extends JpaRepository<MenuItem, Long> {
 

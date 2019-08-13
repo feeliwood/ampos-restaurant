@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * A DTO for the MenuItem entity.
+ * Menu item DTO
  */
 @Getter
 @Setter

@@ -9,6 +9,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
+/**
+ * Bill item DTO
+ */
 public class BillItemDTO implements Serializable {
 
     private Long id;

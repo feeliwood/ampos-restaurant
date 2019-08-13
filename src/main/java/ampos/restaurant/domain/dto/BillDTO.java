@@ -9,7 +9,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * MenuItem data transfer object
+ * Bill DTO
  */
 @Getter
 @Setter
