@@ -10,6 +10,7 @@ import ampos.restaurant.service.MenuItemService;
 
 
 import ampos.restaurant.web.rest.util.ResponseUtil;
+import io.swagger.annotations.ApiOperation;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -78,19 +80,11 @@ public class MenuItemResource {
      * @param id the id of the menuItemDTO to retrieve
      * @return the ResponseEntity with status 200 (OK) and with body the menuItemDTO, or with status 404 (Not Found)
      */
-<<<<<<< HEAD
-    @GetMapping( "/{id}" )
-    public ResponseEntity<MenuItemDTO> getMenuItem( @PathVariable Long id ) throws ApplicationException {
-        logger.debug( "REST request to get Menu Item : {}", id );
-        MenuItemDTO menuItemDTO = menuItemService.findById( id );
-        return ResponseUtil.wrapOrNotFound( Optional.ofNullable( menuItemDTO ) );
-=======
     @GetMapping("/{id}")
     public ResponseEntity<MenuItemDTO> getMenuItem(@PathVariable Long id) throws ApplicationException {
         logger.debug("REST request to get Menu Item : {}", id);
         MenuItemDTO menuItemDTO = menuItemService.findMenuItemById(id);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(menuItemDTO));
->>>>>>> -Remove http header
     }
 
     /**
@@ -102,18 +96,10 @@ public class MenuItemResource {
      *         items in body
      */
     @GetMapping
-<<<<<<< HEAD
-    public ResponseEntity<Page<MenuItemDTO>> getAllMenuItems( Pageable pageable ) throws ApplicationException {
-        logger.debug( "REST request to get a page of Menu Items" );
-        Page<MenuItemDTO> page = menuItemService.findAll( pageable );
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders( page, "/menu/items" );
-        return new ResponseEntity<>( page, headers, HttpStatus.OK );
-=======
     public ResponseEntity<Page<MenuItemDTO>> getAllMenuItems(Pageable pageable) throws ApplicationException {
         logger.debug("REST request to get a page of Menu Items");
         Page<MenuItemDTO> page = menuItemService.findAllMenuItems(pageable);
         return new ResponseEntity<>(page, null , HttpStatus.OK);
->>>>>>> -Remove http header
     }
 
     /**
@@ -123,12 +109,11 @@ public class MenuItemResource {
      *            the id of the menuItemDTO to delete
      * @return the ResponseEntity with status 200 (OK)
      */
-<<<<<<< HEAD
     @DeleteMapping( "/{id}" )
     public ResponseEntity<Void> deleteMenuItem( @PathVariable Long id ) {
         logger.debug( "REST request to delete menu item : {}", id );
-        menuItemService.delete( id );
-        return ResponseEntity.ok().headers( HeaderUtil.createEntityDeletionAlert( ENTITY_NAME, id.toString() ) ).build();
+        menuItemService.deleteMenuItem( id );
+        return ResponseEntity.ok().build();
     }
 
     /**
@@ -147,14 +132,6 @@ public class MenuItemResource {
     public ResponseEntity<Page<MenuItemDTO>> searchMenuItems( @RequestParam( value = "keyword" ) String keyword, Pageable pageable ) throws ApplicationException {
         logger.debug( "REST request to search menu items" );
         Page<MenuItemDTO> page = menuItemService.searchMenuItems( keyword, pageable );
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders( page, "/menu/search" );
-        return new ResponseEntity<>( page, headers, HttpStatus.OK );
-=======
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteMenuItem(@PathVariable Long id) {
-        logger.debug("REST request to delete menu item : {}", id);
-        menuItemService.deleteMenuItem(id);
-        return ResponseEntity.ok().build();
->>>>>>> -Remove http header
+        return new ResponseEntity<>( page, null, HttpStatus.OK );
     }
 }

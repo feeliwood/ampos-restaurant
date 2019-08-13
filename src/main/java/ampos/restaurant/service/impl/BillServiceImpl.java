@@ -151,18 +151,7 @@ public class BillServiceImpl implements BillService {
     @Override
     public void deleteBillItem( Long billId, Long billItemId ) throws ApplicationException {
         log.debug( "Request to delete Bill item : {}", billItemId );
-<<<<<<< HEAD
-        Bill bill = billRepository.findById( billId ).orElseThrow( () -> new ApplicationException( Constants.BILL_NOT_FOUND ) );
-        bill.getBillItems().stream()
-        .filter( item -> item.getId() == billItemId.longValue() ).findAny()
-        .orElseThrow( () -> new ApplicationException( Constants.BILL_ITEM_NOT_FOUND ) );
-        billItemRepository.deleteById( billItemId );
-=======
-//        Bill bill = billRepository.findById( billId ).orElseThrow( ( ) -> new ApplicationException( Constants.BILL_NOT_FOUND ) );
-//        BillItem billItem = bill.getBillItems().stream().filter( item -> item.getId() == billItemId.longValue() ).findAny().orElseThrow( ( ) -> new ApplicationException( Constants.BILL_ITEM_NOT_FOUND ) );
-//        bill.getBillItems().remove( billItem );
         billItemRepository.deleteBillItemByIdAndBillId( billId, billItemId );
->>>>>>> -Remove http header
     }
 
     /**
