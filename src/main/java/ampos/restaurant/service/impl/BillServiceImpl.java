@@ -58,7 +58,7 @@ public class BillServiceImpl implements BillService {
      */
     @Override
     public BillDTO createBill() throws ApplicationException {
-        log.debug( "Request to update Bill " );
+        log.debug( "Request to update bill " );
         return billMapper.toDto( billRepository.save( new Bill() ) );
     }
 
@@ -73,7 +73,7 @@ public class BillServiceImpl implements BillService {
     @Override
     @Transactional( readOnly = true )
     public Page<BillDTO> findAllBills( Pageable pageable ) {
-        log.debug( "Request to get all BillItems" );
+        log.debug( "Request to get all bill items" );
         return billRepository.findAll( pageable ).map( billMapper::toDto );
     }
 
@@ -88,7 +88,7 @@ public class BillServiceImpl implements BillService {
     @Override
     @Transactional( readOnly = true )
     public BillDTO findBillById( Long id ) throws ApplicationException {
-        log.debug( "Request to get Menu Item : {}", id );
+        log.debug( "Request to get bill : {}", id );
         Bill bill = billRepository.findById( id ).orElseThrow( () -> new ApplicationException( Constants.BILL_NOT_FOUND ) );
         return billMapper.toDto( bill );
     }
@@ -104,7 +104,7 @@ public class BillServiceImpl implements BillService {
      */
     @Override
     public BillItemDTO createBillItem( Long billId, BillItemDTO billItemDTO ) throws ApplicationException {
-        log.debug( "Request to create new BillItem : {}", billItemDTO );
+        log.debug( "Request to create new bill item : {}", billItemDTO );
 
         billRepository.findById( billId ).orElseThrow( () -> new ApplicationException( Constants.BILL_NOT_FOUND ) );
         billItemDTO.setBillId( billId );
@@ -131,7 +131,7 @@ public class BillServiceImpl implements BillService {
         if ( quantity == null || quantity.intValue() <= 0 )
             throw new ApplicationException( Constants.INVALID_QUANTITY_FOR_BILL_ITEM );
 
-        log.debug( "Request to edit new BillItem with id : ", billItemId );
+        log.debug( "Request to edit new bill item with id : ", billItemId );
 
         Bill bill = billRepository.findById( billId ).orElseThrow( () -> new ApplicationException( Constants.BILL_NOT_FOUND ) );
         BillItem billItem = bill.getBillItems().stream()
@@ -154,7 +154,7 @@ public class BillServiceImpl implements BillService {
      */
     @Override
     public void deleteBillItem( Long billId, Long billItemId ) throws ApplicationException {
-        log.debug( "Request to delete Bill item : {}", billItemId );
+        log.debug( "Request to delete bill item : {}", billItemId );
         billItemRepository.deleteBillItemByIdAndBillId( billId, billItemId );
     }
 
@@ -166,6 +166,7 @@ public class BillServiceImpl implements BillService {
      */
     @Override
     public TotalBillItemReportDTO getBillItemReport() throws ApplicationException {
+    	log.debug( "Request to get bill item report" );
         TotalBillItemReportDTO totalBillReportDTO = new TotalBillItemReportDTO();
         totalBillReportDTO.setBillItems( billItemRepository.getAllBillReport().stream().map( billItemReportMapper::toDto )
                 .collect( Collectors.toList() ) );

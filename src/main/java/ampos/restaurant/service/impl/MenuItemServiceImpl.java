@@ -49,7 +49,7 @@ public class MenuItemServiceImpl implements MenuItemService {
 	 */
     @Override
     public MenuItemDTO createOrUpdateMenuItem( Long id, MenuItemDTO menuItemDTO ) {
-        log.debug( "Request to update MenuItem : {}", menuItemDTO );
+        log.debug( "Request to create or update menu item : {}", menuItemDTO );
 
         MenuItem menuItem = menuItemMapper.toEntity( menuItemDTO );
         if ( id != null && menuItemRepository.findById( id ).isPresent() ) {
@@ -69,7 +69,7 @@ public class MenuItemServiceImpl implements MenuItemService {
      */
     @Override
     public void deleteMenuItem( Long id ) {
-        log.debug( "Request to delete Menu Item : {}", id );
+        log.debug( "Request to delete menu item : {}", id );
         menuItemRepository.deleteAllMenuItemWithIds( Arrays.asList(id) );
     }
 
@@ -84,7 +84,7 @@ public class MenuItemServiceImpl implements MenuItemService {
     @Override
     @Transactional( readOnly = true )
     public Page<MenuItemDTO> findAllMenuItems( Pageable pageable ) {
-        log.debug( "Request to get all MenuItems" );
+        log.debug( "Request to get all menu items" );
         return menuItemRepository.findAll( pageable ).map( menuItemMapper::toDto );
     }
 
@@ -99,7 +99,7 @@ public class MenuItemServiceImpl implements MenuItemService {
     @Override
     @Transactional( readOnly = true )
     public MenuItemDTO findMenuItemById( Long id ) throws ApplicationException {
-        log.debug( "Request to get Menu Item : {}", id );
+        log.debug( "Request to get menu item : {}", id );
         MenuItem menuItem = menuItemRepository.findById( id ).orElseThrow( () -> new ApplicationException( Constants.MENU_ITEM_NOT_FOUND ) );
         return menuItemMapper.toDto( menuItem );
     }
@@ -118,6 +118,7 @@ public class MenuItemServiceImpl implements MenuItemService {
     @Override
     @Transactional( readOnly = true )
     public Page<MenuItemDTO> searchMenuItems( String keyword, Pageable pageable ) throws ApplicationException {
+    	log.debug( "Request to search menu items by keyword : {}", keyword );
         return menuItemRepository.search( keyword.toLowerCase(), pageable ).map( menuItemMapper::toDto );
     }
 }
