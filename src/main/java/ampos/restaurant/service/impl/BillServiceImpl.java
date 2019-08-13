@@ -4,6 +4,13 @@ import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.stream.Collectors;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import ampos.restaurant.domain.Bill;
 import ampos.restaurant.domain.BillItem;
 import ampos.restaurant.domain.dto.BillDTO;
@@ -18,13 +25,6 @@ import ampos.restaurant.repository.BillItemRepository;
 import ampos.restaurant.repository.BillRepository;
 import ampos.restaurant.service.BillService;
 import ampos.restaurant.util.Constants;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Bill Item Service implementation
@@ -130,7 +130,9 @@ public class BillServiceImpl implements BillService {
         log.debug( "Request to edit new BillItem with id : ", billItemId );
 
         Bill bill = billRepository.findById( billId ).orElseThrow( () -> new ApplicationException( Constants.BILL_NOT_FOUND ) );
-        BillItem billItem = bill.getBillItems().stream().filter( item -> item.getId() == billItemId.longValue() ).findAny().orElseThrow( () -> new ApplicationException( Constants.BILL_ITEM_NOT_FOUND ) );
+        BillItem billItem = bill.getBillItems().stream()
+                .filter( item -> item.getId() == billItemId.longValue() ).findAny()
+                .orElseThrow( () -> new ApplicationException( Constants.BILL_ITEM_NOT_FOUND ) );
         billItem.setQuantity( quantity );
         billItem.setOrderedTime( Instant.now() );
         billRepository.save( bill );
@@ -150,22 +152,26 @@ public class BillServiceImpl implements BillService {
     public void deleteBillItem( Long billId, Long billItemId ) throws ApplicationException {
         log.debug( "Request to delete Bill item : {}", billItemId );
         Bill bill = billRepository.findById( billId ).orElseThrow( () -> new ApplicationException( Constants.BILL_NOT_FOUND ) );
-        bill.getBillItems().stream().filter( item -> item.getId() == billItemId.longValue() ).findAny().orElseThrow( () -> new ApplicationException( Constants.BILL_ITEM_NOT_FOUND ) );
+        bill.getBillItems().stream()
+        .filter( item -> item.getId() == billItemId.longValue() ).findAny()
+        .orElseThrow( () -> new ApplicationException( Constants.BILL_ITEM_NOT_FOUND ) );
         billItemRepository.deleteById( billItemId );
     }
 
     /**
      * Get Bill report
-     * 
+     *
      * @return
      * @throws ApplicationException
      */
     @Override
     public TotalBillReportDTO getBillReport() throws ApplicationException {
         TotalBillReportDTO totalBillReportDTO = new TotalBillReportDTO();
-        totalBillReportDTO.setBillItemsReport( billItemRepository.getAllBillReport().stream().map( billItemReportMapper::toDto ).collect( Collectors.toList() ) );
+        totalBillReportDTO.setBillItemsReport( billItemRepository.getAllBillReport().stream().map( billItemReportMapper::toDto )
+                .collect( Collectors.toList() ) );
 
-        totalBillReportDTO.setGrandTotal( totalBillReportDTO.getBillItemsReport().stream().map( BillItemReportDTO::getTotalPrice ).reduce( BigDecimal.ZERO, BigDecimal::add ) );
+        totalBillReportDTO.setGrandTotal( totalBillReportDTO.getBillItemsReport().stream().map( BillItemReportDTO::getTotalPrice )
+                .reduce( BigDecimal.ZERO, BigDecimal::add ) );
         return totalBillReportDTO;
     }
 }
