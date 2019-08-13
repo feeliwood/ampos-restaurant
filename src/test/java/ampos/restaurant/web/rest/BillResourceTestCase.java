@@ -13,9 +13,17 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import org.junit.FixMethodOrder;
+import org.junit.Test;
+import org.junit.runners.MethodSorters;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.util.MimeTypeUtils;
 
 import ampos.restaurant.BaseTestCase;
 import ampos.restaurant.domain.dto.BillDTO;
@@ -27,13 +35,6 @@ import ampos.restaurant.models.MenuRequest;
 import ampos.restaurant.repository.BillItemRepository;
 import ampos.restaurant.repository.BillRepository;
 
-import org.junit.FixMethodOrder;
-import org.junit.Test;
-import org.junit.runners.MethodSorters;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.util.MimeTypeUtils;
-
 @FixMethodOrder( MethodSorters.NAME_ASCENDING )
 public class BillResourceTestCase extends BaseTestCase {
     @Autowired
@@ -43,7 +44,7 @@ public class BillResourceTestCase extends BaseTestCase {
 
     /**
      * test case for create bill
-     * 
+     *
      * @throws IOException
      * @throws Exception
      */
@@ -58,7 +59,7 @@ public class BillResourceTestCase extends BaseTestCase {
 
     /**
      * Test case of get Bill
-     * 
+     *
      * @throws IOException
      * @throws Exception
      */
@@ -90,14 +91,14 @@ public class BillResourceTestCase extends BaseTestCase {
 
     /**
      * test case for create bill item
-     * 
+     *
      * @throws IOException
      * @throws Exception
      */
     @Test
     public void createBillItemTestCase() throws IOException, Exception {
         String[] str = { "Italian", "Thai" };
-        ArrayList<String> additionalData = Stream.of( str ).collect( Collectors.toCollection( ArrayList::new ) );
+        List<String> additionalData = Stream.of( str ).collect( Collectors.toCollection( ArrayList::new ) );
         MenuRequest menu = new MenuRequest( (long) 1, "Oolong tea edit", "All-time favourite toppings, Hawaiian pizza in Tropical Hawaii style", "https://s3-ap-southeast-1.amazonaws.com/interview.ampostech.com/backend/restaurant/menu1.jpg", new BigDecimal( 300 ), additionalData );
         BillItemsRequest billItems = new BillItemsRequest( (long) 1, 1, menu, "2019/08/05 04:44:44 PM", (long) 1, new BigDecimal( 300 ) );
         // compare
@@ -109,7 +110,7 @@ public class BillResourceTestCase extends BaseTestCase {
 
     /**
      * test case for update bill item
-     * 
+     *
      * @throws IOException
      * @throws Exception
      */
@@ -124,7 +125,7 @@ public class BillResourceTestCase extends BaseTestCase {
 
     /**
      * Test case for delete bill item
-     * 
+     *
      * @throws IOException
      * @throws Exception
      */
