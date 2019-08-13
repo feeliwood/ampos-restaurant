@@ -13,5 +13,4 @@ import lombok.Setter;
  */
 public class TotalBillItemReportDTO {
     private List<BillItemReportDTO> billItems;
-    private BigDecimal total;
 }

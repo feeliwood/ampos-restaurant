@@ -12,7 +12,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BillItemReport {
-    private String name;
+    private MenuItem menuItem;
     private long quantity;
     private BigDecimal subTotal;
 }

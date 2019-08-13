@@ -1,5 +1,6 @@
 package ampos.restaurant.web.rest;
 
+import ampos.restaurant.domain.dto.TotalReportDTO;
 import io.swagger.annotations.ApiOperation;
 
 import java.net.URI;
@@ -63,15 +64,15 @@ public class BillResource {
     }
 
     /**
-     * GET /bills/check : Check all bill items
+     * GET /bills/check : Check all bills and bill items
      *
      * @return the ResponseEntity with status 200 (OK)
      */
     @ApiOperation( value = "Check all bill items", response = ResponseEntity.class )
     @GetMapping( BILL_MAPPING + "/check" )
-    public ResponseEntity<TotalBillItemReportDTO> checkBillItems() throws ApplicationException {
-        logger.debug( "REST request to check all bill items" );
-        TotalBillItemReportDTO result = billService.getBillItemReport();
+    public ResponseEntity<TotalReportDTO> checkBillAndBillItem() throws ApplicationException {
+        logger.debug( "REST request to check all bills and bill items" );
+        TotalReportDTO result = billService.getBillAndBillItemReport();
         return new ResponseEntity<>( result, null, HttpStatus.OK );
     }
 

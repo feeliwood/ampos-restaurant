@@ -2,8 +2,10 @@ package ampos.restaurant.service.impl;
 
 import java.math.BigDecimal;
 import java.time.Instant;
+import java.util.List;
 import java.util.stream.Collectors;
 
+import ampos.restaurant.domain.dto.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -13,10 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ampos.restaurant.domain.Bill;
 import ampos.restaurant.domain.BillItem;
-import ampos.restaurant.domain.dto.BillDTO;
-import ampos.restaurant.domain.dto.BillItemDTO;
-import ampos.restaurant.domain.dto.BillItemReportDTO;
-import ampos.restaurant.domain.dto.TotalBillItemReportDTO;
 import ampos.restaurant.domain.mapper.BillItemMapper;
 import ampos.restaurant.domain.mapper.BillItemReportMapper;
 import ampos.restaurant.domain.mapper.BillMapper;
@@ -159,20 +157,23 @@ public class BillServiceImpl implements BillService {
     }
 
     /**
-     * Get bill item report
+     * Get bill and bill item report
      *
      * @return
      * @throws ApplicationException
      */
     @Override
-    public TotalBillItemReportDTO getBillItemReport() throws ApplicationException {
-    	log.debug( "Request to get bill item report" );
-        TotalBillItemReportDTO totalBillReportDTO = new TotalBillItemReportDTO();
-        totalBillReportDTO.setBillItems( billItemRepository.getAllBillReport().stream().map( billItemReportMapper::toDto )
+    public TotalReportDTO getBillAndBillItemReport() throws ApplicationException {
+    	log.debug( "Request to get bill and bill item report" );
+        TotalBillItemReportDTO totalBillItemReportDTO = new TotalBillItemReportDTO();
+        totalBillItemReportDTO.setBillItems( billItemRepository.getAllBillReport().stream().map( billItemReportMapper::toDto )
                 .collect( Collectors.toList() ) );
 
-        totalBillReportDTO.setTotal( totalBillReportDTO.getBillItems().stream().map( BillItemReportDTO::getSubTotal )
-                .reduce( BigDecimal.ZERO, BigDecimal::add ) );
-        return totalBillReportDTO;
+        TotalBillReportDTO totalBillReportDTO = new TotalBillReportDTO();
+        totalBillReportDTO.setBills(billRepository.findAll().stream().map( billMapper::toDto ).collect(Collectors.toList()));
+        totalBillReportDTO.setNumberOfBills(totalBillReportDTO.getBills().size());
+        totalBillReportDTO.setGrandTotal(totalBillReportDTO.getBills().stream().map( BillDTO::getTotal ).reduce( BigDecimal.ZERO, BigDecimal::add ));
+
+        return new TotalReportDTO(totalBillItemReportDTO, totalBillReportDTO);
     }
 }

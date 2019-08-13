@@ -11,7 +11,7 @@ import lombok.Setter;
  * Bill item report DTO
  */
 public class BillItemReportDTO {
-    private String name;
+    private MenuItemDTO menuItem;
     private long quantity;
     private BigDecimal subTotal;
 }

@@ -8,7 +8,7 @@ import org.mapstruct.Mapper;
 /**
  * Bill item report mapper
  */
-@Mapper( componentModel = "spring" )
+@Mapper( componentModel = "spring", uses = { MenuItemMapper.class })
 public interface BillItemReportMapper extends EntityMapper<BillItemReportDTO, BillItemReport> {
 
     /**

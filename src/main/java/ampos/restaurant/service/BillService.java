@@ -3,6 +3,7 @@ package ampos.restaurant.service;
 import ampos.restaurant.domain.dto.BillDTO;
 import ampos.restaurant.domain.dto.BillItemDTO;
 import ampos.restaurant.domain.dto.TotalBillItemReportDTO;
+import ampos.restaurant.domain.dto.TotalReportDTO;
 import ampos.restaurant.exception.ApplicationException;
 
 import org.springframework.data.domain.Page;
@@ -77,10 +78,10 @@ public interface BillService {
     void deleteBillItem( Long billId, Long billItemId ) throws ApplicationException;
 
     /**
-     * Get bill item report
+     * Get bill and bill item report
      * 
      * @return
      * @throws ApplicationException
      */
-    TotalBillItemReportDTO getBillItemReport() throws ApplicationException;
+    TotalReportDTO getBillAndBillItemReport() throws ApplicationException;
 }
