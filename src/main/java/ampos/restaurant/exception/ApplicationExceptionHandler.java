@@ -68,7 +68,6 @@ public class ApplicationExceptionHandler {
      * Exception handling
      *
      * @param e
-     * @param httpStatus
      * @return
      */
     private RestResourceErrorInfo exceptionHandling( Exception e ) {

@@ -31,7 +31,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Bill order management controller is used to CRU bill order.
+ * Controller handles requests to bill and bill items.
+ * The idea of putting bill and bill item into the same controller bases
+ * on the idea of a cashier receiving orders in real life.
+ *
+ * 1. Create a new bill
+ * 2. Add bill item to a specific bill
+ *
+ * Every single action on a bill item should be attached with a
+ * specific bill (identified by bill id). Adding, editing or deleting a
+ * bill item to a bill will not require to update of a whole bill
  *
  */
 @RestController
