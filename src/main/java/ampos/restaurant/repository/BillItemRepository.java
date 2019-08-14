@@ -6,7 +6,6 @@ import ampos.restaurant.domain.BillItem;
 import ampos.restaurant.domain.BillItemReport;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -16,7 +15,7 @@ import org.springframework.stereotype.Repository;
  * Repository to manage bill item
  */
 @Repository
-public interface BillItemRepository extends JpaRepository<BillItem, Long>, JpaSpecificationExecutor<BillItem> {
+public interface BillItemRepository extends JpaRepository<BillItem, Long> {
     // @formatter:off
     @Query( "SELECT new ampos.restaurant.domain.BillItemReport( menuItem, sum(billItem.quantity), sum(billItem.quantity)*menuItem.price ) "
             + " FROM BillItem billItem" 
