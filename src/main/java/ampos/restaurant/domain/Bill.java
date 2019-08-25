@@ -29,7 +29,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 @Table( name = Bill.TABLE_NAME )
-public class Bill implements Serializable {
+public class Bill implements Serializable, DomainEntity<Long> {
     protected static final String TABLE_NAME = "bill";
     protected static final String MAPPED_MANY_TO_ONE_FIELD_NAME = "bill";
     private static final String ID = "id";
@@ -37,7 +37,7 @@ public class Bill implements Serializable {
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY )
     @Column( name = ID )
-    private long id;
+    private Long id;
 
     @OneToMany( mappedBy = MAPPED_MANY_TO_ONE_FIELD_NAME, cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER )
     private Set<BillItem> billItems = new HashSet<>();

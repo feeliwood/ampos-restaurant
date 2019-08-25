@@ -1,5 +1,6 @@
 package ampos.restaurant.domain.mapper;
 
+import ampos.restaurant.domain.dto.BillRequestDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -10,7 +11,7 @@ import ampos.restaurant.domain.dto.BillDTO;
  * Mapper for the entity Bill and its DTO BillDTO.
  */
 @Mapper( componentModel = "spring", uses = { BillItemMapper.class } )
-public interface BillMapper extends EntityMapper<BillDTO, Bill> {
+public interface BillMapper extends GenericMapper<BillDTO, Bill, BillRequestDTO> {
 
     /**
      *
@@ -18,14 +19,14 @@ public interface BillMapper extends EntityMapper<BillDTO, Bill> {
      * @return billDTO which is DTO of bill entity
      */
     @Mapping( expression = "java(bill.getTotal())", target = "total" )
-    BillDTO toDto( Bill bill );
+    BillDTO entityToDto( Bill bill );
 
     /**
      *
-     * @param billDTO
+     * @param billRequestDTO
      * @return bill which is entity of billDTO
      */
-    Bill toEntity( BillDTO billDTO );
+    Bill requestToEntity( BillRequestDTO billRequestDTO );
 
     /**
      * Create a dummy Bill object from id to prevent infinite loop in bidirectional relationship when mapping

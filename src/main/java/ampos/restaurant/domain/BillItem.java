@@ -27,7 +27,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table( name = BillItem.TABLE_NAME )
-public class BillItem implements Serializable {
+public class BillItem implements Serializable, DomainEntity<Long> {
     protected static final String TABLE_NAME = "bill_order_item";
     private static final String ID = "id";
     private static final String QUANTITY_COLUMN = "quantity";
@@ -38,7 +38,7 @@ public class BillItem implements Serializable {
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY )
     @Column( name = ID )
-    private long id;
+    private Long id;
 
     @Column( name = QUANTITY_COLUMN )
     private int quantity;

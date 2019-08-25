@@ -23,7 +23,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table( name = MenuItem.TABLE_NAME )
-public class MenuItem implements Serializable {
+public class MenuItem implements Serializable, DomainEntity<Long> {
     protected static final String TABLE_NAME = "menu_item";
     private static final String ID = "id";
     private static final String NAME_COLUMN = "name";
@@ -35,7 +35,7 @@ public class MenuItem implements Serializable {
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY )
     @Column( name = ID )
-    private long id;
+    private Long id;
 
     @NotNull
     @Column( name = NAME_COLUMN, unique = true, nullable = false )

@@ -5,20 +5,20 @@ import java.util.List;
 /**
  * Contract for a generic dto to entity mapper.
  * 
- * @param <D>
+ * @param <DTO>
  *            - DTO type parameter.
- * @param <E>
+ * @param <ENTITY>
  *            - Entity type parameter.
  */
 
-public interface EntityMapper<D, E> {
+public interface GenericMapper<DTO, ENTITY, REQUEST> {
 
     /**
      * Map dto type to entity type
-     * @param dto
+     * @param request
      * @return entity
      */
-    public E toEntity( D dto );
+    public ENTITY requestToEntity( REQUEST request );
 
     /**
      * Map entity type to dto type
@@ -26,15 +26,15 @@ public interface EntityMapper<D, E> {
      * @param entity
      * @return dto
      */
-    public D toDto( E entity );
+    public DTO entityToDto( ENTITY entity );
 
     /**
      * Map list of dto type to list of entity type
      *
-     * @param dtoList
+     * @param requestList
      * @return entityList
      */
-    public List<E> toEntity( List<D> dtoList );
+    public List<ENTITY> requestToEntity( List<REQUEST> requestList );
 
     /**
      * Map list of entity type to list of dto type
@@ -42,5 +42,5 @@ public interface EntityMapper<D, E> {
      * @param entityList
      * @return dtoList
      */
-    public List<D> toDto( List<E> entityList );
+    public List<DTO> entityToDto( List<ENTITY> entityList );
 }
