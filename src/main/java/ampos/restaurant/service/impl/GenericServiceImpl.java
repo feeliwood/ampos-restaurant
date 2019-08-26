@@ -37,21 +37,23 @@ public abstract class GenericServiceImpl <REQUEST, RESPONSE extends Serializable
      * @return
      * @throws ApplicationException
      */
+    @Transactional
     @Override
     public RESPONSE save( ID id, REQUEST request ) throws ApplicationException {
-        ENTITY entity = null;
+        ENTITY existingEntity = null;
+        ENTITY entityToBeUpdated = mapper.requestToEntity(request);
+
         if( id != null ){
-            entity = repository.findById(id).orElseThrow( () -> new ApplicationContextException( Constants.ITEM_NOT_FOUND ));
-            processExistingEntity(entity);
+            existingEntity = repository.findById(id).orElseThrow( () -> new ApplicationContextException( Constants.ITEM_NOT_FOUND ));
+            mergeExistingAndNewEntity(existingEntity, entityToBeUpdated);
         }
-        entity = mapper.requestToEntity(request);
-        entity.setId(id);
-        processBeforeSaving(request, entity);
-        entity = repository.save(entity);
-        return mapper.entityToDto(entity);
+
+        processBeforeSaving(request, entityToBeUpdated);
+        entityToBeUpdated = repository.save(entityToBeUpdated);
+        return mapper.entityToDto(entityToBeUpdated);
     }
 
-    void processExistingEntity(ENTITY entity) {}
+    void mergeExistingAndNewEntity(ENTITY existingEntity, ENTITY newEntity) { }
 
     void processBeforeSaving(REQUEST request, ENTITY entity) {}
 

@@ -2,6 +2,7 @@ package ampos.restaurant.web.rest;
 
 import ampos.restaurant.domain.dto.*;
 import ampos.restaurant.util.Constants;
+import ampos.restaurant.util.Views;
 import io.swagger.annotations.ApiOperation;
 
 import java.net.URI;
@@ -24,6 +25,8 @@ import org.springframework.web.bind.annotation.*;
 
 import static ampos.restaurant.web.rest.BillResource.BILL_MAPPING;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @RestController
 @RequestMapping( BillResource.BILL_MAPPING )
 public class BillResource extends GenericResource<BillRequestDTO, BillDTO, Long, BillService> {
@@ -36,6 +39,18 @@ public class BillResource extends GenericResource<BillRequestDTO, BillDTO, Long,
 
     String getMapping() {
         return BILL_MAPPING;
+    }
+
+    @Override
+    @PostMapping
+    public ResponseEntity<BillDTO> create( @JsonView( Views.Public.class) @RequestBody BillRequestDTO request ) throws ApplicationException, URISyntaxException {
+        return super.create( request );
+    }
+
+    @PutMapping( "/{id}" )
+    @JsonView( Views.Internal.class )
+    public ResponseEntity<BillDTO> updateMenuItem( @PathVariable Long id,  @RequestBody BillRequestDTO request) throws ApplicationException {
+        return super.updateMenuItem( id, request );
     }
 
     @Override

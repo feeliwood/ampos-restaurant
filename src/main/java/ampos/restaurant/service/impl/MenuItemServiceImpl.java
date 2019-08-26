@@ -33,12 +33,12 @@ public class MenuItemServiceImpl extends GenericServiceImpl<MenuItemRequestDTO, 
 
     @Override
     public void delete( Long id ) {
-        this.repository.deleteAllMenuItemWithIds( Arrays.asList(id) );
+        repository.deleteAllMenuItemWithIds( Arrays.asList(id) );
     }
 
     @Override
     @Transactional( readOnly = true )
     public Page<MenuItemDTO> search( String keyword, Pageable pageable ) {
-        return this.repository.search( keyword.toLowerCase(), pageable ).map( this.mapper::entityToDto );
+        return repository.search( keyword.toLowerCase(), pageable ).map( this.mapper::entityToDto );
     }
 }

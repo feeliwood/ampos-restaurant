@@ -1,6 +1,7 @@
 package ampos.restaurant.repository;
 
 import java.util.Collection;
+import java.util.List;
 
 import ampos.restaurant.domain.MenuItem;
 
@@ -26,6 +27,7 @@ public interface MenuItemRepository extends JpaRepository<MenuItem, Long> {
     // @formatter:on
     Page<MenuItem> search( @Param( "keyword" ) String keyword, Pageable pageable );
 
+    List<MenuItem> findMenusByIdIn(Collection<Long> ids);
 
     @Modifying
     @Query("DELETE FROM MenuItem WHERE id in :ids")

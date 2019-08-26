@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import ampos.restaurant.domain.MenuItem;
@@ -15,6 +16,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import ampos.restaurant.domain.Bill;
@@ -33,6 +35,7 @@ import ampos.restaurant.util.Constants;
  *
  */
 @Service
+@Transactional
 public class BillServiceImpl extends GenericServiceImpl<BillRequestDTO, BillDTO, Long, Bill, BillRepository, BillMapper> implements BillService {
 
     private BillItemRepository billItemRepository;
@@ -47,10 +50,27 @@ public class BillServiceImpl extends GenericServiceImpl<BillRequestDTO, BillDTO,
     }
 
     @Override
-    void processExistingEntity(Bill bill) {
-	bill.getBillItems().clear();
+    @Transactional
+    void mergeExistingAndNewEntity(Bill existingBill, Bill newBill) {
+	Set<Long> newBillItemIds = newBill.getBillItems().stream().filter( item -> item.getId() != null).map( BillItem::getId ).collect( Collectors.toSet() );
+	if(newBillItemIds.size() > 0)
+	    existingBill.getBillItems().removeIf( item -> !newBillItemIds.contains(item.getId()) );
+
+        Set<Long> currentBillItemIds = existingBill.getBillItems().stream().map( BillItem::getId ).collect( Collectors.toSet() );
+        if(currentBillItemIds.size() > 0)
+	    newBill.getBillItems().removeIf( item -> ( item.getId() != null && currentBillItemIds.contains(item.getId()) ) );
+
+	existingBill.getBillItems().addAll( newBill.getBillItems() );
+        for(BillItem billItem : existingBill.getBillItems()) {
+            if(billItem.getId() == null) {
+                billItem.setOrderedTime( Instant.now() );
+                billItem.setBill( existingBill );
+            }
+        }
+        newBill = existingBill;
     }
 
+    @Transactional
     @Override
     void processBeforeSaving(BillRequestDTO billRequestDTO, Bill bill) {
         if (billRequestDTO.getBillItems().size() <= 0)
@@ -58,11 +78,10 @@ public class BillServiceImpl extends GenericServiceImpl<BillRequestDTO, BillDTO,
 
         // Because request only contains MenuItem ID, need to get MenuItem entity from data store to return in the response body
         List<Long> menuIds = billRequestDTO.getBillItems().stream().map( BillItemRequestDTO::getMenuItemId ).collect( Collectors.toList());
-        Map<Long, MenuItem> menuItems = menuItemRepository.findAllById( menuIds ).stream().collect( Collectors.toMap( MenuItem::getId, menuItem -> menuItem ));
+        List<MenuItem> items = menuItemRepository.findMenusByIdIn( menuIds );
+        Map<Long, MenuItem> menuItems = items.stream().collect( Collectors.toMap( MenuItem::getId, menuItem -> menuItem ));
 
         for(BillItem billItem : bill.getBillItems()) {
-            billItem.setOrderedTime(Instant.now());
-            billItem.setBill(bill);
             billItem.setMenuItem( menuItems.get(billItem.getMenuItem().getId()) );
         }
     }
@@ -88,10 +107,10 @@ public class BillServiceImpl extends GenericServiceImpl<BillRequestDTO, BillDTO,
     @Override
     public TotalReportDTO getBillAndBillItemReport() throws ApplicationException {
         TotalBillItemReportDTO totalBillItemReportDTO = new TotalBillItemReportDTO();
-        totalBillItemReportDTO.setBillItems( this.billItemReportMapper.entityToDto(billItemRepository.getAllBillReport()) );
+        totalBillItemReportDTO.setBillItems( billItemReportMapper.entityToDto(billItemRepository.getAllBillReport()) );
 
         TotalBillReportDTO totalBillReportDTO = new TotalBillReportDTO();
-        totalBillReportDTO.setBills( this.mapper.entityToDto(this.repository.findAll()) );
+        totalBillReportDTO.setBills( mapper.entityToDto( repository.findAll()) );
         totalBillReportDTO.setNumberOfBills(totalBillReportDTO.getBills().size());
         totalBillReportDTO.setGrandTotal(totalBillReportDTO.getBills().stream().map( BillDTO::getTotal ).reduce( BigDecimal.ZERO, BigDecimal::add ));
 
