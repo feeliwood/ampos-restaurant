@@ -14,7 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.io.Serializable;
 import java.util.Optional;
 
-@Transactional
 public abstract class GenericServiceImpl <REQUEST, RESPONSE extends Serializable, ID,
                                         ENTITY extends DomainEntity<ID>, REPOSITORY extends JpaRepository<ENTITY, ID>,
                                         MAPPER extends GenericMapper<RESPONSE, ENTITY, REQUEST>> implements GenericService <REQUEST, RESPONSE, ID> {
@@ -39,21 +38,23 @@ public abstract class GenericServiceImpl <REQUEST, RESPONSE extends Serializable
      */
     @Override
     public RESPONSE save( ID id, REQUEST request ) throws ApplicationException {
-        ENTITY entity = null;
+        ENTITY existingEntity = null;
+        ENTITY entityToBeUpdated = mapper.requestToEntity(request);
+
         if( id != null ){
-            entity = repository.findById(id).orElseThrow( () -> new ApplicationContextException( Constants.ITEM_NOT_FOUND ));
-            processExistingEntity(entity);
+            existingEntity = repository.findById(id).orElseThrow( () -> new ApplicationContextException( Constants.ITEM_NOT_FOUND ));
+	    mergeExistingAndNewEntity(existingEntity, entityToBeUpdated);
+	    entityToBeUpdated = existingEntity;
         }
-        entity = mapper.requestToEntity(request);
-        entity.setId(id);
-        processBeforeSaving(request, entity);
-        entity = repository.save(entity);
-        return mapper.entityToDto(entity);
+
+        processBeforeSaving(entityToBeUpdated);
+        entityToBeUpdated = repository.save(entityToBeUpdated);
+        return mapper.entityToDto(entityToBeUpdated);
     }
 
-    void processExistingEntity(ENTITY entity) {}
+    void mergeExistingAndNewEntity(ENTITY existingEntity, ENTITY newEntity) { }
 
-    void processBeforeSaving(REQUEST request, ENTITY entity) {}
+    public void processBeforeSaving(ENTITY entity) {}
 
     /**
      * Delete item

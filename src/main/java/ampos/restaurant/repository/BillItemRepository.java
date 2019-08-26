@@ -24,11 +24,4 @@ public interface BillItemRepository extends JpaRepository<BillItem, Long> {
             + " GROUP BY menuItem.id" )
     // @formatter:on
     List<BillItemReport> getAllBillReport();
-
-
-    @Modifying
-    @Query("DELETE"
-            + " FROM BillItem billItem"
-            + " WHERE billItem.bill.id = :billId")
-    void deleteBillItemsByBillId(@Param("billId") Long billId);
 }

@@ -25,8 +25,8 @@ public interface BillItemMapper extends GenericMapper<BillItemDTO, BillItem, Bil
      * @param billItemRequestDTO
      * @return billItem which is entity of billItemDTO
      */
-    @Mapping( source = "billId", target = "bill" )
     @Mapping( source = "menuItemId", target = "menuItem", qualifiedByName = "fromIdToMenuItem" )
+    @Mapping( target = "bill", ignore = true )
     BillItem requestToEntity( BillItemRequestDTO billItemRequestDTO);
 
     /**
