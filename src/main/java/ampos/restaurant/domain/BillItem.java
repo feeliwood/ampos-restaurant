@@ -70,4 +70,13 @@ public class BillItem implements Serializable, DomainEntity<Long> {
     public BigDecimal getSubTotal() {
         return BigDecimal.valueOf( quantity ).multiply( menuItem.getPrice() );
     }
+
+    public void merge(BillItem source) {
+        if(!getId().equals( source.getId()))
+            return;
+
+        setQuantity( source.getQuantity() );
+        setMenuItem( source.getMenuItem() );
+        setOrderedTime( Instant.now() );
+    }
 }

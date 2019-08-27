@@ -2,28 +2,16 @@ package ampos.restaurant.web.rest;
 
 import ampos.restaurant.domain.dto.*;
 import ampos.restaurant.util.Constants;
-import ampos.restaurant.util.Views;
-import io.swagger.annotations.ApiOperation;
+import ampos.restaurant.util.BillItemRequestView;
 
-import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.Optional;
-
-import javax.validation.constraints.NotNull;
 
 import ampos.restaurant.exception.ApplicationException;
 import ampos.restaurant.service.BillService;
-import ampos.restaurant.web.rest.util.ResponseUtil;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import static ampos.restaurant.web.rest.BillResource.BILL_MAPPING;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -31,7 +19,6 @@ import com.fasterxml.jackson.annotation.JsonView;
 @RequestMapping( BillResource.BILL_MAPPING )
 public class BillResource extends GenericResource<BillRequestDTO, BillDTO, Long, BillService> {
     public static final String BILL_MAPPING = "/bills";
-    public static final String BILL_ITEM_MAPPING = "/bill-items";
 
     public BillResource( BillService billService ) {
         super(billService);
@@ -43,13 +30,13 @@ public class BillResource extends GenericResource<BillRequestDTO, BillDTO, Long,
 
     @Override
     @PostMapping
-    public ResponseEntity<BillDTO> create( @JsonView( Views.Public.class) @RequestBody BillRequestDTO request ) throws ApplicationException, URISyntaxException {
+    public ResponseEntity<BillDTO> create( @JsonView( BillItemRequestView.Add.class) @RequestBody BillRequestDTO request ) throws ApplicationException, URISyntaxException {
         return super.create( request );
     }
 
+    @Override
     @PutMapping( "/{id}" )
-    @JsonView( Views.Internal.class )
-    public ResponseEntity<BillDTO> updateMenuItem( @PathVariable Long id,  @RequestBody BillRequestDTO request) throws ApplicationException {
+    public ResponseEntity<BillDTO> updateMenuItem( @PathVariable Long id, @JsonView( BillItemRequestView.Edit.class ) @RequestBody BillRequestDTO request) throws ApplicationException {
         return super.updateMenuItem( id, request );
     }
 

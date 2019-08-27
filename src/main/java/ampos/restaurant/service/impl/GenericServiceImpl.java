@@ -14,7 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.io.Serializable;
 import java.util.Optional;
 
-@Transactional
 public abstract class GenericServiceImpl <REQUEST, RESPONSE extends Serializable, ID,
                                         ENTITY extends DomainEntity<ID>, REPOSITORY extends JpaRepository<ENTITY, ID>,
                                         MAPPER extends GenericMapper<RESPONSE, ENTITY, REQUEST>> implements GenericService <REQUEST, RESPONSE, ID> {
@@ -37,7 +36,6 @@ public abstract class GenericServiceImpl <REQUEST, RESPONSE extends Serializable
      * @return
      * @throws ApplicationException
      */
-    @Transactional
     @Override
     public RESPONSE save( ID id, REQUEST request ) throws ApplicationException {
         ENTITY existingEntity = null;
@@ -45,7 +43,8 @@ public abstract class GenericServiceImpl <REQUEST, RESPONSE extends Serializable
 
         if( id != null ){
             existingEntity = repository.findById(id).orElseThrow( () -> new ApplicationContextException( Constants.ITEM_NOT_FOUND ));
-            mergeExistingAndNewEntity(existingEntity, entityToBeUpdated);
+	    mergeExistingAndNewEntity(existingEntity, entityToBeUpdated);
+	    //entityToBeUpdated = existingEntity;
         }
 
         processBeforeSaving(request, entityToBeUpdated);
@@ -55,7 +54,7 @@ public abstract class GenericServiceImpl <REQUEST, RESPONSE extends Serializable
 
     void mergeExistingAndNewEntity(ENTITY existingEntity, ENTITY newEntity) { }
 
-    void processBeforeSaving(REQUEST request, ENTITY entity) {}
+    public void processBeforeSaving(REQUEST request, ENTITY entity) {}
 
     /**
      * Delete item
