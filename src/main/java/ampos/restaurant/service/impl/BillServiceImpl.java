@@ -60,12 +60,22 @@ public class BillServiceImpl extends GenericServiceImpl<BillRequestDTO, BillDTO,
 	else
 	    existingBill.getBillItems().clear();
 
+	// Merge common existing Bill Items
         existingBill.getBillItems().forEach( item -> {
             if(commonBillItems.containsKey( item.getId() )) {
-                item.merge( commonBillItems.get( item.getId() ) );
+                BillItem source = commonBillItems.get( item.getId() );
+                if(item.getQuantity() != source.getQuantity()) {
+                    item.setQuantity( source.getQuantity() );
+                }
+
+                if(!item.getMenuItem().getId().equals( source.getMenuItem().getId() )) {
+                    item.setMenuItem( source.getMenuItem() );
+                    item.setOrderedTime( null );
+                }
             }
         } );
 
+        // Add all new Bill Items to create in database
         existingBill.getBillItems().addAll( newBillItems );
 
         return existingBill;
