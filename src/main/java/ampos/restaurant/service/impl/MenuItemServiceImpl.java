@@ -32,6 +32,13 @@ public class MenuItemServiceImpl extends GenericServiceImpl<MenuItemRequestDTO, 
     }
 
     @Override
+    MenuItem mergeExistingAndNewEntity(MenuItem existingMenuItem, MenuItem newMenuItem) {
+        // Set existing id and replace the whole new MenuItem to existing MenuItem
+        newMenuItem.setId( existingMenuItem.getId() );
+        return newMenuItem;
+    }
+
+    @Override
     public void delete( Long id ) {
         repository.deleteAllMenuItemWithIds( Arrays.asList(id) );
     }

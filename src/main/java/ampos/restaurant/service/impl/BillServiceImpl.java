@@ -44,7 +44,7 @@ public class BillServiceImpl extends GenericServiceImpl<BillRequestDTO, BillDTO,
     }
 
     @Override
-    void mergeExistingAndNewEntity(Bill existingBill, Bill newBill) {
+    Bill mergeExistingAndNewEntity(Bill existingBill, Bill newBill) {
 	Map<Long, BillItem> commonBillItems = newBill.getBillItems()
                                                     .stream()
                                                     .filter( item -> item.getId() != null)
@@ -67,6 +67,8 @@ public class BillServiceImpl extends GenericServiceImpl<BillRequestDTO, BillDTO,
         } );
 
         existingBill.getBillItems().addAll( newBillItems );
+
+        return existingBill;
     }
 
 
