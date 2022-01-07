@@ -33,7 +33,7 @@
 		<!-- JUnit -->
 		<httpcomponents.version>4.5.3</httpcomponents.version>
 		<junit.version>4.12</junit.version>
-		<h2.version>1.4.190</h2.version>
+		<h2.version>2.0.206</h2.version>
                  <!--lombok-->
  		<lombok.version>1.18.8</lombok.version>
 	</properties>
